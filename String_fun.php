@@ -4,8 +4,10 @@ $str="hello good morning";
 echo $str."<br />";
 
 //string length - strlen()
-//echo "length of given string is : ".strlen($str);
-
+echo "length of given string is : ".strlen($str);
+echo strlen('')."<br>";
+echo strlen(' ');
+echo strlen('trlen is a PHP function that returns the length of a string in characters. It can also be used to return true if the string is empty or false if the string is not empty. The strlen function is useful for determining the length of a string before concatenating it with another string or performing length-based operations. It is a built-in function in PHP and can be used to manipulate the characters in a string.').'<br>';
 //replace string - str_replace(search,newstr,str)
 //echo " new string is : ".str_replace("morning","evening",$str);
 
@@ -58,5 +60,5 @@ echo $str."<br />";
 //echo strrev($str);
 
 //randomly shuffle all character in string - str_shuffle()
-echo str_shuffle($str);
+//echo str_shuffle($str);
 ?>
