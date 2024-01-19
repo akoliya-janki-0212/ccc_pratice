@@ -44,8 +44,8 @@ echo str_replace($search_arr, $replace_arr, $str);
 //echo strpos($str,'o',6);
 // $str='abc';
 // $find='a';
-// // echo strpos($str,$find)?"'$find' find in string":"'$find' not find in string ";
-// $output=strpos($str,$find);
+// echo strpos($find,$str)?"'$find' find in string":"'$find' not find in string ";
+//$output=strpos($str,$find);
 // if($output===FALSE){
 //     echo 'not found';
 // }
@@ -158,7 +158,7 @@ echo var_dump(explode(' ',$str,-2))."<br>"; */
 // echo strcoll("Hello",'hello');//-1 str1<str2
 
 //*******************************************************
-// echo strcspn($str,"d");
+//echo strcspn($str,"x");
 
 //*******************************************************
 //search string case sensitive-stristr() return string false
