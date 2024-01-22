@@ -40,7 +40,7 @@ else{
 //nested if statement
 echo "<h3>nested if statement</h3>";
 
-$num1=10;
+$num1=0;
 $num2=5;
 $num3=66;
 if($num1>$num2){
