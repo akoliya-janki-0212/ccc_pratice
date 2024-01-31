@@ -47,13 +47,17 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 20px 0 0px 0;
+    
 }
 
 form .user-details .form-group {
     margin-bottom: 15px;
     width: calc(100% / 2 - 20px);
 }
-
+form .user-details .form-group-1 {
+    margin-bottom: 15px;
+    width: calc(100% / 2 - 20px);
+}
 form .form-group label.details {
     display: block;
     font-weight: 500;
@@ -146,9 +150,7 @@ form .button input:hover {
       margin-bottom: 15px;
       width: 100%;
     }
-    .form-group-1 {
-        margin-bottom: 10px;
-     }
+    
     .form-group-1 input {
        margin-bottom: 5px;
     }
@@ -165,5 +167,5 @@ form .button input:hover {
     .user-details::-webkit-scrollbar {
       width: 5px;
     }
-  }
-  
+
+}

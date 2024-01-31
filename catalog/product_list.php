@@ -1,7 +1,11 @@
 <?php
 require 'sql/connection.php';
-$query="SELECT * FROM ccc_product ORDER BY product_id DESC LIMIT 20";
-$result=$conn->query($query);
+require 'sql/functions.php';
+
+/* $query="SELECT * FROM ccc_product ORDER BY product_id DESC LIMIT 20";
+$result=$conn->query($query); */
+
+$result=select($conn,'ccc_product');
 ?>
 
 <!DOCTYPE html>
@@ -69,18 +73,45 @@ $result=$conn->query($query);
             transform: scale(0.99);
             background-color: #00bfff;
         }
+        .ins {
+            margin: 5px;
+            width: 90px;
+            border-radius: 5px;
+            border: none;
+            color: white;
+            background-color: #309d21;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
 
+        .ins:hover {
+            transform: scale(0.99);
+            background-color: #7adf6c;
+        }
         .btn {
             border: 1px solid black;
             border-collapse: collapse;
             align-items: center;
         }
+        .title_details{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-right: 10%;
+
+            }
     </style>
     </head>
     <body>
     <div class="box">
         <div class="container">
+            <div class="title_details">
             <div class="title">Product Information</div>
+            <div class='btn1'><a href='product.php?action=add&product_id=null'><button class='ins'>Add</button></a></div>
+            </div>
             <div class="content">
             <?php
              if($result->num_rows>0){
@@ -108,7 +139,7 @@ $result=$conn->query($query);
 
              }
              else{
-              echo "No record selected";  
+              echo "No record selected".$conn->error;  
                 
              }?>
             </div>
