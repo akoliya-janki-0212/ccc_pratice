@@ -1,9 +1,9 @@
 <?php
 class File{
-    public $file_name;
+    public $filename;
     public $size;
     public function get_file_extension(){
-        $parts=explode('.',$this->file_name);
+        $parts=explode('.',$this->filename);
         return end($parts);
     }
     public function display_file_info(){
