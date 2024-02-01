@@ -1,11 +1,17 @@
 <?php
 require 'sql/connection.php';
-require 'sql/functions.php';
-
+//require 'sql/functions.php';
+require 'sql/class.php';
 /* $query="SELECT * FROM ccc_product ORDER BY product_id DESC LIMIT 20";
 $result=$conn->query($query); */
 
-$result=select($conn,'ccc_product');
+//$result=select($conn,'ccc_product');
+
+$querybuild1=new QueryBuilder('ccc_product');
+$queryexecute=new QueryExecutor();
+
+$query=$querybuild1->select();
+$result=$queryexecute->query_execute($conn,$query);
 ?>
 
 <!DOCTYPE html>
@@ -114,7 +120,7 @@ $result=select($conn,'ccc_product');
             </div>
             <div class="content">
             <?php
-             if($result->num_rows>0){
+            if($result->num_rows>0){
             echo ("<table>
                         <tr><th>Product Id</th>
                         <th>Product Name</th>
@@ -124,7 +130,9 @@ $result=select($conn,'ccc_product');
                         <th>delete</th></tr>    
                 
                 ");
-                while ($row=$result->fetch_assoc()){
+                $rows=$queryexecute->fetch($result);
+                foreach($rows as $row)
+                {
                     echo("<tr>
                     <td class='column'>".$row['product_id']."</td>
                     <td class='column'>".$row['product_name']."</td>
@@ -136,12 +144,11 @@ $result=select($conn,'ccc_product');
                     </tr>");
                 }
                 echo "</table>";
-
-             }
-             else{
-              echo "No record selected".$conn->error;  
-                
-             }?>
+            }
+            else{
+                echo "no record selected.";
+            }
+              ?>
             </div>
         </div>
     </div>

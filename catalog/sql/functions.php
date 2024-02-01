@@ -20,6 +20,7 @@ function insert($conn,$table_name,$data=[]){
         Error instering record".$conn->error."
       </div>";
     }
+    $conn->close();
 }
 function update($conn,$table_name,$data=[],$where=[]){
     $columns=$where_con_arr=[];
@@ -43,6 +44,7 @@ function update($conn,$table_name,$data=[],$where=[]){
         Error updating record".$conn->error."
       </div>";
     }
+    $conn->close();
 }
 function delete($conn,$table_name,$where=[]){
     $where_con_arr=[];
@@ -63,6 +65,7 @@ function delete($conn,$table_name,$where=[]){
         Error deleteing record".$conn->error."
       </div>";
     }
+    $conn->close();
 }
 function select($conn,$table_name,$where=[])
 {
@@ -80,5 +83,6 @@ function select($conn,$table_name,$where=[])
     
     $result=$conn->query($query);
     return $result;
+    $conn->close();
 }
 ?>
