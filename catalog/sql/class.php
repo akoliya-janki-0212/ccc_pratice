@@ -69,7 +69,6 @@ class QueryExecutor{
         $this->query=$query;
         $result=$conn->query($this->query);
         return $result;
-        $conn->close();
     }
     public function fetch($result){
         $data=[];

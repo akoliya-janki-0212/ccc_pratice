@@ -69,22 +69,21 @@ if (isset($_GET['product_id']) && $action == "edit" && $_SERVER["REQUEST_METHOD"
 ?>
 
 <?php
-
+      
+ if(isset($_GET['product_id'])){
+  $products=[];
+  $product_id=$_GET['product_id'];
+  //$result=select($conn,'ccc_product',['product_id'=>$product_id]);
+  $query=$querybuild1->select(['product_id'=>$product_id]);
+  $result=$queryexecute->query_execute($conn,$query);
+  $products=set_value($result);
+} 
 function set_value($result)
 {
-      /* global $queryexecute;
-      $products=array();
-      $rows=$queryexecute->fetch($result);
-      if($result->num_rows>0){
+       global $queryexecute;
+      
+        $rows=$queryexecute->fetch($result);
         foreach($rows as $row){
-        foreach($row as $key=>$value){
-          $products[$key]=$value;
-        }
-      }
-      else{
-        
-      }
-      } */
         $products['product_id']=isset($row['product_id'])?$row['product_id']:" ";
         $products['product_name']=isset($row['product_name'])?$row['product_name']:" ";
         $products['sku']=isset($row['sku'])?$row['sku']:" ";
@@ -97,27 +96,12 @@ function set_value($result)
         $products['status']=isset($row['status'])?$row['status']:" ";
         $products['created_at']=isset($row['created_at'])?$row['created_at']:" ";
         $products['updated_at']=isset($row['updated_at'])?$row['updated_at']:" " ;
+      }
        
-       /* if($row['product_id']==null){
-          foreach($row as $key=>$value){
-            $products[$key]='';
-          }
-        } */
-        
-      
-    
   //echo $product_id." ".$product_name." ".$sku." ".$product_category." ".$manufecturer_cost." ".$shipping_cost." ".$total_cost." ".$price." ".$product_status." ".$created_at." ".$updated_at;
     return $products;
-
   }
-  if(isset($_GET['product_id'])){
-    $product_id=$_GET['product_id'];
-    //$result=select($conn,'ccc_product',['product_id'=>$product_id]);
-    $query=$querybuild1->select(['product_id'=>$product_id]);
-    $result=$queryexecute->query_execute($conn,$query);
-    //print_r($result);
-    $products=set_value($result);
-  } 
+ 
 
    ?>
 <!DOCTYPE html>
@@ -192,7 +176,7 @@ function set_value($result)
               <?php
                 $categories = ["-- select --","Bar & Game Room", "Bedroom", "Decor", "Dining & Kitchen", "Lighting", "Living Room", "Mattresses", "Office", "Outdoor"];
                   foreach ($categories as $category) {
-                    echo '<option value="' . $category . '" ' . (($row['category'] == $category) ? 'selected' : '') . '>' . $category . '</option>';
+                    echo '<option value="' . $category . '" ' . (($products['category'] == $category) ? 'selected' : '') . '>' . $category . '</option>';
                   }
               ?>
               </select>
@@ -219,7 +203,7 @@ function set_value($result)
               <?php
                 $status = ["-- select --","Enabled","Disabled"];
                   foreach ($status as $item) {
-                    echo '<option value="' . $item . '" ' . (($row['item'] == $item) ? 'selected' : '') . '>' . $item . '</option>';
+                    echo '<option value="' . $item . '" ' . (($products['status'] == $item) ? 'selected' : '') . '>' . $item . '</option>';
                   }
               ?>
               </select>

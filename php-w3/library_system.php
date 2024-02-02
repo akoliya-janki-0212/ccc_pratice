@@ -16,13 +16,14 @@ class Book{
 }
 
 
-class Library
+class Library extends Book
 {
     private $books=[];
     public function add_books(Book $book)
     {
         $this->books[]=$book;
     }
+    
     public function display_all_books(){
         foreach($this->books as $book){
             $book->display_info()."<br>";
