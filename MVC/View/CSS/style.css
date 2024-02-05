@@ -142,8 +142,6 @@ th {
     background-color: #7adf6c;
 }
 .btn {
-    border: 1px solid black;
     border-collapse: collapse;
     align-items: center;
-    margin-left: 30%;
 }
