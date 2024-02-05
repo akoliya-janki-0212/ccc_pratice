@@ -14,7 +14,7 @@ body{
 
 /* Style for the container */
 .container {
-    padding: 20px;
+  padding: 20px;
 }
 
 /* Style for the title */
@@ -22,6 +22,7 @@ body{
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 10px;
+    width: 50%;
 }
 
 /* Style for the content */
@@ -63,4 +64,86 @@ input[type="submit"] {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+table {
+    border-collapse: collapse;
+}
+
+th {
+    font-size: 20px;
+    font-weight: 500;
+    position: relative;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.column {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding-left: 15PX;
+    align-items: center;
+}
+
+
+
+.dlt {
+    margin: 5px;
+    width: 80px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background-color: red;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dlt:hover {
+    transform: scale(0.99);
+    background-color: #fa3c3caf;
+}
+
+.upd {
+    margin: 5px;
+    width: 90px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background-color: #1e90ff;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upd:hover {
+    transform: scale(0.99);
+    background-color: #00bfff;
+}
+.ins {
+    margin: 5px;
+    width: 90px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background-color: #309d21;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.ins:hover {
+    transform: scale(0.99);
+    background-color: #7adf6c;
+}
+.btn {
+    border: 1px solid black;
+    border-collapse: collapse;
+    align-items: center;
+    margin-left: 30%;
 }
