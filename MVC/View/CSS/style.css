@@ -145,3 +145,8 @@ th {
     border-collapse: collapse;
     align-items: center;
 }
+.sub-con{
+    display:flex;
+    justify-content: space-between;
+    
+}

@@ -15,9 +15,11 @@ class View_ProductList{
     public function createTable(){
         $table='<div class="box">
                  <div class="container">
-                    <div class="title">Product Information
-                    <a href="index.php?action=add&product_id=0"><button type="submit" name="btn_add" class="ins">Add</button></a>
+                 <div class="sub-con">   
+                     <div class="title">Product Information
                     </div>
+                    <div><a href="index.php?action=add&product_id=0"><button type="submit" name="btn_add" class="ins">Add</button></a></div>
+                </div>
                     <div class="content">';
                      $table.='<table border="2px">
                         <tr><th>Product Id</th>
