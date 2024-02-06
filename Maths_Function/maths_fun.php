@@ -24,7 +24,7 @@
 // echo pow(2,0);
 // echo pow(0,0);
 
-//sqrt() funcation
+//sqrt() function
 // echo sqrt(4);
 
 // generate random number-rand($start,$end)

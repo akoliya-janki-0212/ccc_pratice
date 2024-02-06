@@ -1,5 +1,5 @@
 <?php
-function fibonacci($no){
+/* function fibonacci($no){
     $first_term=1;
     $second_term=2;
     echo $first_term.'  '.$second_term.'  ';
@@ -11,5 +11,5 @@ function fibonacci($no){
         $second_term=$ans;
     }
 }
-fibonacci(10);
+fibonacci(10); */
 ?>

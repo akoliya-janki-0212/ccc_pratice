@@ -13,7 +13,6 @@ function isprime($no)
     }
        return true;
 }
-
 $no=3;
 if(isprime($no)){
     echo $no.' is  prime<br>';

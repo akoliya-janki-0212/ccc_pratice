@@ -44,5 +44,4 @@
 // echo var_dump((int)"10");
 // $str="janki";
 // echo var_dump((array)$str);
-
 ?>

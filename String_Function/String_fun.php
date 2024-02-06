@@ -14,6 +14,7 @@ echo $str."<br />";
 // *******************************************************
 //replace string - str_replace(search,replace,str,count) return array
 //echo " new string is : ".str_replace("morning","evening",$str)."<br>";
+// var_dump(str_replace("morning","evening",$str));
 // $arr = array("o","x");
 // echo str_replace($arr, "e", "Hello World of PHP")."<br>";
 // echo str_replace('good','a',$str);
@@ -55,7 +56,7 @@ echo str_replace($search_arr, $replace_arr, $str);
 
 //*******************************************************
 //return part of string - substr(str,offset,len) //retrun string
-//echo substr($str,2,6);
+// echo substr($str,2,6);
 // echo substr($str,3,null);
 // echo substr($str,4,-2);
 // echo substr($str,-4,-2);
@@ -82,7 +83,8 @@ echo str_replace($search_arr, $replace_arr, $str);
 // joing array into string - implode() retun string
 // $arr=array(1,2,3,4,5);
 // echo var_dump(implode(" , ",$arr));
-
+// var_dump(implode('hello', []));
+// var_dump(join(' ',$arr));
 //*******************************************************
 // split string into array - explode() return array
 // $arr= explode(" ", $str);
@@ -92,13 +94,13 @@ echo str_replace($search_arr, $replace_arr, $str);
 /* $str="one two three four";
 echo var_dump(explode(' ',$str))."<br>";
 echo var_dump(explode(' ',$str,2))."<br>";
-echo var_dump(explode(' ',$str,-2))."<br>"; */
+echo var_dump(explode(' ',$str,-2))."<br>";*/ 
 
 //*******************************************************
 //encode special character in html string - htmlspecialchars()
 // $str= "heello <b> janki</b>";
 // echo $str."</br>";
-// echo htmlspecialchars($str)."</br>";
+// echo htmlspecialchars($str,ENT_XML1)."</br>";
 
 //*******************************************************
 //convert all applicable characters to html entities - htmlentities
@@ -119,6 +121,7 @@ echo var_dump(explode(' ',$str,-2))."<br>"; */
 //randomly shuffle all character in string - str_shuffle()
 // echo str_shuffle($str);
 
+
 //*******************************************************
 // convert string into array - strsplit() return array
 // $arr=str_split($str);
@@ -129,7 +132,7 @@ echo var_dump(explode(' ',$str,-2))."<br>"; */
 
 //*******************************************************
 //no of words  in string - str_word_count()  return array/int
-// echo str_word_count($str);
+// echo str_word_count($str)."<br>";
 // echo str_word_count($str,0);
 // print_r(str_word_count($str,1));
 // print_r(str_word_count($str,2));
@@ -158,11 +161,15 @@ echo var_dump(explode(' ',$str,-2))."<br>"; */
 // echo strcoll("Hello",'hello');//-1 str1<str2
 
 //*******************************************************
-//echo strcspn($str,"x");
+// echo strcspn($str,'e');
+// $f = strcspn('abcdhelloabcd', 'abcd', -9, -5);
+// echo $f;
 
 //*******************************************************
 //search string case sensitive-stristr() return string false
-//echo stristr($str,"G");
+// echo stristr($str,"G");
+// echo strstr($str,"G");
+
 
 //*******************************************************
 // reverse string - strrev()
@@ -170,11 +177,13 @@ echo var_dump(explode(' ',$str,-2))."<br>"; */
 
 //*******************************************************
 //upercase of first character of sensents-ucfirst()
-//echo ucfirst($str)."<br>";
+// echo ucfirst($str)."<br>";
 
 //*******************************************************
 //uppercase of first character of each word - ucwords()
 // echo ucwords($str);
 // $str= "aa|bb";
 // echo ucwords($str,'|');
+// $str = 'ABC';
+// var_dump(str_increment($str));
 ?>

@@ -19,11 +19,6 @@ class Data_Object {
         return isset($this->_row[$name])
             ? $this->_row[$name]
             : $args[0];
-
-        print_r($name);
-        
-        echo "<br/>";
-         print_r($args);
     }
 }
 $newObj = new Data_Collection_Object();
@@ -37,12 +32,7 @@ $temp = [
 foreach($temp as $_temp) {
     $newObj->addData($_temp);
 }
-foreach($newObj->getData() as $_mmdata) {
-    print_r($_mmdata);
-    echo "<br>";
-    //print_r($_mmdata->getSku('Simple'));
-    echo "<br>";
-    //print_r($_mmdata->getName());
+foreach($newObj->getData() as $_mmdata) {    
 }
 ?>
 
