@@ -1,5 +1,5 @@
 <?php
-class View_ProductList{
+class View_Product_List{
     public $rowObj;
     public function __construct(){
         $obj=new Model_Abstract();

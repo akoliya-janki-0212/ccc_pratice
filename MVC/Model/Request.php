@@ -30,5 +30,10 @@ class Model_Request{
         }
         return false;
     }
+    public function getRequestUri(){
+        $uri=$_SERVER['REQUEST_URI'];
+        $uri=str_replace('/practice/MVC/','',$uri);
+        return $uri;
+    }
 }
 ?>
