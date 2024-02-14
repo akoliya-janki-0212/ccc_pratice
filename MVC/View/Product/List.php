@@ -47,7 +47,7 @@ class View_Product_List{
         return $table;
     }
     public function toHtml(){
-        $css='<link rel="stylesheet" href="View/CSS/style.css">';
+        $css='<link rel="stylesheet" href="../../View/CSS/style.css">';
         $form=$this->createTable();
         return $css.$form;
                

@@ -104,7 +104,7 @@ class View_Product{
 
     }
     public function toHtml(){
-        $css='<link rel="stylesheet" href="View/CSS/style.css">';
+        $css='<link rel="stylesheet" href="../View/CSS/style.css">';
         $form=$this->createForm();
         return $css.$form;
                

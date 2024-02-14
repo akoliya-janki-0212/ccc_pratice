@@ -60,7 +60,7 @@ class Lib_Sql_Query_Builder extends Lib_Sql_Connection{
         else{
             $query="SELECT {$data_str} FROM {$table_name}";
         }
-        ;
+        
         return $query; 
     }
 }
