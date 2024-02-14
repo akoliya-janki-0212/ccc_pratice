@@ -83,6 +83,6 @@ function select($conn,$table_name,$where=[])
     
     $result=$conn->query($query);
     return $result;
-    $conn->close();
+
 }
 ?>

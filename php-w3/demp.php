@@ -7,7 +7,7 @@ class A{
         return $this;
     }
 }
-class B ex
+
 $obj=new A();
 print_r($obj);
 $obj->test();
