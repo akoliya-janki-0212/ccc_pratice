@@ -5,13 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <?php echo $this->getChildHtml('head') ?>
 </head>
 
 <body>
-    <form>
-        <?php echo $this->getRequest()->getParams('pid')?>
-        <input type="text" name="acb" value="">
-    </form>
+    
+<div><?php echo $this->getChildHtml('header') ?></div>
+<div><?php echo $this->getChildHtml('content') ?></div>
+<div><?php echo $this->getChildHtml('footer') ?></div>
+    
+    
 </body>
 
 </html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div><?php echo $this->getchild('header')->toHtml()  ?></div>
+    <div><?php echo $this->getchild('footer')->toHtml()  ?></div>
+    <div><?php echo $this->getchild('content')->toHtml()  ?></div>
+    <div><?php echo $this->getchild('messages')->toHtml()  ?></div>
+    <div><?php echo $this->getchild('left')->toHtml()  ?></div>
+    
+</body>
+
+</html>

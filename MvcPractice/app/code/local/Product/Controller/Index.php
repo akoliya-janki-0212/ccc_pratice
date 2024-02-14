@@ -1,27 +1,27 @@
 <?php
 class Product_Controller_Index
 {
-    public function index()
+    public function indexAction()
     {
         echo dirname(__FILE__);
 
     }
-    public function new()
+    public function newAction()
     {
         echo dirname(__FILE__);
 
     }
-    public function list()
+    public function listAction()
     {
         echo dirname(__FILE__);
 
     }
-    public function save()
+    public function saveAction()
     {
         echo dirname(__FILE__);
 
     }
-    public function delete()
+    public function deleteAction()
     {
         echo dirname(__FILE__);
 

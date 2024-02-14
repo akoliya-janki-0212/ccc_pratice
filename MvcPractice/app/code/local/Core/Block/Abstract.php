@@ -4,8 +4,9 @@ class Core_Block_Abstract
     public $template;
     public function setTemplate($template)
     {
+        
         $this->template = $template;
-
+        //echo $this->template ;
     }
     public function getTemplate()
     {
@@ -45,7 +46,11 @@ class Core_Block_Abstract
     }
     public function render()
     {
-        include Mage::getBaseDir('app') . '/design/frontend/template/' . $this->getTemplate();
+       // print_r($this->getTemplate());
+        $html= Mage::getBaseDir('app') . '/design/frontend/template/' . $this->getTemplate();
+        //echo $html;
+        //echo '<br>';
+        include $html;
     }
 }
 ?>

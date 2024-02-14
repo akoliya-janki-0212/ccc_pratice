@@ -1,5 +1,5 @@
 <?php
-class Core_Model_Db_Abstract
+class Core_Model_Abstract
 {
     protected $data = [];
     protected $resourceClass = '';
@@ -23,6 +23,8 @@ class Core_Model_Db_Abstract
     }
     public function getResource()
     {
+        $modelClass= get_class($this);
+        substr($modelClass,0,strpos($modelClass,'_Model_'));
     }
     public function getCollection()
     {
@@ -59,6 +61,9 @@ class Core_Model_Db_Abstract
     }
     public function load($id, $column = null)
     {
+    
+        $this->getResource();
+
     }
     public function delete()
     {
