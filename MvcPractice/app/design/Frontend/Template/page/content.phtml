@@ -1,6 +1,9 @@
 <?php
 $this->getRequest()->getParams('pid');
-$productModel = Mage::getModel('product/product');
-print_r($productModel->load(1));
-echo 'content';
+$productModel = Mage::getModel('product/product')->load(1);
+echo '<pre>';
+print_r($productModel->getId());
+print_r($productModel->getProductName());
+print_r($productModel->getSku());
+print_r($productModel);
 ?>
