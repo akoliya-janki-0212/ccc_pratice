@@ -1,5 +1,6 @@
 <?php
 $this->getRequest()->getParams('pid');
-$productModel=Mage::getModel('product/product');
+$productModel = Mage::getModel('product/product');
 print_r($productModel->load(1));
+echo 'content';
 ?>

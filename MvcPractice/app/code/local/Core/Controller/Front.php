@@ -5,12 +5,12 @@ class Core_Controller_Front
     {
         $request = Mage::getModel('core/request');
         $actionName = $request->getActionName();
-        if(strpos($actionName,'?')){
-            $actionName=stristr($actionName,'?',true);
+        if (strpos($actionName, '?')) {
+            $actionName = stristr($actionName, '?', true);
         }
-        $actionName= $actionName.'Action';
+        $actionName = $actionName . 'Action';
         $className = $request->getFullControllerClass();
-        $layout = new $className(); 
+        $layout = new $className();
         $layout->$actionName();
     }
 }

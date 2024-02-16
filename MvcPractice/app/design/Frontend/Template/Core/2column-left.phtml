@@ -5,15 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <?php echo $this->getChildHtml('head') ?>
 </head>
 
 <body>
-    <div><?php echo $this->getchild('header')->toHtml()  ?></div>
-    <div><?php echo $this->getchild('footer')->toHtml()  ?></div>
-    <div><?php echo $this->getchild('content')->toHtml()  ?></div>
-    <div><?php echo $this->getchild('messages')->toHtml()  ?></div>
-    <div><?php echo $this->getchild('left')->toHtml()  ?></div>
-    
+    <div>
+        <?php echo $this->getChildHtml('header') ?>
+    </div>
+    <div>
+        <?php echo ($this->getChildHtml('messages')); ?>
+    </div>
+    <div>
+        <?php echo $this->getChildHtml('content') ?>
+    </div>
+    <div>
+        <?php echo $this->getChildHtml('footer') ?>
+    </div>
 </body>
 
 </html>

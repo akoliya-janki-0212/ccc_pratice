@@ -23,8 +23,9 @@ class Core_Model_Abstract
     }
     public function getResource()
     {
-        $modelClass= get_class($this);
-        substr($modelClass,0,strpos($modelClass,'_Model_'));
+        $modelClass = get_class($this);
+        $modelClass = str_replace('_Model_', '_Model_Resource_', $modelClass);
+        return new $modelClass();
     }
     public function getCollection()
     {
@@ -61,7 +62,7 @@ class Core_Model_Abstract
     }
     public function load($id, $column = null)
     {
-    
+
         $this->getResource();
 
     }
