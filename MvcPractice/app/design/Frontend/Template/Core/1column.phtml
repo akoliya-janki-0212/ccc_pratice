@@ -9,18 +9,16 @@
 </head>
 
 <body>
-    <div>
-        <?php echo $this->getChildHtml('header') ?>
+    <div class="header">
+        <?php echo $this->getChildHtml('header'); ?>
     </div>
-    <div>
-        <?php echo ($this->getChildHtml('messages')); ?>
+    <div class="content">
+        <?php echo $this->getChildHtml('content'); ?>
     </div>
-    <div>
-        <?php echo $this->getChildHtml('content') ?>
+    <div class="footer">
+        <?php echo $this->getChildHtml('footer'); ?>
     </div>
-    <div>
-        <?php echo $this->getChildHtml('footer') ?>
-    </div>
+
 </body>
 
 </html>

@@ -1,10 +1,10 @@
 <?php
-class Product_Controller_Index
+class Catalog_Controller_Index extends Core_Controller_Front_Action
 {
     public function indexAction()
     {
-        echo dirname(__FILE__);
-
+        // $layout = $this->getLayout();
+        // $layout->toHtml();
     }
     public function newAction()
     {
