@@ -10,6 +10,7 @@ class Core_Controller_Front_Action
 
         return $this->_layout;
     }
+
     public function getRequest()
     {
         return Mage::getModel('core/request');

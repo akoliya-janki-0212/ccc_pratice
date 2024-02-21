@@ -27,7 +27,6 @@ class Core_Block_Template extends Core_Block_Abstract
             }
         } else {
             $html = $this->getChild($key)->toHtml();
-
         }
         return $html;
     }

@@ -1,12 +1,12 @@
 <?php
 include 'app/Mage.php';
 include 'app/code/Local/autoload.php';
-class Ccc
+/* class Ccc
 {
     public static function init()
     {
-        Mage::init();
     }
 }
-Ccc::init();
+Ccc::init(); */
+Mage::init();
 ?>

@@ -86,17 +86,17 @@ class Core_Model_Abstract
             ->save($this);
         return $this;
     }
-
+    public function delete()
+    {
+        $this->getResource()
+            ->delete($this);
+        return $this;
+    }
     public function load($id, $column = null)
     {
         $this->_data = $this->getResource()->load($id, $column);
         return $this;
     }
-    public function delete()
-    {
-    }
-
-
 }
 
 ?>

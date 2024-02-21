@@ -2,6 +2,8 @@
 class Mage
 {
     private static $baseDir = 'C:/xampp/htdocs/practice/MvcPractice';
+    private static $baseUrl = 'http://localhost/practice/MvcPractice';
+
     public static function init()
     {
         $frontModel = new Core_Controller_Front();
@@ -35,6 +37,12 @@ class Mage
         }
         return self::$baseDir;
     }
-
+    public static function getBaseUrl($subUrl = null)
+    {
+        if ($subUrl) {
+            return self::$baseUrl . '/app/skin/' . $subUrl;
+        }
+        return self::$baseUrl;
+    }
 }
 ?>

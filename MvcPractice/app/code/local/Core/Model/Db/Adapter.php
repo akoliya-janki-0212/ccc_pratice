@@ -43,9 +43,21 @@ class Core_Model_Db_Adapter
     }
     public function update($query)
     {
+        $sql = mysqli_query($this->connect(), $query);
+        if ($sql) {
+            return True;
+        } else {
+            return FALSE;
+        }
     }
     public function delete($query)
     {
+        $sql = mysqli_query($this->connect(), $query);
+        if ($sql) {
+            return True;
+        } else {
+            return FALSE;
+        }
     }
     public function query($query)
     {

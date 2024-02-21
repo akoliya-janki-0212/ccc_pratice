@@ -1,0 +1,79 @@
+<div class="box">
+    <div class="container">
+        <div class="title">Product Information</div>
+        <div class="content">
+            <form action=<?php echo $this->getUrl('admin/catalog_product/save') ?> method="post">
+                <div class="user-details">
+                    <div class="form-group">
+                        <label for="sku" class="details">Sku </label>
+                        <input type="textbox" class="form-control" id="sku" name="catalog_product[sku]"
+                            placeholder="Enter sku">
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="details">Name</label>
+                        <input type="textbox" class="form-control" id="name" name="catalog_product[name]"
+                            placeholder="Enter name">
+                    </div>
+                    <div class="form-group ">
+                        <label for="color" class="details">Color</label>
+                        <input type="textbox" class="form-control" id="color" name="catalog_product[color]"
+                            placeholder="Enter color">
+                    </div>
+                    <div class="form-group ">
+                        <label for="size" class="details">Size</label>
+                        <input type="textbox" class="form-control" id="size" name="catalog_product[size]"
+                            placeholder="Enter size">
+                    </div>
+                    <div class="form-group ">
+                        <label for="description" class="details">Description</label>
+                        <textarea class="form-control" id="description" name="catalog_product[description]"
+                            placeholder="Enter description" cols="30" rows="5"></textarea>
+                    </div>
+                    <div class="form-group ">
+                        <label for="image_link" class="details">image link</label>
+                        <input type="file" class="form-control" id="image_link" name="catalog_product[image_link]"
+                            placeholder="Enter image link">
+                    </div>
+                    <div class="form-group ">
+                        <label for="link" class="details">Link</label>
+                        <input type="file" class="form-control" id="link" name="catalog_product[link]"
+                            placeholder="Enter link">
+                    </div>
+                    <div class="form-group ">
+                        <label for="mfr_cost" class="details">MFR cost</label>
+                        <input type="number" class="form-control" id="mfr_cost" name="catalog_product[mfr_cost]"
+                            placeholder="Enter mfr cost">
+                    </div>
+                    <div class="form-group ">
+                        <label for="shipping_cost" class="details">Shipping cost</label>
+                        <input type="number" class="form-control" id="shipping_cost"
+                            name="catalog_product[shipping_cost]" placeholder="Enter shipping cost">
+                    </div>
+                    <div class="form-group ">
+                        <label for="total_cost" class="details">Total cost</label>
+                        <input type="number" class="form-control" id="total_cost" name="catalog_product[total_cost]"
+                            placeholder="Enter total cost">
+                    </div>
+                    <div class="form-group ">
+                        <label for="margin_percentage" class="details">Margin Percentage</label>
+                        <input type="number" class="form-control" id="margin_percentage"
+                            name="catalog_product[margin_percentage]" placeholder="Enter Margin Percentage">
+                    </div>
+                    <div class="form-group ">
+                        <label for="min_price" class="details">Min price</label>
+                        <input type="number" class="form-control" id="min_price" name="catalog_product[min_price]"
+                            placeholder="Enter min price">
+                    </div>
+                    <div class="form-group ">
+                        <label for="status" class="details">Status</label>
+                        <input type="number" class="form-control" id="status" name="catalog_product[status]"
+                            placeholder="Enter status">
+                    </div>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Submit" name="submit">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
