@@ -13,24 +13,16 @@ class Admin_Controller_Catalog_Category extends Core_Controller_Front_Action
     public function saveAction()
     {
         echo "<pre>";
-
-        $id = $this->getRequest()->getParams('id');
         $data = $this->getRequest()->getParams('catalog_category');
-        if ($id) {
-            $data = ['category_name' => 'braclate'];
-            $category = Mage::getModel('catalog/category')
-                ->setData($data)->setId($id);
-        } else {
-            $category = Mage::getModel('catalog/category')
-                ->setData($data);
-        }
+        $category = Mage::getModel('catalog/category')
+            ->setData($data);
         $category->save();
     }
     public function deleteAction()
     {
-        Mage::getModel('catalog/category')
-            ->setId($this->getRequest()->getParams('id'))
-            ->delete();
+        $id = $this->getRequest()->getParams('id');
+        $product = Mage::getModel('catalog/category')->load($id);
+        $product->delete();
 
     }
 }

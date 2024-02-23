@@ -19,12 +19,11 @@ class Core_Model_Resource_Abstract
     }
     public function save(Core_Model_Abstract $abstract)
     {
-        $obj = Mage::getModel('core/request');
-        $id = $abstract->getID();
+        $data = $abstract->getData();
+        $id = $data[$this->getPrimaryKey()];
         if ($id) {
-            $data = $abstract->getData();
             $sql = $this->editSql($this->getTableName(), $data, [$this->getPrimaryKey() => $id]);
-            $id = $this->getAdapter()->update($sql);
+            $this->getAdapter()->update($sql);
         } else {
             $data = $abstract->getData();
             if (isset($data[$this->getPrimaryKey()])) {
@@ -37,8 +36,10 @@ class Core_Model_Resource_Abstract
     }
     public function delete(Core_Model_Abstract $abstract)
     {
-        $id = $abstract->getData();
-        $sql = $this->deleteSql($this->getTableName(), $id);
+        $sql = $this->deleteSql(
+            $this->getTableName(),
+            [$this->getPrimaryKey() => $abstract->getId()]
+        );
         $this->getAdapter()->delete($sql);
     }
     public function insertSql($table_name, $data)

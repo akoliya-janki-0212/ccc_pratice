@@ -40,7 +40,7 @@ class Mage
     public static function getBaseUrl($subUrl = null)
     {
         if ($subUrl) {
-            return self::$baseUrl . '/app/skin/' . $subUrl;
+            return self::$baseUrl . '/skin/' . $subUrl;
         }
         return self::$baseUrl;
     }

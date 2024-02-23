@@ -15,13 +15,16 @@ class Core_Model_Request
 
 
     }
-    public function getParams($key = '')
+    public function getParams($key = '', $args = null)
     {
         return ($key == '')
             ? $_REQUEST
             : (isset($_REQUEST[$key])
                 ? $_REQUEST[$key]
-                : '');
+                : ((!is_null($args))
+                    ? $args
+                    : '')
+            );
     }
     public function getPostData($key = '')
     {
