@@ -19,15 +19,20 @@ body {
 .row {
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 20px;
 }
 
 ul {
     list-style: none;
 }
 
+hr {
+    color: #d6dfde;
+}
+
 .footer {
-    background-color: #24262b;
-    padding: 30px 0;
+    background-image: linear-gradient(to top, #d6dfde 98%, #d6dfde 2%, transparent);
+    padding: 20px 0;
 }
 
 .footer-col {
@@ -37,7 +42,7 @@ ul {
 
 .footer-col h4 {
     font-size: 18px;
-    color: #ffffff;
+    color: #3e6765;
     text-transform: capitalize;
     margin-bottom: 35px;
     font-weight: 500;
@@ -62,16 +67,16 @@ ul {
 .footer-col ul li a {
     font-size: 16px;
     text-transform: capitalize;
-    color: #ffffff;
+    color: #3e6765;
     text-decoration: none;
     font-weight: 300;
-    color: #bbbbbb;
+    color: #3e6765;
     display: block;
     transition: all 0.3s ease;
 }
 
 .footer-col ul li a:hover {
-    color: #ffffff;
+    color: #2c514f;
     padding-left: 8px;
 }
 
@@ -79,18 +84,36 @@ ul {
     display: inline-block;
     height: 40px;
     width: 40px;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: #f0f7f6;
     margin: 0 10px 10px 0;
     text-align: center;
     line-height: 40px;
     border-radius: 50%;
-    color: #ffffff;
+    color: #3e6765;
     transition: all 0.5s ease;
 }
 
 .footer-col .social-links a:hover {
-    color: #24262b;
-    background-color: #ffffff;
+    color: #2c514f;
+    height: 45px;
+    width: 45px;
+    line-height: 45px;
+    background-color: #f0f7f6;
+    text-align: center;
+    transition: all 0.5s ease;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 15px;
+
+}
+
+.copyright h4 {
+    font-size: 18px;
+    color: #3e6765;
+    text-transform: capitalize;
+    font-weight: 500;
 }
 
 /*responsive*/

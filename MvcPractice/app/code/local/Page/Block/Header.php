@@ -6,10 +6,7 @@ class Page_Block_Header extends Core_Block_Template
     {
         $this->setTemplate('page/header.phtml');
     }
-    public function getImageUrl($file)
-    {
-        return Mage::getBaseUrl('images/') . $file;
-    }
+
 }
 
 ?>

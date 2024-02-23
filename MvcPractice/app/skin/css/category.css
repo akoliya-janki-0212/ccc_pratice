@@ -1,7 +1,7 @@
 /* Style the container */
 .box {
     width: 100%;
-    max-width: 600px;
+    max-width: 500px;
     margin: 20px auto;
     padding: 20px;
     border: 1px solid #ccc;
@@ -59,29 +59,4 @@
 /* Change submit button color on hover */
 .button input[type="submit"]:hover {
     background-color: #45a049;
-}
-
-/* Arrange form fields in two columns */
-.user-details {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: 10px;
-    /* Adjust the gap between columns */
-}
-
-/* Adjust width for specific fields if needed */
-.user-details .form-group:nth-child(1),
-.user-details .form-group:nth-child(2) {
-    grid-column: span 1;
-    /* Adjust to span one column */
-}
-
-.user-details .form-group:nth-child(3),
-.user-details .form-group:nth-child(4) {
-    grid-column: span 1;
-    /* Adjust to span two columns */
-}
-
-.user-details .form-group:nth-child(5) {
-    grid-column: span 2;
 }

@@ -3,11 +3,10 @@ class Admin_Controller_Catalog_Product extends Core_Controller_Front_Action
 {
     public function formAction()
     {
+        $this->includeCss('product.css');
         $layout = $this->getLayout();
-        $this->includeCss($layout, 'product.css');
         $child = $layout->getChild('content');
-        $productForm = $layout->createBlock('catalog/admin_product')
-            ->setTemplate('catalog/admin/productForm.phtml');
+        $productForm = $layout->createBlock('catalog/admin_product_form');
         $child->addChild('form', $productForm);
         $layout->toHtml();
     }
@@ -16,7 +15,6 @@ class Admin_Controller_Catalog_Product extends Core_Controller_Front_Action
         echo "<pre>";
         $obj = Mage::getModel('core/request');
         $id = $obj->getQueryData('id');
-
         if ($id) {
             $data = ['name' => 'bhumi'];
         } else {
@@ -25,22 +23,14 @@ class Admin_Controller_Catalog_Product extends Core_Controller_Front_Action
         $product = Mage::getModel('catalog/product')
             ->setData($data);
         $product->save();
-
-
     }
     public function deleteAction()
     {
-        $obj = Mage::getModel('core/request');
-        $id = $obj->getQueryData('id');
+        $id = $this->getRequest()->getQueryData('id');
         $product = Mage::getModel('catalog/product')
             ->setData(['product_id' => $id]);
         $product->delete();
     }
-    public function includeCss($layout, $file = null)
-    {
-        $layout->getChild('head')->addCss('header.css');
-        $layout->getChild('head')->addCss($file);
-        $layout->getChild('head')->addCss('footer.css');
-    }
+
 }
 ?>

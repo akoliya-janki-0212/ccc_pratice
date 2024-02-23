@@ -8,8 +8,6 @@ class Core_Block_Layout extends Core_Block_Template
     }
     public function prepareChildren()
     {
-
-
         $head = $this->createBlock('page/head');
         $this->addChild('head', $head);
 
@@ -22,9 +20,9 @@ class Core_Block_Layout extends Core_Block_Template
         $footer = $this->createBlock('page/footer');
         $this->addChild('footer', $footer);
 
-        $messages = $this->createBlock('core/template');
+        /* $messages = $this->createBlock('core/template');
         $messages->setTemplate('core/messages.phtml');
-        $this->addChild('messages', $messages);
+        $this->addChild('messages', $messages); */
 
     }
     public function createBlock($className)

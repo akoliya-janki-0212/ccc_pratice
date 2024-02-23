@@ -17,29 +17,27 @@ class Core_Model_Resource_Abstract
     {
         return $this->_tableName;
     }
-    public function save(Catalog_Model_Product $product)
+    public function save(Core_Model_Abstract $abstract)
     {
         $obj = Mage::getModel('core/request');
-        $id = $obj->getQueryData('id');
+        $id = $abstract->getID();
         if ($id) {
-            $data = $product->getData();
-            $sql = $this->editSql($this->getTableName(), $data, ['product_id' => $id]);
+            $data = $abstract->getData();
+            $sql = $this->editSql($this->getTableName(), $data, [$this->getPrimaryKey() => $id]);
             $id = $this->getAdapter()->update($sql);
         } else {
-            $data = $product->getData();
+            $data = $abstract->getData();
             if (isset($data[$this->getPrimaryKey()])) {
                 unset($data[$this->getPrimaryKey()]);
             }
             $sql = $this->insertSql($this->getTableName(), $data);
-            echo $sql;
             $id = $this->getAdapter()->insert($sql);
-            $product->setId($id);
-            print_r($product->getData());
+            $abstract->setId($id);
         }
     }
-    public function delete(Catalog_Model_Product $product)
+    public function delete(Core_Model_Abstract $abstract)
     {
-        $id = $product->getData();
+        $id = $abstract->getData();
         $sql = $this->deleteSql($this->getTableName(), $id);
         $this->getAdapter()->delete($sql);
     }
@@ -76,6 +74,7 @@ class Core_Model_Resource_Abstract
     public function deleteSql($table_name, $where)
     {
         $where_con_arr = [];
+
         foreach ($where as $field => $value) {
             $where_con_arr[] = "`$field`='$value'";
         }

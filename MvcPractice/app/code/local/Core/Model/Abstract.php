@@ -72,7 +72,6 @@ class Core_Model_Abstract
     {
         $this->_data = $data;
         return $this;
-
     }
     public function addData($key, $value)
     {
