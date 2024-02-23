@@ -1,5 +1,8 @@
 <?php
-
+$productCollection = Mage::getModel('catalog/product')->getCollection();
+// $productCollection->addFieldToFilter('name', 'abc');
+// $productCollection->addFieldToFilter('product_id', ['in' => [1, 2, 3]]);
+// $productCollection->addFieldToFilter('sku', ['like' => '%a']);
 ?>
 <div class="box">
     <div class="container">
@@ -16,15 +19,30 @@
                     <th>Edit</th>
                     <th>delete</th>
                 </tr>
-                <tr>
-                    <td class='column'></td>
-                    <td class='column'></td>
-                    <td class='column'></td>
-                    <td class='column'></td>
-                    <td class='btn'></a></td>
-                    <td class='btn'></td>
+                <?php
+                foreach ($productCollection->getData() as $product) {
+                    ?>
 
-                </tr>
+                    <tr>
+                        <td class='column'>
+                            <?php echo $product->getProductId(); ?>
+                        </td>
+                        <td class='column'>
+                            <?php echo $product->getName(); ?>
+                        </td>
+                        <td class='column'>
+                            <?php echo $product->getSku(); ?>
+                        </td>
+                        <td class='column'>
+                            <?php echo $product->getCategoryId(); ?>
+                        </td>
+                        <td class='btn'></a></td>
+                        <td class='btn'></td>
+
+                    </tr>
+                    <?php
+                }
+                ?>
             </table>
         </div>
     </div>

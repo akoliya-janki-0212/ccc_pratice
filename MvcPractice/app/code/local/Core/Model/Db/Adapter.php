@@ -15,6 +15,12 @@ class Core_Model_Db_Adapter
     }
     public function fetchAll($query)
     {
+        $row = [];
+        $result = mysqli_query($this->connect(), $query);
+        while ($_row = mysqli_fetch_assoc($result)) {
+            $row[] = $_row;
+        }
+        return $row;
     }
     public function fetchPairs($query)
     {

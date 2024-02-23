@@ -26,6 +26,7 @@ class Admin_Controller_Catalog_Product extends Core_Controller_Front_Action
     }
     public function listAction()
     {
+        $this->includeCss('list.css');
         $layout = $this->getLayout();
         $child = $layout->getChild('content');
         $productList = $layout->createBlock('catalog/admin_product_list');
