@@ -1,6 +1,9 @@
 <?php
 $product = $this->getProduct();
-?>
+$categoryModel = Mage::getModel('catalog/category');
+$categoryName = $categoryModel->getCategorys();
+echo $product->getCategoryNames()
+    ?>
 
 <div class="box">
     <div class="container">
@@ -48,11 +51,6 @@ $product = $this->getProduct();
                             value="<?php echo $product->getLink() ?>" placeholder="Enter link">
                     </div>
                     <div class="form-group ">
-                        <label for="category_id" class="details">Category Id</label>
-                        <input type="number" class="form-control" id="category_id" name="catalog_product[category_id]"
-                            value="<?php echo $product->getCategoryId() ?>" placeholder="Enter category id">
-                    </div>
-                    <div class="form-group ">
                         <label for="price" class="details">Price</label>
                         <input type="number" class="form-control" id="price" name="catalog_product[price]"
                             value="<?php echo $product->getPrice() ?>" placeholder="Enter Price">
@@ -86,8 +84,27 @@ $product = $this->getProduct();
                     </div>
                     <div class="form-group ">
                         <label for="status" class="details">Status</label>
-                        <input type="number" class="form-control" id="status" name="catalog_product[status]"
-                            value="<?php echo $product->getStatus() ?>" placeholder="Enter status">
+                        <select id="status" name="catalog_product[status]" value="<?php echo $product->getStatus() ?>"
+                            class="form-control">
+                            <?php
+                            $status = ["-- select --", "Enabled", "Disabled"];
+                            foreach ($status as $item) {
+                                echo '<option value="' . $item . '" ' . (($product->getStatus() == $item) ? 'selected' : '') . '>' . $item . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
+
+                    <div class="form-group ">
+                        <label for="category_id" class="details">Category</label>
+                        <select id="category_id" name="catalog_product[category_id]"
+                            value="<?php echo $product->getCategoryNames() ?>" class="form-control">
+                            <?php
+                            foreach ($categoryName as $item) {
+                                echo '<option value="' . $item . '" ' . (($product->getCategoryNames() == $item) ? 'selected' : '') . '>' . $item . '</option>';
+                            }
+                            ?>
+                        </select>
                     </div>
                 </div>
                 <div class="button">

@@ -15,6 +15,7 @@ class Core_Model_Db_Adapter
     }
     public function fetchAll($query)
     {
+
         $row = [];
         $result = mysqli_query($this->connect(), $query);
         while ($_row = mysqli_fetch_assoc($result)) {
@@ -42,21 +43,18 @@ class Core_Model_Db_Adapter
     {
         $sql = mysqli_query($this->connect(), $query);
         if ($sql) {
-            echo "<script>alert('Data Inserted Successfully')</script>";
             return mysqli_insert_id($this->connect());
         } else {
-            echo "<script>alert('Error: In Inserting Data')</script>";
             return FALSE;
         }
     }
     public function update($query)
     {
+
         $sql = mysqli_query($this->connect(), $query);
         if ($sql) {
-            echo "<script>alert('Data Updated Successfully')</script>";
             return True;
         } else {
-            echo "<script>alert('Error: In Updating Data')</script>";
             return FALSE;
         }
     }
@@ -64,10 +62,8 @@ class Core_Model_Db_Adapter
     {
         $sql = mysqli_query($this->connect(), $query);
         if ($sql) {
-            echo "<script>alert('Data Deleted Successfully')</script>";
             return True;
         } else {
-            echo "<script>alert('Error: In Deleting Data')</script>";
             return FALSE;
         }
     }

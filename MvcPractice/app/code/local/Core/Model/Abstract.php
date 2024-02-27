@@ -37,6 +37,7 @@ class Core_Model_Abstract
     {
         $collection = new $this->_collectionClass();
         $collection->setResource($this->getResource());
+        $collection->setModel(get_class($this));
         $collection->select();
         return $collection;
     }
@@ -96,7 +97,7 @@ class Core_Model_Abstract
             $this->getResource()
                 ->delete($this);
         } else {
-            echo '<script>alert("Data doesn\'t exist. ") </script>';
+            return false;
         }
         return $this;
     }

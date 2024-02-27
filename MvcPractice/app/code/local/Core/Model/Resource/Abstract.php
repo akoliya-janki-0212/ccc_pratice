@@ -33,6 +33,7 @@ class Core_Model_Resource_Abstract
             $id = $this->getAdapter()->insert($sql);
             $abstract->setId($id);
         }
+        return $this;
     }
     public function delete(Core_Model_Abstract $abstract)
     {

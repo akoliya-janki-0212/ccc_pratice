@@ -1,49 +1,64 @@
 <?php
 $productCollection = Mage::getModel('catalog/product')->getCollection();
-// $productCollection->addFieldToFilter('name', 'abc');
+// $categoryCollection = Mage::getModel('catalog/category')->getCollection();
+// $productCollection->addFieldToFilter('name', 'product1');
 // $productCollection->addFieldToFilter('product_id', ['in' => [1, 2, 3]]);
 // $productCollection->addFieldToFilter('sku', ['like' => '%a']);
 ?>
 <div class="box">
     <div class="container">
-        <div class="title_details">
-            <div class="title">Product Information</div>
+        <div class="sub_container">
+            <div class="title_details">
+                <div class="title">Product Information</div>
+            </div>
+            <div class="insert_button">
+                <a href="form">
+                    <button class="button-insert" role="button">Insert</button>
+                </a>
+            </div>
         </div>
-        <div class="content">
-            <table>
-                <tr>
-                    <th>Product Id</th>
-                    <th>Product Name</th>
-                    <th>Product SKU</th>
-                    <th>Category</th>
-                    <th>Edit</th>
-                    <th>delete</th>
-                </tr>
+        <div class="container">
+            <ul class="responsive-table">
+                <li class="table-header">
+                    <div class="col col-1">Product Id</div>
+                    <div class="col col-2">Product Name</div>
+                    <div class="col col-3">Product SKU</div>
+                    <div class="col col-4">Color</div>
+                    <div class="col col-4">Status</div>
+                    <div class="col col-5">Edit</div>
+                    <div class="col col-6">Delete</div>
+                </li>
                 <?php
                 foreach ($productCollection->getData() as $product) {
+                    /*  $url = $this->getUrl('admin/catalog_product/save') . "?id=" . $product->getProductId();
+                     echo $url; */
                     ?>
-
-                    <tr>
-                        <td class='column'>
+                    <li class="table-row">
+                        <div class="col col-1" data-label="Product Id">
                             <?php echo $product->getProductId(); ?>
-                        </td>
-                        <td class='column'>
+                        </div>
+                        <div class="col col-2" data-label="Product Name">
                             <?php echo $product->getName(); ?>
-                        </td>
-                        <td class='column'>
+                        </div>
+                        <div class="col col-3" data-label="Product SKU">
                             <?php echo $product->getSku(); ?>
-                        </td>
-                        <td class='column'>
-                            <?php echo $product->getCategoryId(); ?>
-                        </td>
-                        <td class='btn'></a></td>
-                        <td class='btn'></td>
-
-                    </tr>
+                        </div>
+                        <div class="col col-4" data-label="Category">
+                            <?php echo $product->getColor(); ?>
+                        </div>
+                        <div class="col col-4" data-label="Status">
+                            <?php echo $product->getStatus(); ?>
+                        </div>
+                        <div class="col col-5" data-label="Edit"><a href="form?id=<?php echo $product->getProductId(); ?>">
+                                <button class="button-edit" role="button">Edit</button></a></div>
+                        <div class="col col-6" data-label="Delete"><a
+                                href="delete?id=<?php echo $product->getProductId(); ?>">
+                                <button class="button-delete" role="button">Detele</button></a></div>
+                    </li>
                     <?php
                 }
                 ?>
-            </table>
+            </ul>
         </div>
     </div>
 </div>

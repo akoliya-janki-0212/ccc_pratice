@@ -2,14 +2,21 @@
 class Core_Model_Resource_Collection_Abstract
 {
     protected $_resource = null;
+    protected $_model = null;
     protected $_select = [];
     protected $_data = [];
     public function __construct()
     {
+
     }
     public function setResource($resource)
     {
         $this->_resource = $resource;
+        return $this;
+    }
+    public function setModel($model)
+    {
+        $this->_model = $model;
         return $this;
     }
     public function select()
@@ -33,10 +40,14 @@ class Core_Model_Resource_Collection_Abstract
                         $_value = array('eq' => $_value);
                     }
                     foreach ($_value as $condition => $_v) {
-                        if (!is_array($_v)) {
-                            $_v = array_map(function ($_v) {
-                                return "'{$_v}'";
-                            }, $_v);
+                        if (is_array($_v)) {
+                            $_v = array_map(
+                                function ($v) {
+                                    return "'{$v}'";
+                                }
+                                ,
+                                $_v
+                            );
                             $_v = implode(',', $_v);
                         }
                         switch ($condition) {
@@ -44,30 +55,28 @@ class Core_Model_Resource_Collection_Abstract
                                 $whereCondition[] = "{$column}='{$_v}'";
                                 break;
                             case 'in':
-                                $whereCondition[] = "{$column} IN ({$_v})";
+                                $whereCondition[] = "{$column} in ({$_v})";
                                 break;
                             case 'like':
-                                $whereCondition[] = "{$column} LIKE '{$_v}'";
+                                $whereCondition[] = "{$column} like '{$_v}'";
                                 break;
                         }
                     }
                 }
             }
-            $sql .= "WHERE" . implode(' AND', $whereCondition);
+            $sql .= " WHERE " . implode(' AND', $whereCondition);
         }
-        // echo $sql;
         $result = $this->_resource->getAdapter()->fetchAll($sql);
-        // print_r($result);
         foreach ($result as $row) {
-            $this->_data[] = Mage::getModel('catalog/product')->setData($row);
+            // $this->_data[] = Mage::getModel('catalog/category')->setData($row);
+            $modelObj = new $this->_model;
+            $this->_data[] = $modelObj->setData($row);
         }
-
     }
     public function getData()
     {
         $this->load();
-        return $this->_data;//misss
+        return $this->_data;
     }
 }
-
 ?>

@@ -1,4 +1,5 @@
-<?php $category = $this->getCategory();
+<?php
+$category = $this->getCategory();
 ?>
 <div class="box">
     <div class="container">
@@ -16,8 +17,15 @@
                     </div>
                     <div class="form-group">
                         <label for="status" class="details">Status</label>
-                        <input type="number" class="form-control" id="status" name="catalog_category[status]"
-                            value="<?php echo $category->getStatus() ?>" placeholder="Enter status">
+                        <select id="status" name="catalog_product[status]" value="<?php echo $category->getStatus() ?>"
+                            class="form-control">
+                            <?php
+                            $status = ["-- select --", "Enabled", "Disabled"];
+                            foreach ($status as $item) {
+                                echo '<option value="' . $item . '" ' . (($category->getStatus() == $item) ? 'selected' : '') . '>' . $item . '</option>';
+                            }
+                            ?>
+                        </select>
                     </div>
                 </div>
                 <div class="button">
