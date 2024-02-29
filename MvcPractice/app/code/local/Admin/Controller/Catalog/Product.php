@@ -1,6 +1,7 @@
 <?php
-class Admin_Controller_Catalog_Product extends Core_Controller_Front_Action
+class Admin_Controller_Catalog_Product extends Core_Controller_Admin_Action
 {
+    protected $_allowedActions = ['form'];
     public function formAction()
     {
         $this->includeCss('product.css');
@@ -12,14 +13,22 @@ class Admin_Controller_Catalog_Product extends Core_Controller_Front_Action
     }
     public function saveAction()
     {
-        echo "<pre>";
         $data = $this->getRequest()->getParams('catalog_product');
+        // $result = Mage::getModel('catalog/category')
+        //     ->getCollection()
+        //     ->addFieldToFilter('category_name', $data['category_id']);
+        // $categoryId = 0;
+        // foreach ($result->getData() as $result) {
+        //     $categoryId = $result->getCategoryId();
+        // }
+        // if (!$categoryId == 0) {
+        //     $data['category_id'] = $categoryId;
+        // }
         $category = Mage::getModel('catalog/product')
-        ->setData($data);
-        $result=$category->save();
-        $id=$data['product_id'];
-        if($id)
-        {
+            ->setData($data);
+        $result = $category->save();
+        $id = $data['product_id'];
+        if ($id) {
             if ($result) {
                 echo "<script>alert('Data Updated Successfully')</script>";
                 echo "<script>location.href='" . Mage::getBaseUrl() . '/admin/catalog_product/list' . "'</script>";
@@ -27,7 +36,7 @@ class Admin_Controller_Catalog_Product extends Core_Controller_Front_Action
                 echo "<script>alert('Error In Data Updating')</script>";
                 echo "<script>location.href='" . Mage::getBaseUrl() . '/admin/catalog_product/list' . "'</script>";
             }
-        }else{
+        } else {
             if ($result) {
                 echo "<script>alert('Data Inserted Successfully')</script>";
                 echo "<script>location.href='" . Mage::getBaseUrl() . '/admin/catalog_product/list' . "'</script>";

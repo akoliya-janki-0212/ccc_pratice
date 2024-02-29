@@ -3,6 +3,7 @@ class Mage
 {
     private static $baseDir = 'C:/xampp/htdocs/practice/MvcPractice';
     private static $baseUrl = 'http://localhost/practice/MvcPractice';
+    private static $_singleTon = null;
 
     public static function init()
     {
@@ -11,6 +12,10 @@ class Mage
     }
     public static function getSingleton($className)
     {
+        if (isset(self::$_singleTon[$className])) {
+            return self::$_singleTon[$className];
+        }
+        return self::$_singleTon[$className] = self::getModel($className);
     }
     public static function getModel($className)
     {
@@ -43,6 +48,13 @@ class Mage
             return self::$baseUrl . '/skin/' . $subUrl;
         }
         return self::$baseUrl;
+    }
+    public static function getBaseUrl1($subUrl = null)
+    {
+        if ($subUrl) {
+            return self::$baseUrl . '/' . $subUrl;
+        }
+        return self::$baseUrl . '/';
     }
 }
 ?>

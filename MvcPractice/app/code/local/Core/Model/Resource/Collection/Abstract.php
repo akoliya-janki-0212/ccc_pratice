@@ -64,7 +64,7 @@ class Core_Model_Resource_Collection_Abstract
                     }
                 }
             }
-            $sql .= " WHERE " . implode(' AND', $whereCondition);
+            $sql .= " WHERE " . implode(' AND ', $whereCondition);
         }
         $result = $this->_resource->getAdapter()->fetchAll($sql);
         foreach ($result as $row) {

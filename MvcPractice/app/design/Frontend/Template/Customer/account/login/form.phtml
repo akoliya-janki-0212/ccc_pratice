@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="title">Sing In</div>
+    <div class="content">
+        <form action=<?php echo $this->getUrl('customer/account/login') ?> method="POST">
+            <div class="user-details">
+                <div class="form-group">
+                    <span class="details">Username or Email </span>
+                    <input type="text" class="form-control" name="login[customer_email]"
+                        placeholder="Enter your name or email " required>
+                </div>
+                <div class="form-group">
+                    <span class="details">Password</span>
+                    <input type="password" name="login[password]" placeholder="Enter your password" class="form-control"
+                        required>
+                </div>
+            </div>
+            <div class="button">
+                <input type="submit" name="Submit" value="Login">
+            </div>
+        </form>
+        <div>
+            <a class="forget_psw" href="#">forget password ?</a>
+        </div>
+    </div>
+</div>

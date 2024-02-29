@@ -1,5 +1,7 @@
 <?php
 $productCollection = Mage::getModel('catalog/product')->getCollection();
+$categoryModel = Mage::getModel('catalog/category');
+$categoryNames = $categoryModel->getCategoryIdName();
 // $categoryCollection = Mage::getModel('catalog/category')->getCollection();
 // $productCollection->addFieldToFilter('name', 'product1');
 // $productCollection->addFieldToFilter('product_id', ['in' => [1, 2, 3]]);
@@ -20,38 +22,40 @@ $productCollection = Mage::getModel('catalog/product')->getCollection();
         <div class="container">
             <ul class="responsive-table">
                 <li class="table-header">
-                    <div class="col col-1">Product Id</div>
-                    <div class="col col-2">Product Name</div>
-                    <div class="col col-3">Product SKU</div>
-                    <div class="col col-4">Color</div>
-                    <div class="col col-4">Status</div>
-                    <div class="col col-5">Edit</div>
-                    <div class="col col-6">Delete</div>
+                    <div class="col col-1">Product Name</div>
+                    <div class="col col-1">Product SKU</div>
+                    <div class="col col-1">Color</div>
+                    <div class="col col-1">Status</div>
+                    <div class="col col-1">Category</div>
+                    <div class="col col-1">Edit</div>
+                    <div class="col col-1">Delete</div>
                 </li>
                 <?php
                 foreach ($productCollection->getData() as $product) {
-                    /*  $url = $this->getUrl('admin/catalog_product/save') . "?id=" . $product->getProductId();
-                     echo $url; */
                     ?>
                     <li class="table-row">
-                        <div class="col col-1" data-label="Product Id">
-                            <?php echo $product->getProductId(); ?>
-                        </div>
-                        <div class="col col-2" data-label="Product Name">
+
+                        <div class="col col-1" data-label="Product Name">
                             <?php echo $product->getName(); ?>
                         </div>
-                        <div class="col col-3" data-label="Product SKU">
+                        <div class="col col-1" data-label="Product SKU">
                             <?php echo $product->getSku(); ?>
                         </div>
-                        <div class="col col-4" data-label="Category">
+                        <div class="col col-1" data-label="Category">
                             <?php echo $product->getColor(); ?>
                         </div>
-                        <div class="col col-4" data-label="Status">
+                        <div class="col col-1" data-label="Status">
                             <?php echo $product->getStatus(); ?>
                         </div>
-                        <div class="col col-5" data-label="Edit"><a href="form?id=<?php echo $product->getProductId(); ?>">
+                        <div class="col col-1" data-label="category">
+                            <?php
+                            $selectedCategory = $categoryModel->getCategoryNameById($categoryNames, $product);
+                            echo $selectedCategory;
+                            ?>
+                        </div>
+                        <div class="col col-1" data-label="Edit"><a href="form?id=<?php echo $product->getProductId(); ?>">
                                 <button class="button-edit" role="button">Edit</button></a></div>
-                        <div class="col col-6" data-label="Delete"><a
+                        <div class="col col-1" data-label="Delete"><a
                                 href="delete?id=<?php echo $product->getProductId(); ?>">
                                 <button class="button-delete" role="button">Detele</button></a></div>
                     </li>

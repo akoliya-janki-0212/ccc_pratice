@@ -21,6 +21,7 @@ class Core_Model_Resource_Abstract
     {
         $data = $abstract->getData();
         $id = $data[$this->getPrimaryKey()];
+
         if ($id) {
             $sql = $this->editSql($this->getTableName(), $data, [$this->getPrimaryKey() => $id]);
             $this->getAdapter()->update($sql);

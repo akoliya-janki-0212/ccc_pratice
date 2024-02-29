@@ -1,5 +1,5 @@
 <?php
-class Admin_Controller_Catalog_Category extends Core_Controller_Front_Action
+class Admin_Controller_Catalog_Category extends Core_Controller_Admin_Action
 {
     public function formAction()
     {
@@ -12,7 +12,6 @@ class Admin_Controller_Catalog_Category extends Core_Controller_Front_Action
     }
     public function saveAction()
     {
-        echo "<pre>";
         $data = $this->getRequest()->getParams('catalog_category');
         $category = Mage::getModel('catalog/category')
             ->setData($data);

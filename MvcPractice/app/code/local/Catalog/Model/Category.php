@@ -16,26 +16,21 @@ class Catalog_Model_Category extends Core_Model_Abstract
             return $mapping[$this->_data['status']];
         }
     }
-    public function getCategorys()
+    public function getCategoryIdName()
     {
         $categoryCollection = $this->getCollection();
-        $category_name = [];
+        $categorys = [];
         foreach ($categoryCollection->getData() as $category) {
-            $category_name[] = $category->getCategoryName();
+            $categorys[$category->getCategoryId()] = $category->getCategoryName();
         }
-        return $category_name;
+        return $categorys;
     }
-    public function getCategoryNames()
+    public function getCategoryNameById($mapping, $product)
     {
-        $categoryName = $this->getCategorys();
-        $mapping = [];
-        for ($i = 0; $i < count($categoryName); $i++) {
-            $mapping[$i] = $categoryName[$i];
+        $productData = $product->getData();
+        if (isset($productData['category_id'])) {
+            return($mapping[$productData['category_id']]);
         }
-        print_r($mapping);
-        return isset($this->_data['category_name'])
-            ? $mapping[$this->_data['category_name']]
-            : '';
     }
 }
 ?>

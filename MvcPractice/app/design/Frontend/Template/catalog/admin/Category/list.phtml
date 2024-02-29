@@ -1,6 +1,5 @@
 <?php
 $categoryCollection = Mage::getModel('catalog/category')->getCollection();
-echo get_class($this);
 // $categoryModel = Mage::getModel('catalog/category');
 // print_r($categoryCollection->getData());
 // $categoryCollection->addFieldToFilter('name', 'category1');
@@ -22,11 +21,10 @@ echo get_class($this);
         <div class="container">
             <ul class="responsive-table">
                 <li class="table-header">
-                    <div class="col col-1">Category Id</div>
-                    <div class="col col-2">Category Name</div>
-                    <div class="col col-3">Status</div>
-                    <div class="col col-5">Edit</div>
-                    <div class="col col-6">Delete</div>
+                    <div class="col col-1">Category Name</div>
+                    <div class="col col-1">Status</div>
+                    <div class="col col-1">Edit</div>
+                    <div class="col col-1">Delete</div>
                 </li>
                 <?php
                 foreach ($categoryCollection->getData() as $category) {
@@ -34,22 +32,18 @@ echo get_class($this);
                     ?>
 
                     <li class="table-row">
-                        <div class="col col-1" data-label="Category Id">
-                            <?php $id = $category->getCategoryId();
-                            echo $id;
-                            ?>
-                        </div>
-                        <div class="col col-2" data-label="Category Name">
+
+                        <div class="col col-1" data-label="Category Name">
                             <?php echo $category->getCategoryName(); ?>
                         </div>
-                        <div class="col col-3" data-label="Status">
+                        <div class="col col-1" data-label="Status">
                             <?php echo $category->getStatus();
                             ?>
                         </div>
-                        <div class="col col-5" data-label="Edit"><a
+                        <div class="col col-1" data-label="Edit"><a
                                 href="form?id=<?php echo $category->getCategoryId(); ?>">
                                 <button class="button-edit" role="button">Edit</button></a></div>
-                        <div class="col col-6" data-label="Delete"><a
+                        <div class="col col-1" data-label="Delete"><a
                                 href="delete?id=<?php echo $category->getCategoryId(); ?>">
                                 <button class="button-delete" role="button">Detele</button></a></div>
                     </li>
