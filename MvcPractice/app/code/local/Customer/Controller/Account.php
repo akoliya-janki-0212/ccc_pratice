@@ -35,7 +35,7 @@ class Customer_Controller_Account extends Core_Controller_Front_Action
         $result = $userAccount->save();
         if ($result) {
             echo "<script>alert('Register Successfully')</script>";
-            echo "<script>location.href='" . Mage::getBaseUrl() . '/customer/account/login' . "'</script>";
+            //  echo "<script>location.href='" . Mage::getBaseUrl() . '/customer/account/login' . "'</script>";
         } else {
             echo "<script>alert('problem in registration')</script>";
             echo "<script>location.href='" . Mage::getBaseUrl() . '/customer/account/register' . "'</script>";

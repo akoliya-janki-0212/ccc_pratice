@@ -1,0 +1,64 @@
+<?php
+$id = $this->getRequest()->getParams('id');
+$product = Mage::getModel('catalog/product')->getCollection()
+    ->addFieldToFilter('category_id', $id);
+?>
+<section class="product-list">
+    <div class="container">
+        <h2 class="product-title">Recents Products</h2>
+        <div class="row">
+            <?php
+            foreach ($product->getData() as $product) {
+                ?>
+                <!--STRT ITEM-->
+                <div class="item">
+                    <div class="product">
+                        <div class="product-thumb">
+                            <img src="<?php echo Mage::getMediaUrl('product/' . $product->getImageLink()) ?>" alt="img"
+                                class="pro-thumb-img" />
+                            <div class="product-styles">
+                                <span class="active-style" data-image="" style="background-color: tomato;"></span>
+                                <span class="" data-image="" style="background-color: royalblue;"></span>
+                                <span class="" data-image="" style="background-color: seagreen;"></span>
+                            </div>
+                            <div class="product-button">
+                                <a href="<?php echo $this->getUrl('catalog/product/view') . '?id=' . $product->getProductId() ?>"
+                                    title="Quick View">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="#" title="Add To Cart">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </a>
+                                <a href="#" title="Wishlist">
+                                    <i class="far fa-heart"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <h3 class="product-name">
+                                <?php echo $product->getProdcutName() ?>
+                            </h3>
+                            <p class="product-price first">
+                                <?php echo $product->getPrice() ?>
+                            </p>
+                            <p class="product-price">
+                                <?php echo $product->getMinPrice() ?>
+                            </p>
+                            <div class="off-info">
+                                <h2 class="sm-title">50% OFF</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--END ITEM-->
+            <?php } ?>
+        </div>
+    </div>
+</section>

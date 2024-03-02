@@ -1,0 +1,135 @@
+@import "compass/css3";
+
+.box {
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* ===================== FILE INPUT ===================== */
+.file-area {
+    width: 100%;
+    position: relative;
+
+    input[type=file] {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .file-dummy {
+        width: 100%;
+        padding: 30px;
+        background-color: #d6dfde36;
+        border: 1px solid #d6dfde;
+        text-align: center;
+        transition: background 0.3s ease-in-out;
+
+        .success {
+            display: none;
+        }
+    }
+
+    &:hover .file-dummy {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    input[type=file]:focus+.file-dummy {
+        outline: 2px solid rgba(255, 255, 255, 0.5);
+        outline: -webkit-focus-ring-color auto 5px;
+    }
+
+    input[type=file]:valid+.file-dummy {
+        border-color: rgba(0, 255, 0, 0.4);
+        background-color: rgba(0, 255, 0, 0.3);
+
+        .success {
+            display: inline-block;
+        }
+
+        .default {
+            display: none;
+        }
+    }
+}
+
+
+/* ===================== BASIC STYLING ===================== */
+
+* {
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    margin: 50px auto;
+    font-weight: 100;
+}
+
+label {
+    font-weight: 500;
+    display: block;
+    margin: 4px 0;
+    text-transform: uppercase;
+    font-size: 13px;
+    overflow: hidden;
+
+    span {
+        float: right;
+        text-transform: none;
+        font-weight: 200;
+        line-height: 1em;
+        font-style: italic;
+        opacity: 0.8;
+    }
+}
+
+.form-controll {
+    display: block;
+    padding: 8px 16px;
+    width: 100%;
+    font-size: 16px;
+    background-color: #d6dfde36;
+    border: 1px solid #d6dfde;
+    color: #040404;
+    font-weight: 200;
+
+    &:focus {
+        outline: 2px solid rgba(108, 107, 107, 0.5);
+        outline: -webkit-focus-ring-color auto 5px;
+    }
+}
+
+button {
+    padding: 8px 30px;
+    background-color: #d6dfde36;
+    border: 1px solid #d6dfde;
+    color: #070707;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 11px;
+
+    border: 0;
+    text-shadow: 0 1px 2px #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #afb2b236;
+}
+
+.form-group {
+    max-width: 500px;
+    margin: auto;
+    margin-bottom: 30px;
+}

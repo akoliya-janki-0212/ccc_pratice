@@ -45,16 +45,16 @@ class Mage
     public static function getBaseUrl($subUrl = null)
     {
         if ($subUrl) {
-            return self::$baseUrl . '/skin/' . $subUrl;
+            return self::$baseUrl . '/' . $subUrl;
         }
         return self::$baseUrl;
     }
-    public static function getBaseUrl1($subUrl = null)
-    {
-        if ($subUrl) {
-            return self::$baseUrl . '/' . $subUrl;
+    public static function getMediaUrl($subUrl=null){
+        if($subUrl){
+            return self::$baseUrl.'/media/'.$subUrl;
         }
-        return self::$baseUrl . '/';
+        return self::$baseUrl;
     }
+
 }
 ?>

@@ -30,8 +30,7 @@ class Core_Controller_Front_Action
     }
     public function setRedirect($url)
     {
-        $url = Mage::getBaseUrl1() . $url;
-
+        $url = Mage::getBaseUrl() . '/' . $url;
         header('location:' . $url);
     }
     public function init()

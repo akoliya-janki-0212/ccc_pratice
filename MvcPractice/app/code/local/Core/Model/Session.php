@@ -15,7 +15,6 @@ class Core_Model_Session
     public function set($key, $value)
     {
         $_SESSION[$key] = $value;
-
         return $this;
     }
     public function get($key)

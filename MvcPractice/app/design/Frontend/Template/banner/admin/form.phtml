@@ -1,0 +1,25 @@
+<div class="box">
+    <div class="container">
+        <form action="<?php $this->getUrl('admin/banner/form') ?>" method="post">
+            <div class="form-group">
+                <label for="title">Title </label>
+                <input type="text" name="banner[banner_title]" id="title" class="form-controll" />
+            </div>
+            <div class="form-group file-area">
+                <label for="images">Images </label>
+                <input type="file" name="banner[banner_image]" id="images" required="required" multiple="multiple" />
+                <div class="file-dummy">
+                    <div class="success">Great, your files are selected. Keep on.</div>
+                    <div class="default">Please select some files</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" name="Submit">Upload image</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<link href='https://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700' rel='stylesheet' type='text/css'>

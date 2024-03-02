@@ -1,1 +1,30 @@
-banner phtml
+<?php
+$bannerCollection = Mage::getModel('banner/banner')->getCollection();
+foreach ($bannerCollection->getData() as $data) {
+    $title = $data->getBannerTitle();
+    $image = $data->getBannerImage();
+}
+// echo Mage::getMediaUrl('banner/' . $image . '');
+?>
+<section id="home">
+    <div class="home_page ">
+        <div class="home_img ">
+            <img src="<?php echo Mage::getMediaUrl('banner/' . $image); ?>" alt="Banner">
+        </div>
+        <div class="home_txt ">
+            <p class="collection ">SUMMER COLLECTION</p>
+            <h2>FALL - WINTER<br>Collection 2023</h2>
+            <div class="home_label ">
+                <p>A specialist label creating luxury essentials. Ethically crafted<br>with an unwavering commitment to
+                    exceptional quality.</p>
+            </div>
+            <button><a href="#sellers">SHOP NOW</a><i class='bx bx-right-arrow-alt'></i></button>
+            <div class="home_social_icons">
+                <a href="#"><i class='bx bxl-facebook'></i></a>
+                <a href="#"><i class='bx bxl-twitter'></i></a>
+                <a href="#"><i class='bx bxl-pinterest'></i></a>
+                <a href="#"><i class='bx bxl-instagram'></i></a>
+            </div>
+        </div>
+    </div>
+</section>

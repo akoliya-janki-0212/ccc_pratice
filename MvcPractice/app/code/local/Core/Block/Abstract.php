@@ -50,7 +50,7 @@ class Core_Block_Abstract
     }
     public function getImageUrl($file)
     {
-        return Mage::getBaseUrl('images/') . $file;
+        return Mage::getBaseUrl('skin/images/') . $file;
     }
 }
 ?>
