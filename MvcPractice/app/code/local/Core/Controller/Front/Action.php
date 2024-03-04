@@ -10,12 +10,11 @@ class Core_Controller_Front_Action
     {
         $layout = $this->getLayout();
         $layout->getChild('head')
-            ->addCss($file)
             ->addCss('header.css')
             ->addCss('content.css')
+            ->addCss($file)
             ->addCss('footer.css');
     }
-
     public function getLayout()
     {
         if (is_null($this->_layout)) {
@@ -23,7 +22,6 @@ class Core_Controller_Front_Action
         }
         return $this->_layout;
     }
-
     public function getRequest()
     {
         return Mage::getModel('core/request');

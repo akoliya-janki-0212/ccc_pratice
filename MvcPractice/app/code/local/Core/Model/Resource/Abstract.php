@@ -13,6 +13,10 @@ class Core_Model_Resource_Abstract
         $query = "SELECT * FROM {$this->_tableName} WHERE {$this->_primaryKey} = {$id} LIMIT 1 ";
         return $this->getAdapter()->fetchRow($query);
     }
+    public function getPrimaryKey()
+    {
+        return $this->_primaryKey;
+    }
     public function getTableName()
     {
         return $this->_tableName;
@@ -30,7 +34,6 @@ class Core_Model_Resource_Abstract
                 unset($data[$this->getPrimaryKey()]);
             }
             $sql = $this->insertSql($this->getTableName(), $data);
-            echo $sql;
             $id = $this->getAdapter()->insert($sql);
             $abstract->setId($id);
         }
@@ -88,10 +91,6 @@ class Core_Model_Resource_Abstract
     public function getAdapter()
     {
         return new Core_Model_Db_Adapter();
-    }
-    public function getPrimaryKey()
-    {
-        return $this->_primaryKey;
     }
 }
 

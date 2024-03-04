@@ -7,9 +7,6 @@ class Page_Controller_Index extends Core_Controller_Front_Action
         $this->includeCss('banner.css');
         // $layout->getChild('head')->addJs('js/navigation.js');
         //$layout->getChild('head')->addJs('js/page.js');
-        $layout->getChild('head')->addCss('header.css');
-        $layout->getChild('head')->addCss('footer.css');
-
         $banner = $layout->createBlock('banner/banner');
         $layout->getChild('content')
             ->addChild('banner', $banner);

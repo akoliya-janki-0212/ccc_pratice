@@ -26,11 +26,11 @@ class Page_Block_Head extends Core_Block_Template
     }
     public function getCssUrl($file)
     {
-        return Mage::getBaseUrl('/skin/css/') . $file;
+        return Mage::getBaseUrl('skin/css/') . $file;
     }
     public function getJsUrl($file)
     {
-        return Mage::getBaseUrl('/skin/js/') . $file;
+        return Mage::getBaseUrl('skin/js/') . $file;
     }
 }
 

@@ -14,16 +14,6 @@ class Admin_Controller_Catalog_Product extends Core_Controller_Admin_Action
     public function saveAction()
     {
         $data = $this->getRequest()->getParams('catalog_product');
-        // $result = Mage::getModel('catalog/category')
-        //     ->getCollection()
-        //     ->addFieldToFilter('category_name', $data['category_id']);
-        // $categoryId = 0;
-        // foreach ($result->getData() as $result) {
-        //     $categoryId = $result->getCategoryId();
-        // }
-        // if (!$categoryId == 0) {
-        //     $data['category_id'] = $categoryId;
-        // }
         $category = Mage::getModel('catalog/product')
             ->setData($data);
         $result = $category->save();

@@ -1,0 +1,37 @@
+<?php
+$banner = Mage::getModel('banner/banner')->getCollection();
+?>
+<section class="product-list">
+    <div class="container">
+        <div class="row">
+            <?php foreach ($banner->getData() as $banner) {
+                ?>
+                <!--STRT ITEM-->
+                <div class="item">
+                    <div class="product">
+                        <div class="product-thumb">
+                            <img src="<?php echo Mage::getMediaUrl('banner/' . $banner->getBannerImage()) ?>" alt="img"
+                                class="pro-thumb-img" />
+                            <div class="product-button">
+                                <a href="<?php echo $this->getUrl('admin/banner/form') . '?id=' . $banner->getBannerId() ?>"
+                                    title="Update">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                                <a href="<?php echo $this->getUrl('admin/banner/delete') . '?id=' . $banner->getBannerId() ?>"
+                                    title="Delete">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">
+                                <?php echo $banner->getBannerTitle() ?>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <!--END ITEM-->
+            <?php } ?>
+        </div>
+    </div>
+</section>

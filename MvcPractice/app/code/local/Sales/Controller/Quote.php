@@ -1,9 +1,10 @@
 <?php
-class Sales_Controller_Quote
+class Sales_Controller_Quote extends Core_Controller_Front_Action
 {
     public function addAction()
     {
-        echo 'addaction';
+        $data = $this->getRequest()->getParams('product');
+        print_r($data);
     }
 }
 

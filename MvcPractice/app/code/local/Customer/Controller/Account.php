@@ -60,7 +60,6 @@ class Customer_Controller_Account extends Core_Controller_Front_Action
             }
             if ($count) {
                 Mage::getSingleton('core/session')->set('logged_in_customer_id', $customerId);
-
                 // echo "<script>alert('Register Successfully')</script>";
                 $this->setRedirect("customer/account/dashboard");
             } else {
