@@ -6,17 +6,28 @@ class Admin_Controller_Banner extends Core_Controller_Admin_Action
         if (isset($_POST['Submit'])) {
 
             $data = $this->getRequest()->getParams('banner');
-            var_dump($data);
             $bannerData = Mage::getModel('banner/banner')
                 ->setData($data);
             $result = $bannerData->save();
-            if ($result) {
-                echo "<script>alert('Banner Uploaded')</script>";
-                $this->setRedirect("admin/banner/form");
+            $id = $data['banner_id'];
+            if ($id) {
+                if ($result) {
+                    echo "<script>alert('Banner Updated ')</script>";
+                    $this->setRedirect("admin/banner/list");
+                } else {
+                    echo "<script>alert('Error in banner upload')</script>";
+                    $this->setRedirect("admin/banner/form");
+                }
             } else {
-                echo "<script>alert('Error in banner upload')</script>";
-                echo "<script>location.href='" . Mage::getBaseUrl() . '/customer/account/register' . "'</script>";
+                if ($result) {
+                    echo "<script>alert('Banner Uploaded')</script>";
+                    $this->setRedirect("admin/banner/list");
+                } else {
+                    echo "<script>alert('Error in banner upload')</script>";
+                    $this->setRedirect("admin/banner/form");
+                }
             }
+
         } else {
             $this->includeCss('bannerUpload.css');
             $layout = $this->getLayout();
@@ -24,8 +35,7 @@ class Admin_Controller_Banner extends Core_Controller_Admin_Action
             $bannerForm = $layout->createBlock('banner/admin_banner_form');
             $child->addChild('form', $bannerForm);
             $layout->toHtml();
-            // $imageUrl = Mage::getMediaUrl('banner/banner1.jpg');
-            // print_r($imageUrl);
+
         }
 
     }
@@ -44,11 +54,11 @@ class Admin_Controller_Banner extends Core_Controller_Admin_Action
         $product = Mage::getModel('banner/banner')->load($id);
         $result = $product->delete();
         if ($result) {
-            echo "<script>alert('Data Deleted Successfully')</script>";
-            echo "<script>location.href='" . Mage::getBaseUrl() . '/admin/banner/list' . "'</script>";
+            echo "<script>alert('Banner Deleted Successfully')</script>";
+            $this->setRedirect("admin/banner/list");
         } else {
-            echo "<script>alert('Error In Data Deleting')</script>";
-            echo "<script>location.href='" . Mage::getBaseUrl() . '/admin/banner/list' . "'</script>";
+            echo "<script>alert('Error In Banner Deleting')</script>";
+            $this->setRedirect("admin/banner/list");
         }
     }
 }

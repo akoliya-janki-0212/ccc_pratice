@@ -19,19 +19,19 @@ class Admin_Controller_Catalog_Category extends Core_Controller_Admin_Action
         $id = $data['category_id'];
         if ($id) {
             if ($result) {
-                echo "<script>alert('Data Updated Successfully')</script>";
-                echo "<script>location.href='" . Mage::getBaseUrl() . '/admin/catalog_category/list' . "'</script>";
+                echo "<script>alert('Category Updated Successfully')</script>";
+                $this->setRedirect("admin/catalog_category/list");
             } else {
-                echo "<script>alert('Error In Data Updating')</script>";
-                echo "<script>location.href='" . Mage::getBaseUrl() . '/admin/catalog_category/list' . "'</script>";
+                echo "<script>alert('Error In Category Updating')</script>";
+                $this->setRedirect("admin/catalog_category/form");
             }
         } else {
             if ($result) {
-                echo "<script>alert('Data Inserted Successfully')</script>";
-                echo "<script>location.href='" . Mage::getBaseUrl() . '/admin/catalog_category/list' . "'</script>";
+                echo "<script>alert('Category Inserted Successfully')</script>";
+                $this->setRedirect("admin/catalog_category/list");
             } else {
-                echo "<script>alert('Error In Data Inserting')</script>";
-                echo "<script>location.href='" . Mage::getBaseUrl() . '/admin/catalog_category/list' . "'</script>";
+                echo "<script>alert('Error In Category Inserting')</script>";
+                $this->setRedirect("admin/catalog_category/form");
             }
         }
     }
@@ -41,11 +41,11 @@ class Admin_Controller_Catalog_Category extends Core_Controller_Admin_Action
         $category = Mage::getModel('catalog/category')->load($id);
         $result = $category->delete();
         if ($result) {
-            echo "<script>alert('Data Deleted Successfully')</script>";
-            echo "<script>location.href='" . Mage::getBaseUrl() . '/admin/catalog_category/list' . "'</script>";
+            echo "<script>alert('Category Deleted Successfully')</script>";
+            $this->setRedirect("admin/catalog_category/list");
         } else {
-            echo "<script>alert('Error In Data Deleting')</script>";
-            echo "<script>location.href='" . Mage::getBaseUrl() . '/admin/catalog_category/list' . "'</script>";
+            echo "<script>alert('Error In Category Deleting')</script>";
+            $this->setRedirect("admin/catalog_category/list");
         }
     }
     public function listAction()

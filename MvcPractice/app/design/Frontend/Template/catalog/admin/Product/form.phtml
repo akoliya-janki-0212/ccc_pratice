@@ -2,6 +2,7 @@
 $product = $this->getProduct();
 $categoryModel = Mage::getModel('catalog/category');
 $categorys = $categoryModel->getCategoryIdName();
+
 $selectedCategory = $categoryModel->getCategoryNameById($categorys, $product);
 ?>
 

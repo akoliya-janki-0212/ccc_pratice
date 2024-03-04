@@ -2,18 +2,23 @@
 class Admin_Controller_User extends Core_Controller_Admin_Action
 {
     protected $_allowedActions = ['login'];
-    protected $email = 'admin@gmail.com';
-    protected $password = 'admin123';
+    protected $_email = 'admin@gmail.com';
+    protected $_password = 'admin123';
     public function loginAction()
     {
         if (isset($_POST['Submit'])) {
+            echo 1;
             $data = $this->getRequest()->getParams('login');
-            $email = $data['customer_email'];
+            echo 2;
+            $email = $data['admin_email'];
+            echo 3;
             $password = $data['password'];
-            if ($this->email == $email && $this->password == $password) {
-                Mage::getSingleton('core/session')->set('logged_in_Admin_id', $email);
+            if ($this->_email == $email && $this->_password == $password) {
+                Mage::getSingleton('core/session')->set('logged_in_admin_id', $email);
+                echo "<script>alert('Login Success')</script>";
                 $this->setRedirect("admin/catalog_product/form");
             } else {
+                echo "<script>alert('Invalid User Name Password')</script>";
                 $this->setRedirect("admin/user/login");
             }
         } else {
@@ -21,7 +26,7 @@ class Admin_Controller_User extends Core_Controller_Admin_Action
             $layout = $this->getLayout();
             $layout->removeChild('header')->removeChild('footer');
             $child = $layout->getChild('content');
-            $loginForm = $layout->createBlock('customer/account_login_form');
+            $loginForm = $layout->createBlock('admin/login');
             $child->addChild('form', $loginForm);
             $layout->toHtml();
         }

@@ -9,7 +9,6 @@ class Catalog_Model_Product extends Core_Model_Abstract
     }
     public function getStatus()
     {
-
         $mapping = [
             1 => "Enabled",
             0 => "Disabled"

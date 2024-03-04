@@ -28,8 +28,7 @@ class Core_Controller_Front_Action
     }
     public function setRedirect($url)
     {
-        $url = Mage::getBaseUrl() . '/' . $url;
-        header('location:' . $url);
+        echo "<script>location.href='" . Mage::getBaseUrl() . '/' . $url . "'</script>";
     }
     public function init()
     {

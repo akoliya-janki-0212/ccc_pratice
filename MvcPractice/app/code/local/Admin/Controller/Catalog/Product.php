@@ -20,19 +20,19 @@ class Admin_Controller_Catalog_Product extends Core_Controller_Admin_Action
         $id = $data['product_id'];
         if ($id) {
             if ($result) {
-                echo "<script>alert('Data Updated Successfully')</script>";
-                echo "<script>location.href='" . Mage::getBaseUrl() . '/admin/catalog_product/list' . "'</script>";
+                echo "<script>alert('Product Updated Successfully')</script>";
+                $this->setRedirect("admin/catalog_product/list");
             } else {
-                echo "<script>alert('Error In Data Updating')</script>";
-                echo "<script>location.href='" . Mage::getBaseUrl() . '/admin/catalog_product/list' . "'</script>";
+                echo "<script>alert('Error In Product Updating')</script>";
+                $this->setRedirect("admin/catalog_product/form");
             }
         } else {
             if ($result) {
-                echo "<script>alert('Data Inserted Successfully')</script>";
-                echo "<script>location.href='" . Mage::getBaseUrl() . '/admin/catalog_product/list' . "'</script>";
+                echo "<script>alert('Product Inserted Successfully')</script>";
+                $this->setRedirect("admin/catalog_product/list");
             } else {
-                echo "<script>alert('Error In Data Inserting')</script>";
-                echo "<script>location.href='" . Mage::getBaseUrl() . '/admin/catalog_product/list' . "'</script>";
+                echo "<script>alert('Error In Product Inserting')</script>";
+                $this->setRedirect("admin/catalog_product/form");
             }
         }
     }
@@ -42,11 +42,11 @@ class Admin_Controller_Catalog_Product extends Core_Controller_Admin_Action
         $product = Mage::getModel('catalog/product')->load($id);
         $result = $product->delete();
         if ($result) {
-            echo "<script>alert('Data Deleted Successfully')</script>";
-            echo "<script>location.href='" . Mage::getBaseUrl() . '/admin/catalog_product/list' . "'</script>";
+            echo "<script>alert('Product Deleted Successfully')</script>";
+            $this->setRedirect("admin/catalog_product/list");
         } else {
-            echo "<script>alert('Error In Data Deleting')</script>";
-            echo "<script>location.href='" . Mage::getBaseUrl() . '/admin/catalog_product/list' . "'</script>";
+            echo "<script>alert('Error In Product Deleting')</script>";
+            $this->setRedirect("admin/catalog_product/list");
         }
     }
     public function listAction()

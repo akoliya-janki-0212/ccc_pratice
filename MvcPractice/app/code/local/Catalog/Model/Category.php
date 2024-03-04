@@ -23,6 +23,7 @@ class Catalog_Model_Category extends Core_Model_Abstract
         foreach ($categoryCollection->getData() as $category) {
             $categorys[$category->getCategoryId()] = $category->getCategoryName();
         }
+
         return $categorys;
     }
     public function getCategoryNameById($mapping, $product)

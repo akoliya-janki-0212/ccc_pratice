@@ -35,10 +35,10 @@ class Customer_Controller_Account extends Core_Controller_Front_Action
         $result = $userAccount->save();
         if ($result) {
             echo "<script>alert('Register Successfully')</script>";
-            //  echo "<script>location.href='" . Mage::getBaseUrl() . '/customer/account/login' . "'</script>";
+            $this->setRedirect("/customer/account/login");
         } else {
             echo "<script>alert('problem in registration')</script>";
-            echo "<script>location.href='" . Mage::getBaseUrl() . '/customer/account/register' . "'</script>";
+            $this->setRedirect("/customer/account/register");
         }
     }
     public function loginAction()
@@ -60,9 +60,10 @@ class Customer_Controller_Account extends Core_Controller_Front_Action
             }
             if ($count) {
                 Mage::getSingleton('core/session')->set('logged_in_customer_id', $customerId);
-                // echo "<script>alert('Register Successfully')</script>";
+                echo "<script>alert('Login Successfully')</script>";
                 $this->setRedirect("customer/account/dashboard");
             } else {
+                echo "<script>alert('error in login')</script>";
                 $this->setRedirect("customer/account/login");
             }
         } else {

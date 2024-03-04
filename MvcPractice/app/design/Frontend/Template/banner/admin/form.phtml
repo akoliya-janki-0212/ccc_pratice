@@ -17,6 +17,11 @@ $banner = $this->getBanner();
             <div class="form-group file-area">
                 <label for="images">Images </label>
                 <input type="file" name="banner[banner_image]" id="images" required="required" multiple="multiple" />
+                <?php
+                if ($banner->getBannerImage()) {
+                    echo '<img src="' . Mage::getMediaUrl('banner/' . $banner->getBannerImage()) . '" alt="" width="200px">';
+                }
+                ?>
                 <div class="file-dummy">
                     <div class="success">Great, your files are selected. Keep on.</div>
                     <div class="default">Please select some files</div>
