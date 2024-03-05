@@ -10,12 +10,14 @@ class Core_Model_Resource_Abstract
     }
     public function load($id, $column = null)
     {
-        $query = "SELECT * FROM {$this->_tableName} WHERE {$this->_primaryKey} = {$id} LIMIT 1 ";
+        $query = "SELECT * FROM {$this->_tableName} WHERE {$this->getPrimaryKey()} = {$id}  ";
         return $this->getAdapter()->fetchRow($query);
     }
     public function getPrimaryKey()
     {
-        return $this->_primaryKey;
+        return isset($this->_primaryKey)
+            ? $this->_primaryKey
+            : '';
     }
     public function getTableName()
     {
