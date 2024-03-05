@@ -38,5 +38,34 @@ class Sales_Model_Quote_Item extends Core_Model_Abstract
         $this->save();
         return $this;
     }
+    public function editItem(Sales_Model_Quote $quote, $request)
+    {
+
+        $item = $this->getCollection()
+            ->addFieldToFilter('item_id', $request['item_id'])
+            ->addFieldToFilter('product_id', $request['product_id'])
+            ->addFieldToFilter('quote_id', $quote->getId())
+            ->getFirstItem();
+        if ($item) {
+            $qty = $request['qty'];
+        }
+        $this->setData([
+            'item_id' => $request['item_id'],
+            'quote_id' => $quote->getId(),
+            'product_id' => $request['product_id'],
+            'qty' => $qty
+        ]);
+        $this->save();
+        return $this;
+    }
+    public function removeItem(Sales_Model_Quote $quote, $item_id)
+    {
+        $item = $this->getCollection()
+            ->addFieldToFilter('quote_id', $quote->getId())
+            ->addFieldToFilter('item_id', $item_id)
+            ->getFirstItem()
+            ->delete();
+        return $this;
+    }
 }
 ?>

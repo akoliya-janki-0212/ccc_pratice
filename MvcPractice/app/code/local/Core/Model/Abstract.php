@@ -110,6 +110,7 @@ class Core_Model_Abstract
     public function delete()
     {
         if ($this->getId()) {
+            $this->_beforeDelete();
             $this->getResource()
                 ->delete($this);
         } else {

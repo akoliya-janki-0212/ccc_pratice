@@ -7,14 +7,14 @@ class Admin_Controller_User extends Core_Controller_Admin_Action
     public function loginAction()
     {
         if (isset($_POST['Submit'])) {
-            echo 1;
+
             $data = $this->getRequest()->getParams('login');
-            echo 2;
+
             $email = $data['admin_email'];
-            echo 3;
+
             $password = $data['password'];
             if ($this->_email == $email && $this->_password == $password) {
-                Mage::getSingleton('core/session')->set('logged_in_admin_id', $email);
+                Mage::getSingleton('core/session')->set('logged_in_admin_id', 1);
                 echo "<script>alert('Login Success')</script>";
                 $this->setRedirect("admin/catalog_product/form");
             } else {
