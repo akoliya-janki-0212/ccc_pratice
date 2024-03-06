@@ -1,0 +1,7 @@
+<?php
+echo '<pre>';
+$productCollection = Mage::getModel('loan/loan')->getCollection();
+foreach ($productCollection->getData() as $product) {
+    print_r($product);
+}
+?>

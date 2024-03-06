@@ -1,0 +1,34 @@
+<?php
+$rate = Mage::getModel('loan/rate')->getCollection();
+foreach ($rate->getData() as $rate) {
+    print_r($rate->getRate());
+}
+?>
+<form action=<?php echo $this->getUrl('loan/loan/result') ?> method="post">
+    <!-- <input type="hidden" id="category_id" name="catalog_category[category_id]" value=""> -->
+
+    <label for="name">UserName </label>
+    <input type="textbox" id="name" name="loan[user_name]">
+    <label for="name">Loan Amount </label>
+    <input type="number" id="name" name="loan[loan_amount]">
+    <label for="name">month Amount </label>
+    <input type="number" id="name" name="loan[monthy_amount]">
+    <label for="status">term</label>
+    <select id="status" name="loan[term]" ?>"
+        <?php
+
+        for ($i = 1; $i <= 10; $i++) {
+            echo '<option value="' . $i . '">' . $i . '</option>';
+
+        }
+        ?>
+    </select>
+    <label for="status">rate</label>
+    <select id="status" name="loan[rate]" ?>
+        <option> 0.05
+        </option>
+
+    </select>
+    <div class="button">
+        <input type="submit" value="Submit" name="submit">
+    </div>
