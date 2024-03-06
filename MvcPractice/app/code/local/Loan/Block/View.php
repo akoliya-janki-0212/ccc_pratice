@@ -5,9 +5,6 @@ class Loan_Block_View extends Core_Block_Template
     {
         $this->setTemplate('loan/view.phtml');
     }
-    // public function getCategory()
-    // {
-    //     return Mage::getModel('catalog/category')->load($this->getRequest()->getParams('id', 0));
-    // }
+
 }
 ?>

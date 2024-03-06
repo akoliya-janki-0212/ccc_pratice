@@ -1,34 +1,32 @@
 <?php
-$rate = Mage::getModel('loan/rate')->getCollection();
-foreach ($rate->getData() as $rate) {
-    print_r($rate->getRate());
-}
+$rate = Mage::getModel('loan/rate');
+$bank = $rate->getBanks();
 ?>
 <form action=<?php echo $this->getUrl('loan/loan/result') ?> method="post">
-    <!-- <input type="hidden" id="category_id" name="catalog_category[category_id]" value=""> -->
-
+    <input type="hidden" id="category_id" name="<?php echo $this->getSession() ?>">
     <label for="name">UserName </label>
-    <input type="textbox" id="name" name="loan[user_name]">
+    <input type="textbox" id="name" name="loan[user_name]" value="<?php echo $this->getUser() ?>"><br />
     <label for="name">Loan Amount </label>
-    <input type="number" id="name" name="loan[loan_amount]">
+    <input type="number" id="name" name="loan[loan_amount]"><br />
     <label for="name">month Amount </label>
-    <input type="number" id="name" name="loan[monthy_amount]">
+    <input type="number" id="name" name="loan[monthly_amount]"><br />
     <label for="status">term</label>
     <select id="status" name="loan[term]" ?>"
         <?php
-
         for ($i = 1; $i <= 10; $i++) {
             echo '<option value="' . $i . '">' . $i . '</option>';
+        }
+        ?>
+    </select><br />
+    <label for="status">rate</label>
+    <select id="status" name="loan[rate]" ?>
+        <?php
+        foreach ($bank as $rate => $_bankcode) {
+            echo '<option value="' . $rate . '">' . $_bankcode . '</option>';
 
         }
         ?>
-    </select>
-    <label for="status">rate</label>
-    <select id="status" name="loan[rate]" ?>
-        <option> 0.05
-        </option>
-
-    </select>
+    </select><br />
     <div class="button">
         <input type="submit" value="Submit" name="submit">
     </div>

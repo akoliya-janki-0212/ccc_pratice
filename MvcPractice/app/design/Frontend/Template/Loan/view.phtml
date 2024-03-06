@@ -1,7 +1,47 @@
 <?php
 echo '<pre>';
-$productCollection = Mage::getModel('loan/loan')->getCollection();
-foreach ($productCollection->getData() as $product) {
-    print_r($product);
-}
+$loanCollection = Mage::getModel('loan/loan')->getCollection();
+// foreach ($loanCollection->getData() as $loan) {
+//     print_r($loan);
+//}
+
 ?>
+<table>
+    <tr>
+        <td>UserName</td>
+        <td>loan amount</td>
+        <td>monthly amount</td>
+        <td>term</td>
+        <td>result</td>
+        <td>created_at</td>
+    </tr>
+
+    <?php
+    foreach ($loanCollection->getData() as $loan) {
+        ?>
+        <tr>
+            <td>
+                <?php echo $loan->getUserName(); ?>
+            </td>
+            <td>
+                <?php echo $loan->getLoanAmount(); ?>
+            </td>
+            <td>
+                <?php echo $loan->getMonthlyAmount(); ?>
+            </td>
+            <td>
+                <?php echo $loan->getTerm(); ?>
+            </td>
+            <td>
+                <?php echo $loan->getResult(); ?>
+            </td>
+            <td>
+                <?php echo $loan->getCreatedAt(); ?>
+            </td>
+            <td><a href="delete?id=<?php echo $loan->getId(); ?>">
+                    <button>Detele</button></a></td>
+        </tr>
+        <?php
+    }
+    ?>
+</table>

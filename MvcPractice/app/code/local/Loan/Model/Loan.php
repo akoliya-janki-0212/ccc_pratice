@@ -7,39 +7,38 @@ class Loan_Model_Loan extends Core_Model_Abstract
         $this->_resourceClass = 'Loan_Model_Resource_Loan';
         $this->_collectionClass = 'Loan_Model_Resource_Collection_Loan';
     }
-    public function __beforeSave()
+    public function getBankCode($rate)
     {
-
-        //    $this->addData('price', $price);
-        //$this->addData('row_total', $price * $this->getQty());
+        $rateModel = Mage::getModel('loan/rate')->getCollection()->addFieldToFilter("rate", $rate);
+        foreach ($rateModel->getData() as $rate) {
+            $bankCode = $rate->getBankCode();
+        }
+        return $bankCode;
     }
-    public function add($request)
+    public function _beforeSave()
     {
-        print_r($request);
+        $session_id = Mage::getSingleton("core/session")->get("session_id");
+        $request = $this->getData();
         $p = $request['loan_amount'];
         $r = $request['rate'];
         $n = $request['term'];
-        $M = $p * ($r * pow((1 + $r), $p)) / (pow((1 + $r), $n) - 1);
-        $data = Mage::getModel('loan/loan')
-            ->setData([
-                'user_name' => $request['user_name'],
-                'loan_amount' => $request['loan_amount'],
-                'monthy_amount' => $request['monthy_amount'],
-                'term' => $request['term'],
-                'result' => $M,
-                'created_date' => date("Y/m/d"),
-            ]);
-        $this->save();
+        $rm = $r / 12;
+        $M = ($p * ($rm) * pow(($rm + 1), $n)) / (pow($rm + 1, $n + 1));
+        //$M = $p * ($rm * pow((1 + $rm), $p)) / (pow((1 + $rm), $n) - 1);
+        $this->addData('result', $M);
+        $this->addData('created_at', date("Y/m/d"));
+        $this->addData('session_id', $session_id);
+        $this->addData('bank_code', $this->getBankCode($r));
+        $this->removeData('rate');
     }
-    // public function getStatus()
-    // {
-    //     $mapping = [
-    //         1 => "Enabled",
-    //         0 => "Disabled"
-    //     ];
-    //     return isset($this->_data['status'])
-    //         ? $mapping[$this->_data['status']]
-    //         : '';
-    // }
+    public function add($request)
+    {
+        $data = Mage::getSingleton('loan/loan')
+            ->setData($request);
+        $this->save();
+        return $this;
+
+
+    }
 }
 ?>

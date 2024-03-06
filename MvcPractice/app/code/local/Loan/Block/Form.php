@@ -5,9 +5,13 @@ class Loan_Block_Form extends Core_Block_Template
     {
         $this->setTemplate('loan/form.phtml');
     }
-    // public function getCategory()
-    // {
-    //     return Mage::getModel('catalog/category')->load($this->getRequest()->getParams('id', 0));
-    // }
+    public function getSession()
+    {
+        return Mage::getSingleton('core/session')->getId();
+    }
+    public function getUser()
+    {
+        return Mage::getSingleton('core/session')->get("user_name");
+    }
 }
 ?>

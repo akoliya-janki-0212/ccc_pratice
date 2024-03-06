@@ -7,15 +7,14 @@ class Loan_Model_Rate extends Core_Model_Abstract
         $this->_resourceClass = 'Loan_Model_Resource_Rate';
         $this->_collectionClass = 'Loan_Model_Resource_Collection_Rate';
     }
-    // public function getStatus()
-    // {
-    //     $mapping = [
-    //         1 => "Enabled",
-    //         0 => "Disabled"
-    //     ];
-    //     return isset($this->_data['status'])
-    //         ? $mapping[$this->_data['status']]
-    //         : '';
-    // }
+    public function getBanks()
+    {
+        $bank = $this->getCollection();
+        foreach ($bank->getData() as $_bank) {
+            $banks[$_bank->getRate()] = $_bank->getBankCode();
+        }
+        return $banks;
+    }
+
 }
 ?>
