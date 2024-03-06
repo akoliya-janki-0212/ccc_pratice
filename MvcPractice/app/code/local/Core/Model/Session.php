@@ -22,7 +22,7 @@ class Core_Model_Session
         if (array_key_exists($key, $_SESSION)) {
             return $_SESSION[$key];
         }
-        return false;
+        return 0;
     }
     public function remove($key)
     {

@@ -31,7 +31,6 @@ class Core_Model_Resource_Abstract
             $sql = $this->editSql($this->getTableName(), $data, [$this->getPrimaryKey() => $id]);
             $this->getAdapter()->update($sql);
         } else {
-            $data = $abstract->getData();
             if (isset($data[$this->getPrimaryKey()])) {
                 unset($data[$this->getPrimaryKey()]);
             }
