@@ -40,6 +40,10 @@ class Core_Block_Abstract
     {
         return "http://localhost/practice/MvcPractice/" . $path;
     }
+    public function getMediaUrl($url)
+    {
+        return Mage::getMediaUrl($url);
+    }
     public function getRequest()
     {
 

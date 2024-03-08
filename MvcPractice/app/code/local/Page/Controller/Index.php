@@ -4,14 +4,11 @@ class Page_Controller_Index extends Core_Controller_Front_Action
     public function indexAction()
     {
         $layout = $this->getLayout();
-        $this->includeCss('banner.css');
-        // $layout->getChild('head')->addJs('js/navigation.js');
-        //$layout->getChild('head')->addJs('js/page.js');
+        $this->includeFrontendCss('frontendCss/banner.css');
         $banner = $layout->createBlock('banner/banner');
         $layout->getChild('content')
             ->addChild('banner', $banner);
         $layout->toHtml();
-
     }
     public function newAction()
     {

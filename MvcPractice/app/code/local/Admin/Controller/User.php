@@ -22,7 +22,7 @@ class Admin_Controller_User extends Core_Controller_Admin_Action
                 $this->setRedirect("admin/user/login");
             }
         } else {
-            $this->includeCss('login.css');
+            $this->includeFrontendCss('login.css');
             $layout = $this->getLayout();
             $layout->removeChild('header')->removeChild('footer');
             $child = $layout->getChild('content');

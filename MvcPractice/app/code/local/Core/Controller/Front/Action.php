@@ -2,18 +2,29 @@
 class Core_Controller_Front_Action
 {
     protected $_layout = null;
+    protected $_allowedActions = [];
     public function __construct()
     {
         $this->init();
     }
-    public function includeCss($file = null)
+    public function includeFrontendCss($file = null)
     {
         $layout = $this->getLayout();
         $layout->getChild('head')
-            ->addCss('header.css')
-            ->addCss('content.css')
-            ->addCss($file)
-            ->addCss('footer.css');
+            ->addCss('frontend/bootstrap.min.css')
+            ->addCss('frontend/font-awesome.min.css')
+            ->addCss('frontend/elegant-icons.css')
+            ->addCss('frontend/jquery- ui.min.css')
+            ->addCss('frontend/magnific-popup.css')
+            ->addCss('frontend/owl.carousel.min.css')
+            ->addCss('frontend/slicknav.min.css')
+            ->addCss('frontend/header.css')
+            ->addCss('frontend/footer.css')
+            ->addCss('frontend/style.css')
+            ->addCss('frontend/' . $file);
+
+
+
     }
     public function getLayout()
     {
@@ -32,8 +43,11 @@ class Core_Controller_Front_Action
     }
     public function init()
     {
-        return $this;
+        //     if (
+        //         !in_array($this->getRequest()->getActionName(), $this->_allowedActions) &&
+        //         !Mage::getSingleton('core/session')->get('logged_in_customer_id')
+        //     ) {
+        //         $this->setRedirect('customer/account/login');
+        //     }
     }
 }
-
-?>

@@ -54,33 +54,34 @@ $selectedCategory = $categoryModel->getCategoryNameById($categorys, $product);
                     <div class="form-group ">
                         <label for="price" class="details">Price</label>
                         <input type="number" class="form-control" id="price" name="catalog_product[price]"
-                            value="<?php echo $product->getPrice() ?>" placeholder="Enter Price">
+                            value="<?php echo $product->getPrice() ?>" min=1 placeholder="Enter Price">
                     </div>
                     <div class="form-group ">
                         <label for="mfr_cost" class="details">MFR cost</label>
                         <input type="number" class="form-control" id="mfr_cost" name="catalog_product[mfr_cost]"
-                            value="<?php echo $product->getMfrCost() ?>" placeholder="Enter mfr cost">
+                            value="<?php echo $product->getMfrCost() ?>" min=1 placeholder="Enter mfr cost">
                     </div>
                     <div class="form-group ">
                         <label for="shipping_cost" class="details">Shipping cost</label>
                         <input type="number" class="form-control" id="shipping_cost"
-                            name="catalog_product[shipping_cost]" value="<?php echo $product->getShippingCost() ?>"
-                            placeholder="Enter shipping cost">
+                            name="catalog_product[shipping_cost]" min=1
+                            value="<?php echo $product->getShippingCost() ?>" placeholder="Enter shipping cost">
                     </div>
                     <div class="form-group ">
                         <label for="total_cost" class="details">Total cost</label>
-                        <input type="number" class="form-control" id="total_cost" name="catalog_product[total_cost]"
-                            value="<?php echo $product->getTotalCost() ?>" placeholder="Enter total cost">
+                        <input type="number" class="form-control" min=1 id="total_cost"
+                            name="catalog_product[total_cost]" value="<?php echo $product->getTotalCost() ?>"
+                            placeholder="Enter total cost">
                     </div>
                     <div class="form-group ">
                         <label for="margin_percentage" class="details">Margin Percentage</label>
-                        <input type="number" class="form-control" id="margin_percentage"
+                        <input type="number" min=1 class="form-control" id="margin_percentage"
                             name="catalog_product[margin_percentage]"
                             value="<?php echo $product->getMarginPercentage() ?>" placeholder="Enter Margin Percentage">
                     </div>
                     <div class="form-group ">
                         <label for="min_price" class="details">Min price</label>
-                        <input type="number" class="form-control" id="min_price" name="catalog_product[min_price]"
+                        <input type="number" min=1 class="form-control" id="min_price" name="catalog_product[min_price]"
                             value="<?php echo $product->getMinPrice() ?>" placeholder="Enter min price">
                     </div>
                     <div class="form-group ">

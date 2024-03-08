@@ -19,7 +19,7 @@ $banner = $this->getBanner();
                 <input type="file" name="banner[banner_image]" id="images" required="required" multiple="multiple" />
                 <?php
                 if ($banner->getBannerImage()) {
-                    echo '<img src="' . Mage::getMediaUrl('banner/' . $banner->getBannerImage()) . '" alt="" width="200px">';
+                    echo '<img src="' . $this->getMediaUrl('banner/' . $banner->getBannerImage()) . '" alt="" width="200px">';
                 }
                 ?>
                 <div class="file-dummy">

@@ -2,19 +2,12 @@
 class Customer_Controller_Account extends Core_Controller_Front_Action
 {
     protected $_allowedActions = ["login", "register"];
-    public function init()
-    {
-        if (
-            !in_array($this->getRequest()->getActionName(), $this->_allowedActions) &&
-            !Mage::getSingleton('core/session')->get('logged_in_customer_id')
-        ) {
-            $this->setRedirect('customer/account/login');
-        }
-    }
+
     public function registerAction()
     {
-        $this->includeCss('register.css');
         $layout = $this->getLayout();
+        $layout->getChild('head')
+            ->addCss('frontend/register.css');
         $this->removeChild();
         $child = $layout->getChild('content');
         $registerForm = $layout->createBlock('customer/account_register_form');
@@ -67,8 +60,9 @@ class Customer_Controller_Account extends Core_Controller_Front_Action
                 $this->setRedirect("customer/account/login");
             }
         } else {
-            $this->includeCss('login.css');
             $layout = $this->getLayout();
+            $layout->getChild('head')
+                ->addCss('frontend/login.css');
             $this->removeChild();
             $child = $layout->getChild('content');
             $loginForm = $layout->createBlock('customer/account_login_form');
@@ -82,7 +76,7 @@ class Customer_Controller_Account extends Core_Controller_Front_Action
     }
     public function dashboardAction()
     {
-        $this->includeCss(('dashboard.css'));
+        $this->includeFrontendCss(('dashboard.css'));
         $layout = $this->getLayout();
         $child = $layout->getChild('content');
         $dashboardForm = $layout->createBlock('customer/account_dashboard_form');
