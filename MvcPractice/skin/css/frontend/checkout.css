@@ -1,0 +1,91 @@
+/* Style the container */
+.box {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Style the form title */
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Style form groups */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Style form labels */
+.details {
+    font-weight: bold;
+}
+
+/* Style form inputs */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.button {
+    text-align: center;
+}
+
+/* Style submit button */
+.button {
+    text-align: center;
+    margin-top: 20px;
+    /* Add margin to separate from other form elements */
+}
+
+.button input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Change submit button color on hover */
+.button input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Arrange form fields in two columns */
+.user-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 10px;
+    /* Adjust the gap between columns */
+}
+
+/* Adjust width for specific fields if needed */
+.user-details .form-group:nth-child(1),
+.user-details .form-group:nth-child(2) {
+    grid-column: span 1;
+    /* Adjust to span one column */
+}
+
+.user-details .form-group:nth-child(3),
+.user-details .form-group:nth-child(4) {
+    grid-column: span 1;
+    /* Adjust to span two columns */
+}
+
+.user-details .form-group:nth-child(5) .user-details .form-group:nth-child(6) {
+    grid-column: span 2;
+}
+
+textarea {
+    text-align: justify;
+}

@@ -22,9 +22,6 @@ class Core_Controller_Front_Action
             ->addCss('frontend/footer.css')
             ->addCss('frontend/style.css')
             ->addCss('frontend/' . $file);
-
-
-
     }
     public function getLayout()
     {
@@ -43,11 +40,11 @@ class Core_Controller_Front_Action
     }
     public function init()
     {
-        //     if (
-        //         !in_array($this->getRequest()->getActionName(), $this->_allowedActions) &&
-        //         !Mage::getSingleton('core/session')->get('logged_in_customer_id')
-        //     ) {
-        //         $this->setRedirect('customer/account/login');
-        //     }
+        if (
+            !in_array($this->getRequest()->getActionName(), $this->_allowedActions) &&
+            !Mage::getSingleton('core/session')->get('logged_in_customer_id')
+        ) {
+            $this->setRedirect('customer/account/login');
+        }
     }
 }

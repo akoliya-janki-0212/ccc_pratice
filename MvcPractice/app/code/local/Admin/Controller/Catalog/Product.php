@@ -4,7 +4,7 @@ class Admin_Controller_Catalog_Product extends Core_Controller_Admin_Action
     protected $_allowedActions = ['form'];
     public function formAction()
     {
-        $this->includeFrontendCss('product.css');
+        $this->includeAdminCss('product.css');
         $layout = $this->getLayout();
         $child = $layout->getChild('content');
         $productForm = $layout->createBlock('catalog/admin_product_form');
@@ -51,7 +51,7 @@ class Admin_Controller_Catalog_Product extends Core_Controller_Admin_Action
     }
     public function listAction()
     {
-        $this->includeFrontendCss('list.css');
+        $this->includeadminCss('list.css');
         $layout = $this->getLayout();
         $child = $layout->getChild('content');
         $productList = $layout->createBlock('catalog/admin_product_list');

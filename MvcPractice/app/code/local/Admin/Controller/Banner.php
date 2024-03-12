@@ -28,7 +28,7 @@ class Admin_Controller_Banner extends Core_Controller_Admin_Action
                 }
             }
         } else {
-            $this->includeFrontendCss('bannerUpload.css');
+            $this->includeAdminCss('bannerUpload.css');
             $layout = $this->getLayout();
             $child = $layout->getChild('content');
             $bannerForm = $layout->createBlock('banner/admin_banner_form');
@@ -40,7 +40,7 @@ class Admin_Controller_Banner extends Core_Controller_Admin_Action
     }
     public function listAction()
     {
-        $this->includeFrontendCss('bannerList.css');
+        $this->includeAdminCss('bannerList.css');
         $layout = $this->getLayout();
         $child = $layout->getChild('content');
         $bannerForm = $layout->createBlock('banner/admin_banner_list');

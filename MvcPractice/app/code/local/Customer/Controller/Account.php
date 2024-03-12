@@ -26,12 +26,13 @@ class Customer_Controller_Account extends Core_Controller_Front_Action
         $userAccount = Mage::getModel('customer/customer')
             ->setData($data);
         $result = $userAccount->save();
+        print_r($result);
         if ($result) {
             echo "<script>alert('Register Successfully')</script>";
-            $this->setRedirect("/customer/account/login");
+            $this->setRedirect("customer/account/login");
         } else {
             echo "<script>alert('problem in registration')</script>";
-            $this->setRedirect("/customer/account/register");
+            $this->setRedirect("customer/account/register");
         }
     }
     public function loginAction()
@@ -83,5 +84,15 @@ class Customer_Controller_Account extends Core_Controller_Front_Action
         $child->addChild('form', $dashboardForm);
         $layout->toHtml();
     }
+    public function profileAction()
+    {
+        $this->includeFrontendCss(('dashboard.css'));
+        $layout = $this->getLayout();
+        $child = $layout->getChild('content');
+        $dashboardForm = $layout->createBlock('customer/account_profile');
+        $child->addChild('form', $dashboardForm);
+        $layout->toHtml();
+    }
 }
+
 ?>

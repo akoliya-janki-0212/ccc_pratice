@@ -5,21 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <?php echo $this->getChildHtml('head') ?>
+    <?php echo $this->getChildHtml('head'); ?>
 </head>
 
 <body>
-    <div class="header">
-
-        <?php echo $this->getChildHtml('header'); ?>
+    <div class="sidebar">
+        <?php echo $this->getChildHtml('sidebar'); ?>
     </div>
     <div class="content">
         <?php echo $this->getChildHtml('content'); ?>
     </div>
-    <div class="footer1">
-        <?php echo $this->getChildHtml('footer'); ?>
-    </div>
-
 </body>
 
 </html>

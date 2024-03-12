@@ -3,7 +3,7 @@ class Admin_Controller_Catalog_Category extends Core_Controller_Admin_Action
 {
     public function formAction()
     {
-        $this->includeCss('category.css');
+        $this->includeAdminCss('category.css');
         $layout = $this->getLayout();
         $child = $layout->getChild('content');
         $categoryForm = $layout->createBlock('catalog/admin_category_form');
@@ -50,7 +50,7 @@ class Admin_Controller_Catalog_Category extends Core_Controller_Admin_Action
     }
     public function listAction()
     {
-        $this->includeCss('list.css');
+        $this->includeAdminCss('list.css');
         $layout = $this->getLayout();
         $child = $layout->getChild('content');
         $categoryList = $layout->createBlock('catalog/admin_category_list');

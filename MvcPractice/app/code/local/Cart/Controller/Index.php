@@ -1,5 +1,5 @@
 <?php
-class Cart_Controller_index extends Core_Controller_Front_Action
+class Cart_Controller_Index extends Core_Controller_Front_Action
 {
 
     public function indexAction()

@@ -1,0 +1,80 @@
+<div class="box">
+    <div class="container">
+        <form action=<?php echo $this->getUrl('sales/quote/checkout') ?> method="post">
+            <div class="title">Billing Details</div>
+            <div class="content">
+                <div class="user-details">
+                    <div class="form-group">
+                        <label for="billing_address" class="details">Billing Address </label>
+                        <input type="textbox" class="form-control" id="billing_address"
+                            name="sales_quote_customer[billing_address]" placeholder="Enter billing address">
+                    </div>
+                    <div class="form-group">
+                        <label for="billing_city" class="details">Billing City</label>
+                        <input type="textbox" class="form-control" id="billing_city"
+                            name="sales_quote_customer[billing_city]" placeholder="Enter billing city">
+                    </div>
+                    <div class="form-group">
+                        <label for="billing_region" class="details">Billing Region</label>
+                        <input type="textbox" class="form-control" id="billing_region"
+                            name="sales_quote_customer[billing_region]" placeholder="Enter billing region">
+                    </div>
+                    <div class="form-group">
+                        <label for="billing_country" class="details">Billing Country</label>
+                        <input type="textbox" class="form-control" id="billing_country"
+                            name="sales_quote_customer[billing_country]" placeholder="Enter billing country">
+                    </div>
+                    <div class="form-group">
+                        <label for="billing_phone" class="details">Billing Phone</label>
+                        <input type="textbox" class="form-control" id="billing_phone"
+                            name="sales_quote_customer[billing_phone]" placeholder="Enter billing phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="billing_pincode" class="details">Billing Pincode</label>
+                        <input type="textbox" class="form-control" id="billing_pincode"
+                            name="sales_quote_customer[billing_pincode]" placeholder="Enter billing pincode">
+                    </div>
+
+                </div>
+            </div>
+            <div class="title">Shipping Details</div>
+            <div class="content">
+                <div class="user-details">
+                    <div class="form-group">
+                        <label for="shipping_address" class="details">Shipping Address </label>
+                        <input type="textbox" class="form-control" id="shipping_address"
+                            name="sales_quote_customer[shipping_address]" placeholder="Enter shipping address">
+                    </div>
+                    <div class="form-group">
+                        <label for="shipping_city" class="details">Shipping City</label>
+                        <input type="textbox" class="form-control" id="shipping_city"
+                            name="sales_quote_customer[shipping_city]" placeholder="Enter shipping city">
+                    </div>
+                    <div class="form-group">
+                        <label for="shipping_region" class="details">Shipping Region</label>
+                        <input type="textbox" class="form-control" id="shipping_region"
+                            name="sales_quote_customer[shipping_region]" placeholder="Enter shipping region">
+                    </div>
+                    <div class="form-group">
+                        <label for="shipping_country" class="details">Shipping Country</label>
+                        <input type="textbox" class="form-control" id="shipping_country"
+                            name="sales_quote_customer[shipping_country]" placeholder="Enter shipping country">
+                    </div>
+                    <div class="form-group">
+                        <label for="shipping_phone" class="details">Shipping Phone</label>
+                        <input type="textbox" class="form-control" id="shipping_phone"
+                            name="sales_quote_customer[shipping_phone]" placeholder="Enter shipping phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="shipping_pincode" class="details">Shipping Pincode</label>
+                        <input type="textbox" class="form-control" id="shipping_pincode"
+                            name="sales_quote_customer[shipping_pincode]" placeholder="Enter shipping pincode">
+                    </div>
+                    <div class="button">
+                        <input type="submit" value="Submit" name="submit">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

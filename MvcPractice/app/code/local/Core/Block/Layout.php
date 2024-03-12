@@ -20,6 +20,8 @@ class Core_Block_Layout extends Core_Block_Template
         $footer = $this->createBlock('page/footer');
         $this->addChild('footer', $footer);
 
+        $left2 = $this->createBlock('admin/adminleft');
+        $this->addChild('adminleft', $left2);
         /* $messages = $this->createBlock('core/template');
         $messages->setTemplate('core/messages.phtml');
         $this->addChild('messages', $messages); */
