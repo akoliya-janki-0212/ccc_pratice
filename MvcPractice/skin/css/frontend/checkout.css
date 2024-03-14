@@ -1,11 +1,17 @@
 /* Style the container */
+.main {
+    display: flex;
+    justify-content: space-around;
+}
+
 .box {
     width: 100%;
     max-width: 600px;
-    margin: 20px auto;
+    margin: 5px;
     padding: 20px;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     border-radius: 5px;
+    margin-left: 25px
 }
 
 /* Style the form title */
@@ -35,8 +41,8 @@
     outline: none;
 }
 
-.button {
-    text-align: center;
+.address-cards {
+    border: 1px solid #ccc;
 }
 
 /* Style submit button */

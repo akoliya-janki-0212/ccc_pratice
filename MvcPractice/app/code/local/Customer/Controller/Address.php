@@ -1,5 +1,5 @@
 <?php
-class Customer_Controller_Address
+class Customer_Controller_Address extends Core_Controller_Front_Action
 {
     public function index()
     {
@@ -16,10 +16,10 @@ class Customer_Controller_Address
         echo dirname(__FILE__);
 
     }
-    public function save()
+    public function saveAction()
     {
-        echo dirname(__FILE__);
-
+        $addressData = $this->getRequest()->getParams('address');
+        Mage::getModel('customer/address')->setData($addressData)->save();
     }
     public function delete()
     {

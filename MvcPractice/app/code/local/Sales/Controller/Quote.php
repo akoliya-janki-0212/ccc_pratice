@@ -17,9 +17,24 @@ class Sales_Controller_Quote extends Core_Controller_Front_Action
     }
     public function checkoutAction()
     {
-        $data = $this->getRequest()->getParams('sales_quote_customer');
-        $quoteCustomer = Mage::getModel('sales/quote_customer')->setData($data);
-        $quoteCustomer->save();
+        $quoteId = Mage::getSingleton('core/session')->get("quote_id");
+        if ($quoteId) {
+            $data = $this->getRequest()->getParams('address');
+            if (!empty($data)) {
+                Mage::getSingleton('sales/quote')->addAddress($data);
+            }
+        } else {
+            $this->setRedirect('cart');
+        }
+        $shippingData = $this->getRequest()->getParams('shipping');
+        if (!empty($shippingData)) {
+            Mage::getSingleton('sales/quote')->addShipping($shippingData);
+        }
+        $paymentData = $this->getRequest()->getParams('payment');
+        if (!empty($paymentData)) {
+            Mage::getSingleton('sales/quote')->addPayment($paymentData);
+        }
+        Mage::getSingleton('sales/quote')->convertToOrder($paymentData);
     }
 }
 
