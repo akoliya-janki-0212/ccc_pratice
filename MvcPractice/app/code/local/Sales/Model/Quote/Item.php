@@ -44,7 +44,7 @@ class Sales_Model_Quote_Item extends Core_Model_Abstract
     }
     public function removeItem(Sales_Model_Quote $quote, $item_id)
     {
-        $item = $this->getCollection()
+        $this->getCollection()
             ->addFieldToFilter('quote_id', $quote->getId())
             ->addFieldToFilter('item_id', $item_id)
             ->getFirstItem()

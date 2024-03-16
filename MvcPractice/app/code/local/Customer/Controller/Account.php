@@ -37,7 +37,7 @@ class Customer_Controller_Account extends Core_Controller_Front_Action
     }
     public function loginAction()
     {
-        if (isset($_POST['Submit'])) {
+        if (isset ($_POST['Submit'])) {
             $data = $this->getRequest()->getParams('login');
             $email = $data['customer_email'];
             $password = $data['password'];
@@ -54,6 +54,7 @@ class Customer_Controller_Account extends Core_Controller_Front_Action
             }
             if ($count) {
                 Mage::getSingleton('core/session')->set('logged_in_customer_id', $customerId);
+                Mage::getSingleton('sales/quote')->initQuote();
                 echo "<script>alert('Login Successfully')</script>";
                 $this->setRedirect("customer/account/dashboard");
             } else {

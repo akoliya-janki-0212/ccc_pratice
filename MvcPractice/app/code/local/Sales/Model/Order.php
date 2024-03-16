@@ -31,8 +31,9 @@ class Sales_Model_Order extends Core_Model_Abstract
             ->removeData('order_id')
             ->removeData('shipping_id')
             ->removeData('payment_id')
+            ->removeData('is_ordered')
             ->save();
-            return $this;
+        return $this;
     }
     public function addOrderItem(Sales_Model_Quote $quote)
     {
