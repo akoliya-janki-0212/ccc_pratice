@@ -11,11 +11,22 @@ class Sales_Model_Quote_Customer extends Core_Model_Abstract
     {
         return Mage::getModel('customer/customer')->load($this->getCustomerId());
     }
-    protected function _beforeSave()
+    public function addAddressMethod(Sales_Model_Quote $quote, $address)
     {
+        $item = $this->getCollection()
+            ->addFieldToFilter('quote_id', $quote->getId())
+            ->getFirstItem();
+        $this->setData(
+            $address
+        );
+        if ($item) {
+            $this->setId($item->getId());
+        }
+        $this->addData('quote_id', $quote->getId());
         $this->addData('customer_id', Mage::getSingleton('core/session')->get('logged_in_customer_id'));
-        $this->addData('quote_id', Mage::getSingleton('core/session')->get('quote_id'));
         $this->addData('email', $this->getCustomer()->getCustomerEmail());
+        $this->save();
+        return $this;
     }
 }
 ?>

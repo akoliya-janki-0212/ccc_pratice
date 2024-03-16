@@ -19,22 +19,33 @@ class Sales_Controller_Quote extends Core_Controller_Front_Action
     {
         $quoteId = Mage::getSingleton('core/session')->get("quote_id");
         if ($quoteId) {
-            $data = $this->getRequest()->getParams('address');
-            if (!empty($data)) {
-                Mage::getSingleton('sales/quote')->addAddress($data);
+            if (isset ($_POST['save_address'])) {
+                $data = $this->getRequest()->getParams('address');
+                if (!empty ($data)) {
+                    Mage::getSingleton('sales/quote')->addAddress($data);
+                }
+            }
+            if (isset ($_POST['save_shipping_method'])) {
+                $shippingData = $this->getRequest()->getParams('shipping');
+                if (!empty ($shippingData)) {
+                    Mage::getSingleton('sales/quote')->addShipping($shippingData);
+                }
+            }
+            if (isset ($_POST['save_payment_method'])) {
+                $paymentData = $this->getRequest()->getParams('payment');
+                if (!empty ($paymentData)) {
+                    Mage::getSingleton('sales/quote')->addPayment($paymentData);
+                }
+            }
+            $this->setRedirect('cart/checkout');
+            if (isset ($_POST['place_order'])) {
+                Mage::getSingleton('sales/quote')->convertToOrder();
+                echo "<script>alert('Order placed successfully')</script>";
+                $this->setRedirect('');
             }
         } else {
             $this->setRedirect('cart');
         }
-        $shippingData = $this->getRequest()->getParams('shipping');
-        if (!empty($shippingData)) {
-            Mage::getSingleton('sales/quote')->addShipping($shippingData);
-        }
-        $paymentData = $this->getRequest()->getParams('payment');
-        if (!empty($paymentData)) {
-            Mage::getSingleton('sales/quote')->addPayment($paymentData);
-        }
-        Mage::getSingleton('sales/quote')->convertToOrder($paymentData);
     }
 }
 

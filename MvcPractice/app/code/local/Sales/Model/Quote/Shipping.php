@@ -7,9 +7,21 @@ class Sales_Model_Quote_Shipping extends Core_Model_Abstract
 
         $this->_collectionClass = 'Sales_Model_Resource_Collection_Quote_Shipping';
     }
-    protected function _beforeSave()
+
+    public function addShippingMethod(Sales_Model_Quote $quote, $shipping)
     {
-        $this->addData('quote_id', Mage::getSingleton('core/session')->get('quote_id'));
+        $item = $this->getCollection()
+            ->addFieldToFilter('quote_id', $quote->getId())
+            ->getFirstItem();
+        $this->setData(
+            $shipping
+        );
+        if ($item) {
+            $this->setId($item->getId());
+        }
+        $this->addData('quote_id', $quote->getId());
+        $this->save();
+        return $this;
     }
 }
 ?>

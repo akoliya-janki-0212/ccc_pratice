@@ -15,7 +15,7 @@ class Core_Model_Resource_Abstract
     }
     public function getPrimaryKey()
     {
-        return isset($this->_primaryKey)
+        return isset ($this->_primaryKey)
             ? $this->_primaryKey
             : '';
     }
@@ -31,7 +31,7 @@ class Core_Model_Resource_Abstract
             $sql = $this->editSql($this->getTableName(), $data, [$this->getPrimaryKey() => $id]);
             $this->getAdapter()->update($sql);
         } else {
-            if (isset($data[$this->getPrimaryKey()])) {
+            if (isset ($data[$this->getPrimaryKey()])) {
                 unset($data[$this->getPrimaryKey()]);
             }
             $sql = $this->insertSql($this->getTableName(), $data);

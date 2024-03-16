@@ -19,12 +19,14 @@ class Core_Model_Session
         $_SESSION[$key] = $value;
         return $this;
     }
-    public function get($key)
+    public function get($key, $default = null)
     {
         if (array_key_exists($key, $_SESSION)) {
             return $_SESSION[$key];
+        } elseif (isset($default)) {
+            return $default;
         }
-        return 0;
+        return false;
     }
     public function remove($key)
     {

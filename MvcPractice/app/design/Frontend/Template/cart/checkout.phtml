@@ -147,7 +147,7 @@ if (!empty($addressData)) {
                         </div>
                         <div class="button">
                             <input type="submit" value="Submit"
-                                formaction="<?php echo $this->getUrl('sales/quote/checkout') ?>" name="save">
+                                formaction="<?php echo $this->getUrl('sales/quote/checkout') ?>" name="save_address">
                             <input type="submit" value="Save Perminate"
                                 formaction="<?php echo $this->getUrl('customer/address/save') ?>" name="savePerminate">
                         </div>
@@ -197,6 +197,8 @@ if (!empty($addressData)) {
                             <input type="radio" value="upi id" name="payment[payment_method]" id="upi-id">
                             <span class="checkmark"></span>
                         </label>
+                        <input type="submit" value="Submit"
+                            formaction="<?php echo $this->getUrl('sales/quote/checkout') ?>" name="save_payment_method">
                     </div>
                     <div class="checkout__order__widget">
                         <h5>Shipping Method</h5>
@@ -210,9 +212,13 @@ if (!empty($addressData)) {
                             <input type="radio" name="shipping[shipping_method]" value="sameDay" id="sameDay">
                             <span class="checkmark"></span>
                         </label>
+                        <input type="submit" value="Submit"
+                            formaction="<?php echo $this->getUrl('sales/quote/checkout') ?>"
+                            name="save_shipping_method">
                     </div>
                     <button type="submit" class="site-btn"
-                        formaction="<?php echo $this->getUrl('sales/quote/checkout') ?>">Place Order </button>
+                        formaction="<?php echo $this->getUrl('sales/quote/checkout') ?>" name="place_order">Place Order
+                    </button>
                 </div>
             </form>
         </div>
