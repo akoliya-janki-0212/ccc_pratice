@@ -7,7 +7,7 @@ class Admin_Controller_User extends Core_Controller_Admin_Action
 
     public function loginAction()
     {
-        if (isset($_POST['Submit'])) {
+        if (isset ($_POST['Submit'])) {
 
             $data = $this->getRequest()->getParams('login');
 
