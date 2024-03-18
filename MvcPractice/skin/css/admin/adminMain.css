@@ -41,10 +41,10 @@ body {
 
 .container_content {
     flex: 1;
-    margin-left: 250px;
-    /* Match the width of the left2 section */
-    /* padding: 20px; */
+    margin-left: 300px;
+    padding: 20px;
     box-sizing: border-box;
+    margin-right: 50px;
 }
 
 /* Add styles for the horizontal navbar in the left2 section */

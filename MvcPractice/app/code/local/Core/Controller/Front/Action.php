@@ -5,6 +5,7 @@ class Core_Controller_Front_Action
     protected $_allowedActions = [];
     public function __construct()
     {
+        session_start();
         $this->init();
     }
     public function includeFrontendCss($file = null)
@@ -40,11 +41,11 @@ class Core_Controller_Front_Action
     }
     public function init()
     {
-        if (
-            !in_array($this->getRequest()->getActionName(), $this->_allowedActions) &&
-            !Mage::getSingleton('core/session')->get('logged_in_customer_id')
-        ) {
-            $this->setRedirect('customer/account/login');
-        }
+        // if (
+        //     !in_array($this->getRequest()->getActionName(), $this->_allowedActions) &&
+        //     !Mage::getSingleton('core/session')->get('logged_in_customer_id')
+        // ) {
+        //     $this->setRedirect('customer/account/login');
+        // }
     }
 }

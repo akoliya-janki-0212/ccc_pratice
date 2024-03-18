@@ -36,11 +36,16 @@ class Sales_Model_Quote extends Core_Model_Abstract
     }
     public function getQuoteCollection()
     {
-        return Mage::getSingleton('sales/quote')
-            ->getCollection()
-            ->addFieldToFilter('customer_id', Mage::getSingleton('core/session')->get('logged_in_customer_id'))
-            ->addFieldToFilter('is_ordered', 0)
-            ->getFirstItem();
+        $customerId = Mage::getSingleton('core/session')->get('logged_in_customer_id');
+        if ($customerId) {
+            return Mage::getSingleton('sales/quote')
+                ->getCollection()
+                ->addFieldToFilter('customer_id', $customerId)
+                ->addFieldToFilter('order_id', 0)
+                ->getFirstItem();
+        } else {
+            return null;
+        }
     }
     protected function _beforeSave()
     {
@@ -64,9 +69,8 @@ class Sales_Model_Quote extends Core_Model_Abstract
                 ->setData([
                     'tax_percent' => 8,
                     'grand_total' => 0,
-                    'customer_id' => $customerId
                 ]);
-            if ($this->getQuoteCollection()) {
+            if (!is_null($this->getQuoteCollection())) {
                 $quoteId = $this->getQuoteCollection()->getQuoteId();
                 $quote->addData('quote_id', $quoteId);
             }
@@ -74,8 +78,15 @@ class Sales_Model_Quote extends Core_Model_Abstract
             Mage::getSingleton('core/session')
                 ->set('quote_id', $quote->getId());
             $quoteId = $quote->getId();
+            $this->load($quoteId);
+        } else {
+            if ($customerId) {
+                $quoteModel = Mage::getModel('sales/quote')->load($quoteId);
+                $quoteModel->addData('customer_id', $customerId)->save();
+                $quoteId = $quoteModel->getId();
+            }
+            $this->load($quoteId);
         }
-        $this->load($quoteId);
         return $this;
     }
     public function addProduct($requestData)
