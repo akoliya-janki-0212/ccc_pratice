@@ -7,10 +7,27 @@ class Sales_Model_Order extends Core_Model_Abstract
 
         $this->_collectionClass = 'Sales_Model_Resource_Collection_Order';
     }
-    public function __beforeSave()
+
+    public function getItemsCollection(Sales_Model_Order $_order)
+    {
+        return Mage::getModel('sales/order_item')->getCollection()
+            ->addFieldToFilter('order_id', $_order->getOrderId());
+    }
+
+    public function getCustomerCollection(Sales_Model_Order $_order)
+    {
+        return Mage::getModel('customer/customer')->getCollection()
+            ->addFieldToFilter('customer_id', $_order->getCustomerId());
+    }
+    public function getAddress(Sales_Model_Order $_order)
+    {
+        return Mage::getModel('sales/order_customer')->getCollection()
+            ->addFieldToFilter('order_id', $_order->getOrderId());
+    }
+
+    public function _beforeSave()
     {
         $orderNumber = rand(1000000, 9999999);
-
         $flag = True;
         while ($flag) {
             $existOrderNumber = Mage::getModel('sales/order')

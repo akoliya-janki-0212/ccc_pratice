@@ -13,7 +13,6 @@ class Sales_Model_Quote extends Core_Model_Abstract
             ->addFieldToFilter('quote_id', $this->getId())
             ->getData();
     }
-
     public function getShippingCollection()
     {
         return Mage::getSingleton('sales/quote_shipping')
@@ -121,7 +120,6 @@ class Sales_Model_Quote extends Core_Model_Abstract
         if ($this->getId()) {
             $shippingId = Mage::getModel('sales/quote_shipping')->addShippingMethod($this, $data)->getId();
             $this->addData("shipping_id", $shippingId);
-
         }
         $this->save();
     }
