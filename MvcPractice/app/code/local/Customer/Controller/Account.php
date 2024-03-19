@@ -92,6 +92,7 @@ class Customer_Controller_Account extends Core_Controller_Front_Action
         $child = $layout->getChild('content');
         $dashboardForm = $layout->createBlock('customer/account_profile');
         $child->addChild('form', $dashboardForm);
+        print_r($layout);
         $layout->toHtml();
     }
 }

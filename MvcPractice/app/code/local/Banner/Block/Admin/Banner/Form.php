@@ -1,5 +1,5 @@
 <?php
-class Banner_Block_Admin_Banner_Form extends Core_Block_Template
+class Banner_Block_Admin_Banner_Form extends Admin_Block_Layout
 {
     public function __construct()
     {

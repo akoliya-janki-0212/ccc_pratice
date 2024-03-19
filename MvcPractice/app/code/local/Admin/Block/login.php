@@ -1,5 +1,5 @@
 <?php
-class Admin_Block_Login extends Core_Block_Template
+class Admin_Block_Login extends Admin_Block_Layout
 {
     public function __construct()
     {

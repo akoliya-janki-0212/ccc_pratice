@@ -1,9 +1,11 @@
 <?php
 
-class Admin_Block_Home extends Core_Block_Template {
+class Admin_Block_Home extends Admin_Block_Layout
+{
 
-   public function __construct(){
-        $this->setTemplate('admin/home.phtml');
+   public function __construct()
+   {
+      $this->setTemplate('page/admin/home.phtml');
    }
 
 }

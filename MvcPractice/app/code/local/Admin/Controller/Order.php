@@ -6,8 +6,9 @@ class Admin_Controller_Order extends Core_Controller_Admin_Action
         $this->includeAdminCss('orderList.css');
         $layout = $this->getLayout();
         $child = $layout->getChild('content');
+        $mainChild = $child->getChild('maincontent');
         $orderForm = $layout->createBlock('customer/admin_order_list');
-        $child->addChild('form', $orderForm);
+        $mainChild->addChild('form', $orderForm);
         $layout->toHtml();
     }
     public function viewAction()
@@ -15,8 +16,9 @@ class Admin_Controller_Order extends Core_Controller_Admin_Action
         $this->includeAdminCss('orderView.css');
         $layout = $this->getLayout();
         $child = $layout->getChild('content');
+        $mainChild = $child->getChild('maincontent');
         $orderForm = $layout->createBlock('customer/admin_order_view');
-        $child->addChild('form', $orderForm);
+        $mainChild->addChild('form', $orderForm);
         $layout->toHtml();
     }
 }

@@ -5,112 +5,47 @@ $categorys = $categoryModel->getCategoryIdName();
 $selectedCategory = $categoryModel->getCategoryNameById($categorys, $product);
 ?>
 
-
-<div class="box">
-    <div class="container">
-        <div class="title">Product Information</div>
-        <div class="content">
-            <form action=<?php echo $this->getUrl('admin/catalog_product/save') ?> method="post">
-                <input type="hidden" id="product_id" name="catalog_product[product_id]"
-                    value="<?php echo $product->getProductId() ?>">
-                <div class="user-details">
-                    <div class="form-group">
-                        <label for="sku" class="details">Sku </label>
-                        <input type="textbox" class="form-control" id="sku" name="catalog_product[sku]"
-                            value="<?php echo $product->getSku() ?>" placeholder="Enter sku">
-                    </div>
-                    <div class="form-group">
-                        <label for="name" class="details">Name</label>
-                        <input type="textbox" class="form-control" id="name" name="catalog_product[name]"
-                            value="<?php echo $product->getName() ?>" placeholder="Enter name">
-                    </div>
-                    <div class="form-group ">
-                        <label for="color" class="details">Color</label>
-                        <input type="textbox" class="form-control" id="color" name="catalog_product[color]"
-                            value="<?php echo $product->getColor() ?>" placeholder="Enter color">
-                    </div>
-                    <div class="form-group ">
-                        <label for="size" class="details">Size</label>
-                        <input type="textbox" class="form-control" id="size" name="catalog_product[size]"
-                            value="<?php echo $product->getSize() ?>" placeholder="Enter size">
-                    </div>
-                    <div class="form-group ">
-                        <label for="description" class="details">Description</label>
-                        <textarea class="form-control" id="description" name="catalog_product[description]"
-                            placeholder="Enter description" cols="30" rows="5">
-                            <?php echo $product->getDescription() ?>
-                        </textarea>
-                    </div>
-                    <div class="form-group ">
-                        <label for="image_link" class="details">image link</label>
-                        <input type="file" class="form-control" id="image_link" name="catalog_product[image_link]"
-                            value="<?php echo $product->getImageLink() ?>" placeholder="Enter image link">
-                    </div>
-                    <div class="form-group ">
-                        <label for="link" class="details">Link</label>
-                        <input type="file" class="form-control" id="link" name="catalog_product[link]"
-                            value="<?php echo $product->getLink() ?>" placeholder="Enter link">
-                    </div>
-                    <div class="form-group ">
-                        <label for="price" class="details">Price</label>
-                        <input type="number" class="form-control" id="price" name="catalog_product[price]"
-                            value="<?php echo $product->getPrice() ?>" min=1 placeholder="Enter Price">
-                    </div>
-                    <div class="form-group ">
-                        <label for="mfr_cost" class="details">MFR cost</label>
-                        <input type="number" class="form-control" id="mfr_cost" name="catalog_product[mfr_cost]"
-                            value="<?php echo $product->getMfrCost() ?>" min=1 placeholder="Enter mfr cost">
-                    </div>
-                    <div class="form-group ">
-                        <label for="shipping_cost" class="details">Shipping cost</label>
-                        <input type="number" class="form-control" id="shipping_cost"
-                            name="catalog_product[shipping_cost]" min=1
-                            value="<?php echo $product->getShippingCost() ?>" placeholder="Enter shipping cost">
-                    </div>
-                    <div class="form-group ">
-                        <label for="total_cost" class="details">Total cost</label>
-                        <input type="number" class="form-control" min=1 id="total_cost"
-                            name="catalog_product[total_cost]" value="<?php echo $product->getTotalCost() ?>"
-                            placeholder="Enter total cost">
-                    </div>
-                    <div class="form-group ">
-                        <label for="margin_percentage" class="details">Margin Percentage</label>
-                        <input type="number" min=1 class="form-control" id="margin_percentage"
-                            name="catalog_product[margin_percentage]"
-                            value="<?php echo $product->getMarginPercentage() ?>" placeholder="Enter Margin Percentage">
-                    </div>
-                    <div class="form-group ">
-                        <label for="min_price" class="details">Min price</label>
-                        <input type="number" min=1 class="form-control" id="min_price" name="catalog_product[min_price]"
-                            value="<?php echo $product->getMinPrice() ?>" placeholder="Enter min price">
-                    </div>
-                    <div class="form-group ">
-                        <label for="status" class="details">Status</label>
-                        <select id="status" name="catalog_product[status]" class="form-control">
-                            <?php
-                            $status = [1 => "Enabled", 0 => "Disabled"];
-                            foreach ($status as $key => $item) {
-                                echo '<option value="' . $key . '" ' . (($product->getStatus() == $item) ? 'selected' : '') . '>' . $item . '</option>';
-                            }
-                            ?>
-                        </select>
-                    </div>
-
-                    <div class="form-group ">
-                        <label for="category_id" class="details">Category</label>
-                        <select id="category_id" name="catalog_product[category_id]" class="form-control">
-                            <?php
-                            foreach ($categorys as $key => $value) {
-                                echo '<option value="' . $key . '" ' . ($selectedCategory == $value ? 'selected' : '') . '>' . $value . '</option>';
-                            }
-                            ?>
-                        </select>
-                    </div>
-                </div>
-                <div class="button">
-                    <input type="submit" value="Submit" name="submit">
-                </div>
-            </form>
-        </div>
-    </div>
+<div class="quick-press">
+    <h4>Product Information</h4>
+    <form action="<?php echo $this->getUrl('admin/catalog_product/save') ?>" method="post">
+        <input type="hidden" id="product_id" name="catalog_category[product_id]"
+            value="<?php echo $product->getProductId() ?>">
+        <input type="text" name="catalog_product[sku]" value="<?php echo $product->getSku() ?>" placeholder="Sku">
+        <input type="text" name="catalog_product[name]" value="<?php echo $product->getName() ?>" placeholder="name">
+        <input type="text" name="catalog_product[color]" value="<?php echo $product->getColor() ?>" placeholder="color">
+        <input type="text" name="catalog_product[size]" value="<?php echo $product->getSize() ?>" placeholder="size">
+        <textarea name="catalog_product[description]" placeholder="description" cols="30"
+            rows="5"><?php echo $product->getDescription() ?></textarea>
+        <input type="file" name="catalog_product[image_link]" value="<?php echo $product->getImageLink() ?>"
+            placeholder="image link">
+        <input type="file" name="catalog_product[link]" value="<?php echo $product->getLink() ?>" placeholder="link">
+        <input type="number" name="catalog_product[price]" value="<?php echo $product->getPrice() ?>" min=1
+            placeholder="Price">
+        <input type="number" name="catalog_product[mfr_cost]" value="<?php echo $product->getMfrCost() ?>" min=1
+            placeholder="mfr cost">
+        <input type="number" name="catalog_product[shipping_cost]" min=1
+            value="<?php echo $product->getShippingCost() ?>" placeholder="shipping cost">
+        <input type="number" min=1 name="catalog_product[total_cost]" value="<?php echo $product->getTotalCost() ?>"
+            placeholder="total cost">
+        <input type="number" min=1 name="catalog_product[margin_percentage]"
+            value="<?php echo $product->getMarginPercentage() ?>" placeholder="Margin Percentage">
+        <input type="number" min=1 name="catalog_product[min_price]" value="<?php echo $product->getMinPrice() ?>"
+            placeholder="min price">
+        <select name="catalog_product[status]">
+            <?php
+            $status = [1 => "Enabled", 0 => "Disabled"];
+            foreach ($status as $key => $item) {
+                echo '<option value="' . $key . '" ' . (($product->getStatus() == $item) ? 'selected' : '') . '>' . $item . '</option>';
+            }
+            ?>
+        </select>
+        <select name=" catalog_product[category_id]">
+            <?php
+            foreach ($categorys as $key => $value) {
+                echo '<option value="' . $key . '" ' . ($selectedCategory == $value ? ' selected' : '') . '>' . $value
+                    . '</option>';
+            } ?>
+        </select>
+        <button type="submit" class="submit" name="submit">Save</button>
+    </form>
 </div>

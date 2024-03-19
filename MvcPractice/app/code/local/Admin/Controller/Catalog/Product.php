@@ -7,8 +7,9 @@ class Admin_Controller_Catalog_Product extends Core_Controller_Admin_Action
         $this->includeAdminCss('product.css');
         $layout = $this->getLayout();
         $child = $layout->getChild('content');
+        $mainChild = $child->getChild('maincontent');
         $productForm = $layout->createBlock('catalog/admin_product_form');
-        $child->addChild('form', $productForm);
+        $mainChild->addChild('form', $productForm);
         $layout->toHtml();
     }
     public function saveAction()
@@ -54,8 +55,9 @@ class Admin_Controller_Catalog_Product extends Core_Controller_Admin_Action
         $this->includeadminCss('list.css');
         $layout = $this->getLayout();
         $child = $layout->getChild('content');
+        $mainChild = $child->getChild('maincontent');
         $productList = $layout->createBlock('catalog/admin_product_list');
-        $child->addChild('list', $productList);
+        $mainChild->addChild('list', $productList);
         $layout->toHtml();
     }
 }

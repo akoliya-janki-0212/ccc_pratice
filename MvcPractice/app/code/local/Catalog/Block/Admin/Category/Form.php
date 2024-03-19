@@ -1,5 +1,5 @@
 <?php
-class Catalog_Block_Admin_Category_Form extends Core_Block_Template
+class Catalog_Block_Admin_Category_Form extends Admin_Block_Layout
 {
     public function __construct()
     {

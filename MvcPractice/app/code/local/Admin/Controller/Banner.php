@@ -3,7 +3,7 @@ class Admin_Controller_Banner extends Core_Controller_Admin_Action
 {
     public function formAction()
     {
-        if (isset($_POST['Submit'])) {
+        if (isset ($_POST['Submit'])) {
 
             $data = $this->getRequest()->getParams('banner');
             $bannerData = Mage::getModel('banner/banner')
@@ -31,8 +31,9 @@ class Admin_Controller_Banner extends Core_Controller_Admin_Action
             $this->includeAdminCss('bannerUpload.css');
             $layout = $this->getLayout();
             $child = $layout->getChild('content');
+            $mainChild = $child->getChild('maincontent');
             $bannerForm = $layout->createBlock('banner/admin_banner_form');
-            $child->addChild('form', $bannerForm);
+            $mainChild->addChild('form', $bannerForm);
             $layout->toHtml();
 
         }
@@ -43,8 +44,9 @@ class Admin_Controller_Banner extends Core_Controller_Admin_Action
         $this->includeAdminCss('bannerList.css');
         $layout = $this->getLayout();
         $child = $layout->getChild('content');
+        $mainChild = $child->getChild('maincontent');
         $bannerForm = $layout->createBlock('banner/admin_banner_list');
-        $child->addChild('form', $bannerForm);
+        $mainChild->addChild('form', $bannerForm);
         $layout->toHtml();
     }
     public function deleteAction()

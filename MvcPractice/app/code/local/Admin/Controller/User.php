@@ -38,8 +38,9 @@ class Admin_Controller_User extends Core_Controller_Admin_Action
         $layout = $this->getLayout();
         $this->includeAdminCss();
         $child = $layout->getChild('content');
-        $homeIndex = $layout->createBlock('admin/home');
-        $child->addChild('homeIndex', $homeIndex);
+        $mainChild = $child->getChild('maincontent');
+        $homeIndex = $layout->createBlock('page/admin_home');
+        $mainChild->addChild('homeIndex', $homeIndex);
         $layout->toHtml();
     }
 }

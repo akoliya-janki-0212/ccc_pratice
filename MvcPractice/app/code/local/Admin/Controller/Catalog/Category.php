@@ -3,11 +3,12 @@ class Admin_Controller_Catalog_Category extends Core_Controller_Admin_Action
 {
     public function formAction()
     {
-        $this->includeAdminCss('category.css');
+        $this->includeAdminCss();
         $layout = $this->getLayout();
         $child = $layout->getChild('content');
+        $mainChild = $child->getChild('maincontent');
         $categoryForm = $layout->createBlock('catalog/admin_category_form');
-        $child->addChild('form', $categoryForm);
+        $mainChild->addChild('form', $categoryForm);
         $layout->toHtml();
     }
     public function saveAction()
@@ -53,8 +54,9 @@ class Admin_Controller_Catalog_Category extends Core_Controller_Admin_Action
         $this->includeAdminCss('list.css');
         $layout = $this->getLayout();
         $child = $layout->getChild('content');
+        $mainChild = $child->getChild('maincontent');
         $categoryList = $layout->createBlock('catalog/admin_category_list');
-        $child->addChild('form', $categoryList);
+        $mainChild->addChild('form', $categoryList);
         $layout->toHtml();
     }
 }
