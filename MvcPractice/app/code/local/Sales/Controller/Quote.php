@@ -37,14 +37,14 @@ class Sales_Controller_Quote extends Core_Controller_Front_Action
                     Mage::getSingleton('sales/quote')->addPayment($paymentData);
                 }
             }
-            $this->setRedirect('cart/checkout');
+            // $this->setRedirect('cart/checkout');
             if (isset ($_POST['place_order'])) {
                 Mage::getSingleton('sales/quote')->convertToOrder();
                 echo "<script>alert('Order placed successfully')</script>";
-                $this->setRedirect('');
+                // $this->setRedirect('');
             }
         } else {
-            $this->setRedirect('cart');
+            // $this->setRedirect('cart');
         }
     }
 }

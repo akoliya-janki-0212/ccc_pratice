@@ -10,7 +10,10 @@ class Customer_Block_Admin_Order_List extends Core_Block_Template
         return Mage::getModel('sales/order')->getCollection()
             ->getData();
     }
-
+    public function getOrders($id)
+    {
+        return Mage::getModel('sales/order')->load($id);
+    }
     public function getItems()
     {
         $_items = [];

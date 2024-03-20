@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <div>
     <?php
     foreach ($this->getItems() as $_items) {
@@ -12,14 +14,16 @@
                                 src="<?php echo $this->getMediaUrl('product/' . $_item->getProduct()->getImageLink()) ?>">
                         </div>
                         <div class="_1wkQnM">
-                            <span class="yxF9fy" style="color: rgb(255, 159, 0);">Delivered</span>
+                            <span class="yxF9fy" style="color: rgb(255, 159, 0);">
+                                <?php echo $this->getOrders($_item->getOrderId())->getStatus() ?>
+                            </span>
                             <span class="_2NmcYX">
                                 <span class="_17gZxC">
                                     <?php echo $_item->getProduct()->getName() ?>
                                 </span>
                             </span>
                         </div>
-                        <a href="<?php echo $this->getUrl('customer/order/view') . "?id=" . $_item->getOrderId() ?>"><i
+                        <a href="<?php echo $this->getUrl('admin/order/view') . "?id=" . $_item->getOrderId() ?>"><i
                                 class="fa fa-arrow-right" aria-hidden="true"></i></a>
                     </div>
                 </div>

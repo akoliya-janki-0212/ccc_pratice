@@ -11,16 +11,14 @@ class Sales_Model_Quote_Customer extends Core_Model_Abstract
     {
         return Mage::getModel('customer/customer')->load($this->getCustomerId());
     }
-    public function addAddressMethod(Sales_Model_Quote $quote, $address)
+    public function addAddressMethod(Sales_Model_Quote $quote, $addressData)
     {
-        $item = $this->getCollection()
+        $address = $this->getCollection()
             ->addFieldToFilter('quote_id', $quote->getId())
             ->getFirstItem();
-        $this->setData(
-            $address
-        );
-        if ($item) {
-            $this->setId($item->getId());
+        $this->setData($addressData);
+        if ($address) {
+            $this->setId($address->getId());
         }
         $this->addData('quote_id', $quote->getId());
         $this->addData('customer_id', Mage::getSingleton('core/session')->get('logged_in_customer_id'));

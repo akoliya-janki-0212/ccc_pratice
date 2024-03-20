@@ -11,9 +11,7 @@ class Customer_Block_Admin_Order_View extends Core_Block_Template
     }
     public function getOrderCollection()
     {
-        return Mage::getModel('sales/order')->getCollection()
-            ->addFieldToFilter('order_id', $this->getId())
-            ->getFirstItem();
+        return Mage::getModel('sales/order')->load($this->getId());
     }
     public function getItem()
     {

@@ -88,5 +88,13 @@ class Sales_Model_Order extends Core_Model_Abstract
         }
         return $this;
     }
+    public function addStatusHistory($statusData)
+    {
+        Mage::getModel("sales/order_history")
+            ->setData($statusData)
+            ->addData('from_status', $this->getStatus())
+            ->save();
+        return $this;
+    }
 }
 ?>

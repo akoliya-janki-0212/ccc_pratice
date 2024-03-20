@@ -15,11 +15,16 @@
                                 </a>
                             </div>
                             <div class="col-8-12">
+                                <div class="row _1k5oiV">
+                                    <span class="_2KpZ6l row _3hTjfv">Order Number: </span>
+                                    <span class="_2KpZ6l row _3hTjfv">
+                                        <?php echo $this->getOrderCollection()->getOrderNumber() ?>
+                                    </span>
+                                </div>
                                 <a class="_2KpZ6l row _3hTjfv"
                                     href="/onego-business-compact-22-l-laptop-backpack/p/itmf97627629ef0a?pid=BKPG53CGFG2ANVUS&amp;lid=LSTBKPG53CGFG2ANVUSOVHE99"
                                     target="_blank" previewlistener="true">
                                     <?php echo $this->getItem()->getProduct()->getName() ?>
-
                                 </a>
                                 <div class="row _1k5oiV">
                                     <span class="_3kfmpa">
@@ -39,9 +44,31 @@
                                 <div class="_22HsHK">
                                     <div class="_1zIybI">
                                         <div class="gAEbPh">
+                                            <form method="POST" action="">
+                                                <input type="hidden"
+                                                    value="<?php echo $this->getOrderCollection()->getOrderId() ?>"
+                                                    name="order[order_id]">
+                                                <input type="hidden" value="admin" name="order[action_by]">
+                                                <select class="dropdown" id="status" name="order[to_status]" ?>
+                                                    <?php
+                                                    $status = ["Pandding", "Shipped", "Canceled", "Decline", "Refonded", "Completed"];
+                                                    foreach ($status as $item) {
+                                                        // echo '<option value="' . $item . '">' . $item . '</option>';
+                                                        echo '<option value="' . $item . '" ' . (($this->getOrderCollection()->getStatus() == $item) ? 'selected' : '') . '>' . $item . '</option>';
+                                                    }
+                                                    ?>
+                                                </select>
+                                                <button type="submit" class="submit" name="submit"
+                                                    formaction="<?php echo $this->getUrl('sales/order/save') ?>">Save</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" _22HsHK">
+                                    <div class="_1zIybI">
+                                        <div class="gAEbPh">
                                             <?php echo $this->getItem()->getRowTotal() ?>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
