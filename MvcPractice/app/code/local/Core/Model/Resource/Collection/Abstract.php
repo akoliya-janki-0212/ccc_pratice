@@ -34,10 +34,28 @@ class Core_Model_Resource_Collection_Abstract
         $this->_select['LIMIT'][] = $limit;
         return $this;
     }
+    public function addGroupBy($column)
+    {
+        $this->_select['GROUP_BY'] = $column;
+        return $this;
+    }
+    public function addCount($column = '*', $alias = null)
+    {
+        $this->_select['COUNT'] = $column;
+        $this->_select['ALIAS'] = $alias;
+        return $this;
+    }
     public function load()
     {
-        $sql = "SELECT * FROM {$this->_select['FROM']}";
-        if (isset($this->_select['WHERE'])) {
+        $sql = "SELECT  * ";
+        if (isset ($this->_select['COUNT'])) {
+            $sql .= " ,  count(" . $this->_select['COUNT'] . ")";
+        }
+        if (isset ($this->_select['COUNT'])) {
+            $sql .= '  AS  ' . $this->_select['ALIAS'];
+        }
+        $sql .= " FROM {$this->_select['FROM']}";
+        if (isset ($this->_select['WHERE'])) {
             $whereCondition = [];
             foreach ($this->_select['WHERE'] as $column => $value) {
                 foreach ($value as $_value) {
@@ -71,9 +89,13 @@ class Core_Model_Resource_Collection_Abstract
             }
             $sql .= " WHERE " . implode(' AND ', $whereCondition);
         }
-        if (isset($this->_select['LIMIT'])) {
+        if (isset ($this->_select['LIMIT'])) {
             $limit = implode(',', array_values($this->_select['LIMIT']));
             $sql .= " LIMIT " . $limit;
+        }
+
+        if (isset ($this->_select['GROUP_BY'])) {
+            $sql .= " GROUP BY " . $this->_select['GROUP_BY'];
         }
         $result = $this->_resource->getAdapter()->fetchAll($sql);
         foreach ($result as $row) {
@@ -90,7 +112,7 @@ class Core_Model_Resource_Collection_Abstract
     public function getFirstItem()
     {
         $this->load();
-        return(isset($this->_data[0]))
+        return (isset ($this->_data[0]))
             ? $this->_data[0]
             : null
         ;

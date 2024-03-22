@@ -1,0 +1,36 @@
+<div class="container">
+    <h2>Upload and Import CSV File</h2>
+    <form action="" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <label for="fileInput" id="fileLabel" class="btn">Upload CSV File</label>
+        <button name="read" class="btn" id="readtBtn"
+            formaction="<?php echo $this->getUrl('admin/import/read') ?>">Read</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Pending Import</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($this->getPendingImportList() as $data): ?>
+                <tr>
+                    <td id="import-type" type="<?php echo $data->getType() ?>"
+                        pending="<?php echo $data->getPendingImport() ?>">
+                        <?php echo ucfirst($data->getType()) ?>
+                    </td>
+                    <td id="pending-data">
+                        <?php echo $data->getPendingImport() ?>
+                    </td>
+                    <td>
+                        <button onclick="importData()" id="import-button">Import</button>
+                        <span id="progressbar"></span>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+</div>

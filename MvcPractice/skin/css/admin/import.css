@@ -1,0 +1,27 @@
+.container {
+    text-align: center;
+}
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.btn:hover {
+    background-color: #0056b3;
+}
+#fileInput {
+    display: none;
+}
+#fileLabel {
+    padding: 10px 20px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+}
