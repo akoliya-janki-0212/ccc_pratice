@@ -1,5 +1,6 @@
 .box {
     width: 100%;
+    height: 100%;
     max-width: 1200px;
     margin: 20px auto;
     padding: 20px;
@@ -19,6 +20,7 @@
 } */
 
 .container {
+    height: 100%;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
@@ -84,7 +86,7 @@ h2 {
         text-transform: uppercase;
         letter-spacing: 0.03em;
         color: #3e6765;
-        width: 100%;
+        width: 96%;
     }
 
     .table-row {
@@ -93,7 +95,7 @@ h2 {
     }
 
     .col-1 {
-        flex-basis: 60%;
+        flex-basis: 90%;
     }
 
 }

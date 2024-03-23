@@ -24,9 +24,10 @@ $categoryNames = $categoryModel->getCategoryIdName();
                 <li class="table-header">
                     <div class="col col-1">Product Name</div>
                     <div class="col col-1">Product SKU</div>
-                    <div class="col col-1">Color</div>
+                    <div class="col col-1">price</div>
                     <div class="col col-1">Status</div>
                     <div class="col col-1">Category</div>
+                    <div class="col col-1">Inventory</div>
                     <div class="col col-1">Edit</div>
                     <div class="col col-1">Delete</div>
                 </li>
@@ -42,16 +43,20 @@ $categoryNames = $categoryModel->getCategoryIdName();
                             <?php echo $product->getSku(); ?>
                         </div>
                         <div class="col col-1" data-label="Category">
-                            <?php echo $product->getColor(); ?>
+                            <?php echo $product->getPrice(); ?>
                         </div>
                         <div class="col col-1" data-label="Status">
                             <?php echo $product->getStatus(); ?>
                         </div>
+
                         <div class="col col-1" data-label="category">
                             <?php
                             $selectedCategory = $categoryModel->getCategoryNameById($categoryNames, $product);
                             echo $selectedCategory;
                             ?>
+                        </div>
+                        <div class="col col-1" data-label="Status">
+                            <?php echo $product->getInventory(); ?>
                         </div>
                         <div class="col col-1" data-label="Edit"><a href="form?id=<?php echo $product->getProductId(); ?>">
                                 <button class="button-edit" role="button">Edit</button></a></div>

@@ -25,11 +25,9 @@ class Admin_Controller_User extends Core_Controller_Admin_Action
         } else {
             $this->includeAdminCss('login.css');
             $layout = $this->getLayout();
-
-            $layout->removeChild('header')->removeChild('footer')->removeChild('adminleft');
-            $child = $layout->getChild('content');
+            $layout->removeChild('content')->removeChild('left');
             $loginForm = $layout->createBlock('admin/login');
-            $child->addChild('form', $loginForm);
+            $layout->addChild('form', $loginForm);
             $layout->toHtml();
         }
     }

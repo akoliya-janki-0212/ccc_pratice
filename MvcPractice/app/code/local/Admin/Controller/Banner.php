@@ -34,6 +34,7 @@ class Admin_Controller_Banner extends Core_Controller_Admin_Action
             $mainChild = $child->getChild('maincontent');
             $bannerForm = $layout->createBlock('banner/admin_banner_form');
             $mainChild->addChild('form', $bannerForm);
+
             $layout->toHtml();
 
         }
@@ -47,6 +48,7 @@ class Admin_Controller_Banner extends Core_Controller_Admin_Action
         $mainChild = $child->getChild('maincontent');
         $bannerForm = $layout->createBlock('banner/admin_banner_list');
         $mainChild->addChild('form', $bannerForm);
+        // print_r($layout);
         $layout->toHtml();
     }
     public function deleteAction()
@@ -63,6 +65,4 @@ class Admin_Controller_Banner extends Core_Controller_Admin_Action
         }
     }
 }
-
-
 ?>

@@ -1,6 +1,6 @@
 <?php
 $addressData = $this->getAddress()->getData();
-if (!empty($addressData)) {
+if (!empty ($addressData)) {
     ?>
     <div class="main">
         <?php
@@ -20,207 +20,216 @@ if (!empty($addressData)) {
                 "shipping_phone":"<?php echo $addValue->getShippingPhone(); ?>",
                 "shipping_pincode":"<?php echo $addValue->getShippingPincode(); ?>"
             }'>
-                <h3>Billing</h3>
-                <p>Address :
-                    <?php echo $addValue->getBillingAddress() ?>
-                </p>
-                <p>City :
-                    <?php echo $addValue->getBillingCity() ?>
-                </p>
-                <p>Country :
-                    <?php echo $addValue->getBillingCountry() ?>
-                </p>
-                <p>Pincode :
-                    <?php echo $addValue->getBillingPincode() ?>
-                </p>
-                <p>Phone No:
-                    <?php echo $addValue->getBillingPhone() ?>
-                </p>
-                <h3>Shipping</h3>
-                <p>Address :
-                    <?php echo $addValue->getShippingAddress() ?>
-                </p>
-                <p>City :
-                    <?php echo $addValue->getShippingCity() ?>
-                </p>
-                <p>Country :
-                    <?php echo $addValue->getShippingCountry() ?>
-                </p>
-                <p>Pincode :
-                    <?php echo $addValue->getShippingPincode() ?>
-                </p>
-                <p>Phone No:
-                    <?php echo $addValue->getShippingPhone() ?>
-                </p>
-            </div>
-            <?php
-        } ?>
-    </div>
-<?php }
+                <div class="address-details">
+                    <div class="billing_address">
+                        <h5>Billing</h5>
+                        <p>Address :
+                            <?php echo $addValue->getBillingAddress() ?>
+                        </p>
+                        <p>City :
+                            <?php echo $addValue->getBillingCity() ?>
+                        </p>
+                        <p>Country :
+                            <?php echo $addValue->getBillingCountry() ?>
+                        </p>
+                        <p>Pincode :
+                            <?php echo $addValue->getBillingPincode() ?>
+                        </p>
+                        <p>Phone No:
+                            <?php echo $addValue->getBillingPhone() ?>
+                        </p>
+                    </div>
+                    <div class="shipping_address">
+                        <h5>Shipping</h5>
+                        <p>Address :
+                            <?php echo $addValue->getShippingAddress() ?>
+                        </p>
+                        <p>City :
+                            <?php echo $addValue->getShippingCity() ?>
+                        </p>
+                        <p>Country :
+                            <?php echo $addValue->getShippingCountry() ?>
+                        </p>
+                        <p>Pincode :
+                            <?php echo $addValue->getShippingPincode() ?>
+                        </p>
+                        <p>Phone No:
+                            <?php echo $addValue->getShippingPhone() ?>
+                        </p>
+                    </div>
+                </div>
+            <?php } ?>
+        <?php }
 ?>
-<script type="text/javascript">
-    $('.address-cards').each((i, e) => {
-        console.log($(e).attr('data-json'))
-        $(e).click(() => {
-            var _data = JSON.parse($(e).attr('data-json'))
-            for (var key in _data) {
-                if (_data.hasOwnProperty(key)) {
-                    $('#' + key).val(_data[key]);
-                }
-            }
-        });
-    })
-</script>
+        <script type="text/javascript">
+            $('.address-cards').each((i, e) => {
+                console.log($(e).attr('data-json'))
+                $(e).click(() => {
+                    var _data = JSON.parse($(e).attr('data-json'))
+                    for (var key in _data) {
+                        if (_data.hasOwnProperty(key)) {
+                            $('#' + key).val(_data[key]);
+                        }
+                    }
+                });
+            })
+        </script>
 
-<div class="main">
-    <div class="box">
-        <div class="container">
-            <form action="" method="post">
-                <div class="title">Billing Details</div>
-                <div class="content">
-                    <div class="user-details">
-                        <div class="form-group">
-                            <label for="billing_address" class="details">Billing Address </label>
-                            <input type="textbox" class="form-control" id="billing_address"
-                                name="address[billing_address]" placeholder="Enter billing address">
-                        </div>
-                        <div class="form-group">
-                            <label for="billing_city" class="details">Billing City</label>
-                            <input type="textbox" class="form-control" id="billing_city" name="address[billing_city]"
-                                placeholder="Enter billing city">
-                        </div>
-                        <div class="form-group">
-                            <label for="billing_region" class="details">Billing Region</label>
-                            <input type="textbox" class="form-control" id="billing_region"
-                                name="address[billing_region]" placeholder="Enter billing region">
-                        </div>
-                        <div class="form-group">
-                            <label for="billing_country" class="details">Billing Country</label>
-                            <input type="textbox" class="form-control" id="billing_country"
-                                name="address[billing_country]" placeholder="Enter billing country">
-                        </div>
-                        <div class="form-group">
-                            <label for="billing_phone" class="details">Billing Phone</label>
-                            <input type="textbox" class="form-control" id="billing_phone" name="address[billing_phone]"
-                                placeholder="Enter billing phone">
-                        </div>
-                        <div class="form-group">
-                            <label for="billing_pincode" class="details">Billing Pincode</label>
-                            <input type="textbox" class="form-control" id="billing_pincode"
-                                name="address[billing_pincode]" placeholder="Enter billing pincode">
-                        </div>
+        <div class="main">
+            <div class="box">
+                <div class="container">
+                    <form action="" method="post">
+                        <div class="title">Billing Details</div>
+                        <div class="content">
+                            <div class="user-details">
+                                <div class="form-group">
+                                    <label for="billing_address" class="details">Billing Address </label>
+                                    <input type="textbox" class="form-control" id="billing_address"
+                                        name="address[billing_address]" placeholder="Enter billing address">
+                                </div>
+                                <div class="form-group">
+                                    <label for="billing_city" class="details">Billing City</label>
+                                    <input type="textbox" class="form-control" id="billing_city"
+                                        name="address[billing_city]" placeholder="Enter billing city">
+                                </div>
+                                <div class="form-group">
+                                    <label for="billing_region" class="details">Billing Region</label>
+                                    <input type="textbox" class="form-control" id="billing_region"
+                                        name="address[billing_region]" placeholder="Enter billing region">
+                                </div>
+                                <div class="form-group">
+                                    <label for="billing_country" class="details">Billing Country</label>
+                                    <input type="textbox" class="form-control" id="billing_country"
+                                        name="address[billing_country]" placeholder="Enter billing country">
+                                </div>
+                                <div class="form-group">
+                                    <label for="billing_phone" class="details">Billing Phone</label>
+                                    <input type="textbox" class="form-control" id="billing_phone"
+                                        name="address[billing_phone]" placeholder="Enter billing phone">
+                                </div>
+                                <div class="form-group">
+                                    <label for="billing_pincode" class="details">Billing Pincode</label>
+                                    <input type="textbox" class="form-control" id="billing_pincode"
+                                        name="address[billing_pincode]" placeholder="Enter billing pincode">
+                                </div>
 
-                    </div>
+                            </div>
+                        </div>
+                        <div class="title">Shipping Details</div>
+                        <div class="content">
+                            <div class="user-details">
+                                <div class="form-group">
+                                    <label for="shipping_address" class="details">Shipping Address </label>
+                                    <input type="textbox" class="form-control" id="shipping_address"
+                                        name="address[shipping_address]" placeholder="Enter shipping address">
+                                </div>
+                                <div class="form-group">
+                                    <label for="shipping_city" class="details">Shipping City</label>
+                                    <input type="textbox" class="form-control" id="shipping_city"
+                                        name="address[shipping_city]" placeholder="Enter shipping city">
+                                </div>
+                                <div class="form-group">
+                                    <label for="shipping_region" class="details">Shipping Region</label>
+                                    <input type="textbox" class="form-control" id="shipping_region"
+                                        name="address[shipping_region]" placeholder="Enter shipping region">
+                                </div>
+                                <div class="form-group">
+                                    <label for="shipping_country" class="details">Shipping Country</label>
+                                    <input type="textbox" class="form-control" id="shipping_country"
+                                        name="address[shipping_country]" placeholder="Enter shipping country">
+                                </div>
+                                <div class="form-group">
+                                    <label for="shipping_phone" class="details">Shipping Phone</label>
+                                    <input type="textbox" class="form-control" id="shipping_phone"
+                                        name="address[shipping_phone]" placeholder="Enter shipping phone">
+                                </div>
+                                <div class="form-group">
+                                    <label for="shipping_pincode" class="details">Shipping Pincode</label>
+                                    <input type="textbox" class="form-control" id="shipping_pincode"
+                                        name="address[shipping_pincode]" placeholder="Enter shipping pincode">
+                                </div>
+                                <div class="button">
+                                    <input type="submit" value="Submit"
+                                        formaction="<?php echo $this->getUrl('sales/quote/checkout') ?>"
+                                        name="save_address">
+                                    <input type="submit" value="Save Perminate"
+                                        formaction="<?php echo $this->getUrl('customer/address/save') ?>"
+                                        name="savePerminate">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="title">Shipping Details</div>
-                <div class="content">
-                    <div class="user-details">
-                        <div class="form-group">
-                            <label for="shipping_address" class="details">Shipping Address </label>
-                            <input type="textbox" class="form-control" id="shipping_address"
-                                name="address[shipping_address]" placeholder="Enter shipping address">
+            </div>
+            <div class="box">
+                <div class="container">
+                    <form action="" method="post">
+                        <div class="checkout__order">
+                            <h5>Your order</h5>
+                            <div class="checkout__order__product">
+                                <ul>
+                                    <li>
+                                        <span class="top__text">Product</span>
+                                        <span class="top__text__right">Total</span>
+                                    </li>
+                                    <li>01. Chain buck bag <span>$ 300.0</span></li>
+                                    <li>02. Zip-pockets pebbled<br /> tote briefcase <span>$ 170.0</span></li>
+                                    <li>03. Black jean <span>$ 170.0</span></li>
+                                    <li>04. Cotton shirt <span>$ 110.0</span></li>
+                                </ul>
+                            </div>
+                            <div class="checkout__order__total">
+                                <ul>
+                                    <li>Subtotal <span>$ 750.0</span></li>
+                                    <li>Total <span>$ 750.0</span></li>
+                                </ul>
+                            </div>
+                            <div class="checkout__order__widget">
+                                <h5>payment Method</h5>
+                                <label for="check-payment">
+                                    Cash On Delivery
+                                    <input type="radio" value="cash on delivey" name="payment[payment_method]"
+                                        id="check-payment">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label for="paypal">
+                                    PayPal
+                                    <input type="radio" value="paypal" name="payment[payment_method]" id="paypal">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label for="upi-id">
+                                    UPI-ID
+                                    <input type="radio" value="upi id" name="payment[payment_method]" id="upi-id">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <input type="submit" value="Submit"
+                                    formaction="<?php echo $this->getUrl('sales/quote/checkout') ?>"
+                                    name="save_payment_method">
+                            </div>
+                            <div class="checkout__order__widget">
+                                <h5>Shipping Method</h5>
+                                <label for="normal">
+                                    Normal
+                                    <input type="radio" name="shipping[shipping_method]" value="Normal" id="normal">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label for="sameDay">
+                                    SameDay
+                                    <input type="radio" name="shipping[shipping_method]" value="sameDay" id="sameDay">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <input type="submit" value="Submit"
+                                    formaction="<?php echo $this->getUrl('sales/quote/checkout') ?>"
+                                    name="save_shipping_method">
+                            </div>
+                            <button type="submit" class="site-btn"
+                                formaction="<?php echo $this->getUrl('sales/quote/checkout') ?>"
+                                name="place_order">Place
+                                Order
+                            </button>
                         </div>
-                        <div class="form-group">
-                            <label for="shipping_city" class="details">Shipping City</label>
-                            <input type="textbox" class="form-control" id="shipping_city" name="address[shipping_city]"
-                                placeholder="Enter shipping city">
-                        </div>
-                        <div class="form-group">
-                            <label for="shipping_region" class="details">Shipping Region</label>
-                            <input type="textbox" class="form-control" id="shipping_region"
-                                name="address[shipping_region]" placeholder="Enter shipping region">
-                        </div>
-                        <div class="form-group">
-                            <label for="shipping_country" class="details">Shipping Country</label>
-                            <input type="textbox" class="form-control" id="shipping_country"
-                                name="address[shipping_country]" placeholder="Enter shipping country">
-                        </div>
-                        <div class="form-group">
-                            <label for="shipping_phone" class="details">Shipping Phone</label>
-                            <input type="textbox" class="form-control" id="shipping_phone"
-                                name="address[shipping_phone]" placeholder="Enter shipping phone">
-                        </div>
-                        <div class="form-group">
-                            <label for="shipping_pincode" class="details">Shipping Pincode</label>
-                            <input type="textbox" class="form-control" id="shipping_pincode"
-                                name="address[shipping_pincode]" placeholder="Enter shipping pincode">
-                        </div>
-                        <div class="button">
-                            <input type="submit" value="Submit"
-                                formaction="<?php echo $this->getUrl('sales/quote/checkout') ?>" name="save_address">
-                            <input type="submit" value="Save Perminate"
-                                formaction="<?php echo $this->getUrl('customer/address/save') ?>" name="savePerminate">
-                        </div>
-                    </div>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
-    <div class="box">
-        <div class="container">
-            <form action="" method="post">
-                <div class="checkout__order">
-                    <h5>Your order</h5>
-                    <div class="checkout__order__product">
-                        <ul>
-                            <li>
-                                <span class="top__text">Product</span>
-                                <span class="top__text__right">Total</span>
-                            </li>
-                            <li>01. Chain buck bag <span>$ 300.0</span></li>
-                            <li>02. Zip-pockets pebbled<br /> tote briefcase <span>$ 170.0</span></li>
-                            <li>03. Black jean <span>$ 170.0</span></li>
-                            <li>04. Cotton shirt <span>$ 110.0</span></li>
-                        </ul>
-                    </div>
-                    <div class="checkout__order__total">
-                        <ul>
-                            <li>Subtotal <span>$ 750.0</span></li>
-                            <li>Total <span>$ 750.0</span></li>
-                        </ul>
-                    </div>
-                    <div class="checkout__order__widget">
-                        <h5>payment Method</h5>
-                        <label for="check-payment">
-                            Cash On Delivery
-                            <input type="radio" value="cash on delivey" name="payment[payment_method]"
-                                id="check-payment">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label for="paypal">
-                            PayPal
-                            <input type="radio" value="paypal" name="payment[payment_method]" id="paypal">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label for="upi-id">
-                            UPI-ID
-                            <input type="radio" value="upi id" name="payment[payment_method]" id="upi-id">
-                            <span class="checkmark"></span>
-                        </label>
-                        <input type="submit" value="Submit"
-                            formaction="<?php echo $this->getUrl('sales/quote/checkout') ?>" name="save_payment_method">
-                    </div>
-                    <div class="checkout__order__widget">
-                        <h5>Shipping Method</h5>
-                        <label for="normal">
-                            Normal
-                            <input type="radio" name="shipping[shipping_method]" value="Normal" id="normal">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label for="sameDay">
-                            SameDay
-                            <input type="radio" name="shipping[shipping_method]" value="sameDay" id="sameDay">
-                            <span class="checkmark"></span>
-                        </label>
-                        <input type="submit" value="Submit"
-                            formaction="<?php echo $this->getUrl('sales/quote/checkout') ?>"
-                            name="save_shipping_method">
-                    </div>
-                    <button type="submit" class="site-btn"
-                        formaction="<?php echo $this->getUrl('sales/quote/checkout') ?>" name="place_order">Place Order
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
