@@ -1,7 +1,7 @@
 <?php
 class Admin_Controller_User extends Core_Controller_Admin_Action
 {
-    protected $_allowedActions = ['login'];
+
     protected $_email = 'admin@gmail.com';
     protected $_password = 'admin123';
 
@@ -28,6 +28,7 @@ class Admin_Controller_User extends Core_Controller_Admin_Action
             $layout->removeChild('content')->removeChild('left');
             $loginForm = $layout->createBlock('admin/login');
             $layout->addChild('form', $loginForm);
+
             $layout->toHtml();
         }
     }

@@ -1,7 +1,7 @@
 <?php
 class Customer_Controller_Account extends Core_Controller_Front_Action
 {
-    protected $_allowedActions = ["login", "register"];
+   
 
     public function registerAction()
     {
@@ -87,7 +87,7 @@ class Customer_Controller_Account extends Core_Controller_Front_Action
     }
     public function profileAction()
     {
-        $this->includeFrontendCss(('dashboard.css'));
+        $this->includeFrontendCss('dashboard.css');
         $layout = $this->getLayout();
         $child = $layout->getChild('content');
         $dashboardForm = $layout->createBlock('customer/account_profile');

@@ -1,6 +1,7 @@
 <?php
 class Catalog_Controller_Product extends Core_Controller_Front_Action
 {
+   
     public function viewAction()
     {
         $this->includeFrontendCss('frondend/productView.css');

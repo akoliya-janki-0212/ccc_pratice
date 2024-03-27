@@ -1,7 +1,6 @@
 <?php
 class Admin_Controller_Catalog_Product extends Core_Controller_Admin_Action
 {
-    protected $_allowedActions = ['form'];
     public function formAction()
     {
         $this->includeAdminCss('product.css');

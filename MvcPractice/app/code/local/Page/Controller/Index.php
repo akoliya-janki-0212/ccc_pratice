@@ -10,25 +10,6 @@ class Page_Controller_Index extends Core_Controller_Front_Action
             ->addChild('banner', $banner);
         $layout->toHtml();
     }
-    public function newAction()
-    {
-        echo dirname(__FILE__);
 
-    }
-    public function listAction()
-    {
-        echo dirname(__FILE__);
-
-    }
-    public function saveAction()
-    {
-        echo dirname(__FILE__);
-
-    }
-    public function deleteAction()
-    {
-        echo dirname(__FILE__);
-
-    }
 }
 ?>

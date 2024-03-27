@@ -1,7 +1,7 @@
 <?php
 class Loan_Controller_Loan extends Core_Controller_Front_Action
 {
-    protected $_allowedActions = ['login'];
+  
     public function formAction()
     {
         $layout = $this->getLayout();

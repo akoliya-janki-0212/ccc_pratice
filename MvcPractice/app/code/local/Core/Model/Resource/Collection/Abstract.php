@@ -59,8 +59,10 @@ class Core_Model_Resource_Collection_Abstract
             $whereCondition = [];
             foreach ($this->_select['WHERE'] as $column => $value) {
                 foreach ($value as $_value) {
+                    $_value = addslashes($_value);
                     if (!is_array($_value)) {
                         $_value = array('eq' => $_value);
+
                     }
                     foreach ($_value as $condition => $_v) {
                         if (is_array($_v)) {

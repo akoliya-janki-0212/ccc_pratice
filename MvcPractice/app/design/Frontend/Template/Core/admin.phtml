@@ -10,9 +10,11 @@
 
 <body>
     <div class="admin-panel clearfix">
-
         <?php echo $this->getChildHtml('left'); ?>
         <?php echo $this->getChildHtml('content'); ?>
+        <?php if (array_key_exists('form', $this->_child)) {
+            $this->getChildHtml('form');
+        } ?>
     </div>
 </body>
 

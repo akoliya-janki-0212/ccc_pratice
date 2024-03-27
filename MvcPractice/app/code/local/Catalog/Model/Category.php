@@ -12,26 +12,36 @@ class Catalog_Model_Category extends Core_Model_Abstract
             1 => "Enabled",
             0 => "Disabled"
         ];
-        if (isset($this->_data['status'])) {
+        if (isset ($this->_data['status'])) {
             return $mapping[$this->_data['status']];
         }
     }
     public function getCategoryIdName()
     {
         $categoryCollection = $this->getCollection();
-        $categorys = [];
-        foreach ($categoryCollection->getData() as $category) {
-            $categorys[$category->getCategoryId()] = $category->getCategoryName();
+        $catagores = [];
+        foreach ($categoryCollection->getData() as $catagory) {
+            $catagores[$catagory->getCategoryId()] = $catagory->getCategoryName();
         }
+        print_r($catagores);
+        return $catagores;
+    }
+    // public function getCategoryIdName()
+    // {
+    //     $categoryCollection = $this->getCollection();
+    //     $categorys = [];
+    //     foreach ($categoryCollection->getData() as $category) {
+    //         $categorys[$category->getCategoryId()] = $category->getCategoryName();
+    //     }
 
-        return $categorys;
-    }
-    public function getCategoryNameById($mapping, $product)
-    {
-        $productData = $product->getData();
-        if (isset($productData['category_id'])) {
-            return($mapping[$productData['category_id']]);
-        }
-    }
+    //     return $categorys;
+    // }
+    // public function getCategoryNameById($mapping, $product)
+    // {
+    //     $productData = $product->getData();
+    //     if (isset($productData['category_id'])) {
+    //         return($mapping[$productData['category_id']]);
+    //     }
+    // }
 }
 ?>

@@ -18,7 +18,6 @@ class Admin_Controller_Import extends Core_Controller_Admin_Action
     }
     public function readAction()
     {
-
         $fileMimes = array(
             'text/x-comma-separated-values',
             'text/comma-separated-values',
@@ -45,7 +44,7 @@ class Admin_Controller_Import extends Core_Controller_Admin_Action
                     ->save();
             }
             fclose($file);
-            $this->setRedirect('import');
+            $this->setRedirect('admin/import/form');
         }
     }
     public function importAction()

@@ -66,10 +66,12 @@ class Core_Model_Resource_Abstract
         $where_con_arr = [];
 
         foreach ($data as $column => $value) {
+            $value = addslashes($value);
             $tmp_data[] = "`$column` = '$value'";
 
         }
         foreach ($where as $column => $value) {
+            $value = addslashes($value);
             $where_con_arr[] = "`$column` = '$value'";
         }
 

@@ -103,6 +103,22 @@
     grid-column: span 2;
 }
 
+.user-details .form-group:nth-child(7),
+.user-details .form-group:nth-child(8) {
+    grid-column: span 1;
+    /* Adjust to span one column */
+}
+
+.user-details .form-group:nth-child(9),
+.user-details .form-group:nth-child(10) {
+    grid-column: span 1;
+    /* Adjust to span two columns */
+}
+
+.user-details .form-group:nth-child(11) .user-details .form-group:nth-child(12) {
+    grid-column: span 2;
+}
+
 textarea {
     text-align: justify;
 }
