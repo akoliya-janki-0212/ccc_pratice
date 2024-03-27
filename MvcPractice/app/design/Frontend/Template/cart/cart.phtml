@@ -46,6 +46,7 @@
                                             <td class="cart__quantity">
                                                 <div class="pro-qty">
                                                     <input type="number" min=1 name="cart[qty]"
+                                                        max="<?php echo $_cartProduct->getProduct()->getInventory() ?>"
                                                         value="<?php echo $_cartProduct->getQty() ?>">
                                                 </div>
                                             </td>
@@ -58,6 +59,14 @@
                                                     href="<?php echo $this->getUrl('sales/quote/delete') . "?id=" . $_cartProduct->getItemId() ?>"><span
                                                         class="fa fa-times"></span></a></td>
                                         </tr>
+                                        <?php
+                                        if ($this->checkStock($_cartProduct)) { ?>
+                                            <tr>
+                                                <td>
+                                                    <p style="color: red">Out of stock</p>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
                                     </form>
                                 <?php } ?>
                             </tbody>

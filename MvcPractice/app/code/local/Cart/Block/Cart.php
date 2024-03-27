@@ -9,6 +9,10 @@ class Cart_Block_Cart extends Core_Block_Template
     {
         return Mage::getModel('sales/quote')->initQuote()->getItemCollection();
     }
+    public function checkStock($_cartProduct)
+    {
+        return Mage::getModel('sales/quote')->qtyCheck($_cartProduct);
+    }
     public function getQuote()
     {
         $quoteId = Mage::getSingleton('core/session')

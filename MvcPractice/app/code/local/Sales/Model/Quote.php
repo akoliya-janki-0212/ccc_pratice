@@ -98,7 +98,7 @@ class Sales_Model_Quote extends Core_Model_Abstract
                     $this,
                     $requestData['product_id'],
                     $requestData['qty'],
-                    isset ($requestData['item_id'])
+                    isset($requestData['item_id'])
                     ? $requestData['item_id']
                     : null
                 );
@@ -147,24 +147,56 @@ class Sales_Model_Quote extends Core_Model_Abstract
     {
         $this->initQuote();
         if ($this->getId()) {
-            $orderModel = Mage::getModel("sales/order");
-            $orderId = $orderModel->addOrder($this)->getId();
-            if ($this->getItemCollection()) {
-                $orderModel->addOrderItem($this);
+
+            if (!$this->qtyCheck()) {
+                $orderModel = Mage::getModel("sales/order");
+                $orderId = $orderModel->addOrder($this)->getId();
+                if ($this->getItemCollection()) {
+                    $orderModel->addOrderItem($this);
+                }
+                if ($this->getCustomerCollection()) {
+                    $orderModel->addOrderCustomer($this);
+                }
+                if ($this->getShippingCollection()) {
+                    $orderModel->addOrderShipping($this);
+                }
+                if ($this->getPaymentCollection()) {
+                    $orderModel->addOrderPayment($this);
+                }
+                $this->addData('order_id', $orderId)->save();
+                Mage::getSingleton('core/session')->remove('quote_id');
+                return $this;
+            } else {
+                return false;
             }
-            if ($this->getCustomerCollection()) {
-                $orderModel->addOrderCustomer($this);
-            }
-            if ($this->getShippingCollection()) {
-                $orderModel->addOrderShipping($this);
-            }
-            if ($this->getPaymentCollection()) {
-                $orderModel->addOrderPayment($this);
-            }
-            $this->addData('order_id', $orderId)->save();
-            Mage::getSingleton('core/session')->remove('quote_id');
         }
-        return $this;
+    }
+    public function qtyCheck($_items = null)
+    {
+        $flag = 0;
+        $this->initQuote();
+        if ($this->getId()) {
+            if ($_items) {
+                $itemQty = $_items->getQty();
+                $inventory = $_items->getProduct()->getInventory();
+                if ($itemQty > $inventory) {
+                    $flag = 1;
+                }
+            } else {
+                foreach ($this->getItemCollection() as $_items) {
+                    $itemQty = $_items->getQty();
+                    $inventory = $_items->getProduct()->getInventory();
+                    if ($itemQty > $inventory) {
+                        $flag = 1;
+                    }
+                }
+            }
+            if ($flag == 0) {
+                return false;
+            } else {
+                return true;
+            }
+        }
     }
 }
 ?>

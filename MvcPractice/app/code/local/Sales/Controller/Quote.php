@@ -20,33 +20,38 @@ class Sales_Controller_Quote extends Core_Controller_Front_Action
         $customerId = Mage::getSingleton('core/session')->get("logged_in_customer_id");
         $quoteId = Mage::getSingleton('core/session')->get("quote_id");
         if ($quoteId && $customerId) {
-            if (isset ($_POST['save_address'])) {
+            if (isset($_POST['save_address'])) {
                 $data = $this->getRequest()->getParams('address');
-                if (!empty ($data)) {
+                if (!empty($data)) {
                     Mage::getSingleton('sales/quote')->addAddress($data);
 
                 }
                 $this->setRedirect('cart/checkout');
             }
-            if (isset ($_POST['save_shipping_method'])) {
+            if (isset($_POST['save_shipping_method'])) {
                 $shippingData = $this->getRequest()->getParams('shipping');
-                if (!empty ($shippingData)) {
+                if (!empty($shippingData)) {
                     Mage::getSingleton('sales/quote')->addShipping($shippingData);
                 }
                 $this->setRedirect('cart/checkout');
             }
-            if (isset ($_POST['save_payment_method'])) {
+            if (isset($_POST['save_payment_method'])) {
                 $paymentData = $this->getRequest()->getParams('payment');
-                if (!empty ($paymentData)) {
+                if (!empty($paymentData)) {
                     Mage::getSingleton('sales/quote')->addPayment($paymentData);
                 }
                 $this->setRedirect('cart/checkout');
             }
 
-            if (isset ($_POST['place_order'])) {
-                Mage::getSingleton('sales/quote')->convertToOrder();
-                echo "<script>alert('Order placed successfully')</script>";
-                $this->setRedirect('customer/order/view');
+            if (isset($_POST['place_order'])) {
+                $quoteModel = Mage::getSingleton('sales/quote')->convertToOrder();
+                if ($quoteModel == false) {
+                    echo '<script> alert("Some products are in out of stock ")</script>';
+                    $this->setRedirect('cart');
+                } else {
+                    echo "<script>alert('Order placed successfully')</script>";
+                    $this->setRedirect('customer/order/view?id=' . $quoteModel->getId());
+                }
             }
         } else {
             $this->setRedirect('cart');
