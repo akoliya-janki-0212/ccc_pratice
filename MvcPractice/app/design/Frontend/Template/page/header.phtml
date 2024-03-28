@@ -52,21 +52,47 @@
             </div>
             <div class="col-lg-3">
                 <div class="header__right">
-                    <div class="header__right__auth">
-                        <a href="<?php echo $this->getUrl('customer/account/login') ?>">
-                            Login
-                        </a>
-                        <a href="<?php echo $this->getUrl('customer/account/register') ?>">Register</a>
-                    </div>
                     <ul class="header__right__widget">
                         <li><span class="search-switch"><i class="fa fa-search" aria-hidden="true"></i></span></li>
-                        <li><a href="#"><span class="fa fa-heart"></span>
+                        <!-- <li><a href="#"><span class="fa fa-heart"></span>
                                 <div class="tip">2</div>
-                            </a></li>
+                            </a></li> -->
                         <li><a href="<?php echo $this->getUrl('cart') ?>"><span class="fa fa-shopping-bag"></span>
-                                <div class="tip">2</div>
+                                <div class="tip">
+                                    <?php echo $this->itemsCount()->getTotalItems() ?>
+                                </div>
                             </a></li>
                     </ul>
+                    <div class="header__right__auth">
+                        <?php
+                        if (!Mage::getSingleton('core/session')->get('logged_in_customer_id')) {
+                            ?>
+                            <a href="<?php echo $this->getUrl('customer/account/login') ?>">
+                                Login
+                            </a>
+                            <a href="<?php echo $this->getUrl('customer/account/register') ?>">Register</a>
+
+                        <?php } else { ?>
+
+                            <nav class="header__menu">
+                                <ul>
+                                    <li><a href="<?php echo $this->getUrl('customer/account/dashboard') ?>">
+                                            <i class="fa fa-user" aria-hidden="true"></i></a>
+                                        <ul class="dropdown">
+                                            <li><a href="<?php echo $this->getUrl('customer/account/profile') ?>">My
+                                                    Profile</a></li>
+                                            <li><a href="<?php echo $this->getUrl('customer/account/logout') ?>">Logout</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                            </nav>
+
+                        <?php }
+                        ?>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -74,4 +100,5 @@
 
         </div>
     </div>
-</header>
+</header>crafca  
+

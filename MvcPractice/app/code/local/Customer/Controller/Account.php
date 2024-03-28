@@ -1,7 +1,7 @@
 <?php
 class Customer_Controller_Account extends Core_Controller_Front_Action
 {
-   
+
 
     public function registerAction()
     {
@@ -37,7 +37,7 @@ class Customer_Controller_Account extends Core_Controller_Front_Action
     }
     public function loginAction()
     {
-        if (isset ($_POST['Submit'])) {
+        if (isset($_POST['Submit'])) {
             $data = $this->getRequest()->getParams('login');
             $email = $data['customer_email'];
             $password = $data['password'];
@@ -92,8 +92,14 @@ class Customer_Controller_Account extends Core_Controller_Front_Action
         $child = $layout->getChild('content');
         $dashboardForm = $layout->createBlock('customer/account_profile');
         $child->addChild('form', $dashboardForm);
-        print_r($layout);
         $layout->toHtml();
+    }
+    public function logoutAction()
+    {
+        Mage::getSingleton('core/session')
+            ->remove('logged_in_customer_id')
+            ->remove('quote_id');
+        $this->setRedirect('');
     }
 }
 

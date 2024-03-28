@@ -27,7 +27,7 @@
     padding-bottom: 20px;
 }
 
-.shop__cart__table tbody tr {
+.shop__cart__table tbody .tr_border {
     border-bottom: 1px solid #f2f2f2;
 }
 
