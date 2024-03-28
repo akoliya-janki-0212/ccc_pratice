@@ -1,0 +1,73 @@
+<?php
+$ddl = $this->getParentDropDown();
+
+?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<h4>Category Form</h4>
+<form action="" method="post">
+
+    <select class="dropdown" id="dd1" name="dd1" onchange="fatchFunc(this)" ?>
+        <?php
+        foreach ($ddl as $key => $item) {
+            echo '<option value="' . $key . '" >' . $item . '</option>';
+        }
+        ?>
+    </select>
+    <select class="dropdown" id="dd1_child" name="dd1" ?>
+        <option value="">child</option>;
+
+    </select>
+    <button type="submit" class="submit" name="submit">Save</button>
+</form>
+</div>
+<script>
+    // $('#dd1').on('change', function () {
+    //     var id = $(this).val();
+    //     if (id) {
+    //         $.ajax({
+    //             type: 'POST',
+    //             url: 'index/save',
+    //             data: 'id_val=' + id,
+    //             success: function (html) {
+    //                 $('#dd1_child').html(html);
+    //             }
+    //         });
+    //     } else {
+    //         $('#dd1_child').html('<option value="">Select country first</option>');
+
+    //     }
+    // });
+    // function fatchFunc(e) {
+    //     let id = e.value
+    //     const select = document.getElementById('dd1_child');
+    //     fetch('index/save?id=' + id)
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             select.innerHTML = '';
+    //             for (let key in data) {
+    //                 var option1 = document.createElement("option");
+    //                 option1.text = data[key];
+    //                 option1.value = key;
+    //                 select.add(option1);
+    //             }
+    //         })
+    //         .catch(error => console.error('Error :', error));
+    // }
+    function fatchFunc(e) {
+        let id = e.value
+        const select = document.getElementById('dd1_child');
+        fetch('index/save?id=' + id)
+            .then(response => response.json())
+            .then(data => data)
+            .then(data => {
+                select.innerHTML = '';
+                for (let key in data) {
+                    var option1 = document.createElement("option");
+                    option1.text = data[key];
+                    option1.value = key;
+                    select.add(option1);
+                }
+            })
+            .catch(error => console.error('Error :', error));
+    }
+</script>

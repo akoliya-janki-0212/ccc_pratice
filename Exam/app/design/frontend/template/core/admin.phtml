@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <?php echo $this->getChildHtml('head') ?>
+</head>
+
+<body>
+    <div class="admin-panel clearfix">
+        <?php echo $this->getChildHtml('left'); ?>
+        <?php echo $this->getChildHtml('content'); ?>
+        <?php if (array_key_exists('form', $this->_child)) {
+            $this->getChildHtml('form');
+        } ?>
+    </div>
+</body>
+
+</html>
